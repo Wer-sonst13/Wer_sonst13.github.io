@@ -54,6 +54,7 @@ body::before {
   padding:0 24px 120px;
   position:relative;
   z-index:1;
+  overflow:hidden;
 }
 
 nav {
@@ -108,9 +109,28 @@ nav {
   background:rgba(61,220,132,0.08);
 }
 
-/* ===== Sections ===== */
-section { display:none; }
-section.active { display:block; }
+/* ===== NEW PAGE ANIMATION ===== */
+section {
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:translateY(40px) scale(0.97);
+  pointer-events:none;
+  transition:all .5s cubic-bezier(.22,1,.36,1);
+}
+
+section.active {
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+  z-index:2;
+}
+
+section.exit {
+  opacity:0;
+  transform:translateY(-40px) scale(0.97);
+  z-index:1;
+}
 
 /* ===== Text ===== */
 .tag {
@@ -147,10 +167,7 @@ h2 {
   border:none;
   cursor:pointer;
   font-weight:500;
-  transition:.2s;
 }
-
-.btn-primary:hover { transform:translateY(-2px); opacity:.9; }
 
 .btn-line {
   background:transparent;
@@ -160,12 +177,6 @@ h2 {
   border-radius:10px;
   margin-left:10px;
   cursor:pointer;
-  transition:.2s;
-}
-
-.btn-line:hover {
-  border-color:var(--green);
-  color:var(--green);
 }
 
 /* ===== Stats ===== */
@@ -182,16 +193,7 @@ h2 {
   padding:14px;
   border-radius:12px;
   text-align:center;
-  transition:.2s;
 }
-
-.stat:hover {
-  transform:translateY(-3px);
-  border-color:rgba(61,220,132,0.3);
-}
-
-.stat-n { font-size:20px; font-weight:600; }
-.stat-l { font-size:12px; color:var(--sub); }
 
 /* ===== Chips ===== */
 .chips {
@@ -207,7 +209,6 @@ h2 {
   border-radius:999px;
   border:1px solid var(--border);
   color:var(--sub);
-  background:rgba(255,255,255,0.02);
 }
 
 /* ===== Contact ===== */
@@ -215,22 +216,16 @@ h2 {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px;
+  padding:16px;
   border-radius:14px;
   border:1px solid var(--border);
   background:rgba(255,255,255,0.02);
   margin-top:20px;
-  transition:.2s;
-}
-
-.dc-block:hover {
-  transform:translateY(-3px);
-  border-color:rgba(88,101,242,0.3);
 }
 
 .dc-cta {
   background:#5865F2;
-  padding:8px 12px;
+  padding:10px 14px;
   border-radius:10px;
   color:#fff;
   text-decoration:none;
@@ -259,10 +254,6 @@ footer {
   opacity:1;
   transform:translateY(0);
 }
-
-.delay-1 { transition-delay:.1s; }
-.delay-2 { transition-delay:.2s; }
-.delay-3 { transition-delay:.3s; }
 </style>
 </head>
 
@@ -283,58 +274,32 @@ footer {
   </div>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="active">
   <p class="tag reveal">Willkommen</p>
-
-  <h1 class="reveal delay-1">Hey, ich bin<br><em>Justin.</em></h1>
-
-  <p class="intro reveal delay-2">
-    15-jähriger Programmierer mit Fokus auf Minecraft-Server & Plugins.
-  </p>
-
-  <button class="btn-primary reveal delay-2" onclick="show('contact')">Kontakt aufnehmen</button>
-  <button class="btn-line reveal delay-2" onclick="show('about')">Mehr →</button>
-
-  <div class="stats reveal delay-3">
-    <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
-    <div class="stat"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
-    <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
-  </div>
+  <h1 class="reveal">Hey, ich bin<br><em>Justin.</em></h1>
+  <p class="intro reveal">15-jähriger Programmierer mit Fokus auf Minecraft.</p>
+  <button class="btn-primary" onclick="show('contact')">Kontakt</button>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <p class="tag reveal">Über mich</p>
-
-  <h2 class="reveal delay-1">Programmieren & Minecraft</h2>
-
-  <p class="intro reveal delay-2">
-    Ich entwickle Plugins, Server-Systeme und komplette Setups.
-  </p>
-
-  <div class="chips reveal delay-3">
-    <span class="chip">Java</span>
-    <span class="chip">Spigot</span>
-    <span class="chip">Paper</span>
-    <span class="chip">Plugins</span>
-    <span class="chip">Configs</span>
-  </div>
+  <h2 class="reveal">Programmieren & Minecraft</h2>
+  <p class="intro reveal">Ich entwickle Plugins & Server.</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="tag reveal">Kontakt</p>
+  <h2 class="reveal">Schreib mir auf Discord</h2>
 
-  <h2 class="reveal delay-1">Schreib mir auf Discord</h2>
-
-  <div class="dc-block reveal delay-2">
+  <div class="dc-block reveal">
     <div>
       <strong>Wer_sonst13</strong><br>
       <span style="color:var(--sub);font-size:13px;">Discord</span>
     </div>
 
-    <a class="dc-cta" href="https://discord.com" target="_blank">DM</a>
+    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">
+      DM →
+    </a>
   </div>
 </section>
 
@@ -346,21 +311,35 @@ footer {
 </div>
 
 <script>
+let current = "home";
+
 function show(id) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  if (id === current) return;
+
+  const currentEl = document.getElementById(current);
+  const nextEl = document.getElementById(id);
+
+  currentEl.classList.remove("active");
+  currentEl.classList.add("exit");
+
+  nextEl.classList.add("active");
+
+  setTimeout(() => {
+    currentEl.classList.remove("exit");
+  }, 500);
 
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.getElementById('nav-' + id).classList.add('active');
+
+  current = id;
 }
 
-/* Scroll Animation */
+/* Reveal Animation */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('active');
   });
-}, { threshold: 0.15 });
-
+});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
