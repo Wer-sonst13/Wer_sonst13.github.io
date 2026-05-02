@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -22,10 +23,11 @@ body {
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
+  line-height:1.6;
   overflow-x:hidden;
 }
 
-/* Background */
+/* ===== Background ===== */
 body::before {
   content:"";
   position:fixed;
@@ -33,117 +35,235 @@ body::before {
   z-index:0;
   background:
     radial-gradient(circle at 20% 30%, rgba(61,220,132,0.12), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(88,101,242,0.12), transparent 40%);
+    radial-gradient(circle at 80% 70%, rgba(88,101,242,0.12), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 60%);
   filter: blur(20px);
+  opacity:0.7;
+  animation: move 18s ease-in-out infinite alternate;
 }
 
-/* Layout */
+@keyframes move {
+  0% { transform:translate(0,0) scale(1); }
+  50% { transform:translate(-30px,20px) scale(1.05); }
+  100% { transform:translate(30px,-20px) scale(1.08); }
+}
+
+/* ===== Layout ===== */
 .wrap {
   max-width:640px;
   margin:auto;
   padding:0 24px 120px;
   position:relative;
   z-index:1;
-  overflow:hidden;
 }
 
 nav {
   display:flex;
   justify-content:space-between;
-  padding:30px 0;
+  align-items:center;
+  padding:36px 0;
 }
 
 .logo {
   display:flex;
   gap:8px;
+  align-items:center;
   cursor:pointer;
 }
 
 .logo-dot {
   width:8px;height:8px;
-  background:var(--green);
   border-radius:50%;
+  background:var(--green);
+}
+
+.logo-text {
+  font-family:'JetBrains Mono';
+  font-size:14px;
+}
+
+.nav-links {
+  display:flex;
+  gap:6px;
 }
 
 .nav-links button {
-  background:none;
-  border:none;
+  background:transparent;
+  border:1px solid transparent;
   color:var(--sub);
-  margin-left:10px;
+  padding:8px 14px;
+  border-radius:8px;
   cursor:pointer;
+  transition:.2s;
+}
+
+.nav-links button:hover {
+  color:var(--text);
+  border-color:var(--border);
+  background:rgba(255,255,255,0.03);
 }
 
 .nav-links button.active {
   color:var(--green);
+  border-color:rgba(61,220,132,0.25);
+  background:rgba(61,220,132,0.08);
 }
 
-/* ===== APP SLIDE ANIMATION ===== */
-section {
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transform:translateX(100%);
-  pointer-events:none;
-  transition:all .45s cubic-bezier(.22,1,.36,1);
+/* ===== Sections ===== */
+section { display:none; }
+section.active { display:block; }
+
+/* ===== Text ===== */
+.tag {
+  font-size:11px;
+  color:var(--green);
+  margin-bottom:20px;
 }
 
-section.active {
-  opacity:1;
-  transform:translateX(0);
-  pointer-events:auto;
-  z-index:2;
+h1 {
+  font-size:clamp(40px,5vw,56px);
+  line-height:1.1;
+  margin-bottom:18px;
 }
 
-section.exit-left {
-  transform:translateX(-100%);
-  opacity:0;
+h1 em { color:var(--sub); }
+
+h2 {
+  font-size:clamp(26px,3vw,34px);
+  margin-bottom:16px;
 }
 
-section.exit-right {
-  transform:translateX(100%);
-  opacity:0;
+.intro {
+  color:var(--sub);
+  max-width:60ch;
+  margin-bottom:30px;
 }
 
-section.enter-left {
-  transform:translateX(-100%);
-}
-
-section.enter-right {
-  transform:translateX(100%);
-}
-
-/* Text */
-.tag { color:var(--green); font-size:12px; }
-h1 { font-size:48px; margin:10px 0; }
-h2 { font-size:28px; margin:10px 0; }
-.intro { color:var(--sub); margin-bottom:20px; }
-
-/* Button */
-.btn {
-  background:#fff;
+/* ===== Buttons ===== */
+.btn-primary {
+  background:var(--text);
   color:#000;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
+  padding:11px 18px;
+  border-radius:10px;
   border:none;
+  cursor:pointer;
+  font-weight:500;
+  transition:.2s;
 }
 
-/* Contact */
-.dc {
+.btn-primary:hover { transform:translateY(-2px); opacity:.9; }
+
+.btn-line {
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:11px 18px;
+  border-radius:10px;
+  margin-left:10px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-line:hover {
+  border-color:var(--green);
+  color:var(--green);
+}
+
+/* ===== Stats ===== */
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:40px;
+}
+
+.stat {
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  padding:14px;
+  border-radius:12px;
+  text-align:center;
+  transition:.2s;
+}
+
+.stat:hover {
+  transform:translateY(-3px);
+  border-color:rgba(61,220,132,0.3);
+}
+
+.stat-n { font-size:20px; font-weight:600; }
+.stat-l { font-size:12px; color:var(--sub); }
+
+/* ===== Chips ===== */
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:20px;
+}
+
+.chip {
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  background:rgba(255,255,255,0.02);
+}
+
+/* ===== Contact ===== */
+.dc-block {
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:14px;
+  border-radius:14px;
   border:1px solid var(--border);
-  border-radius:12px;
+  background:rgba(255,255,255,0.02);
+  margin-top:20px;
+  transition:.2s;
 }
 
-.dc a {
+.dc-block:hover {
+  transform:translateY(-3px);
+  border-color:rgba(88,101,242,0.3);
+}
+
+.dc-cta {
   background:#5865F2;
   padding:8px 12px;
+  border-radius:10px;
   color:#fff;
-  border-radius:8px;
   text-decoration:none;
+  font-size:13px;
 }
+
+/* ===== Footer ===== */
+footer {
+  margin-top:80px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  color:var(--sub);
+  font-size:13px;
+}
+
+/* ===== Scroll Animation ===== */
+.reveal {
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .7s ease;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.delay-1 { transition-delay:.1s; }
+.delay-2 { transition-delay:.2s; }
+.delay-3 { transition-delay:.3s; }
 </style>
 </head>
 
@@ -154,7 +274,7 @@ h2 { font-size:28px; margin:10px 0; }
 <nav>
   <div class="logo" onclick="show('home')">
     <div class="logo-dot"></div>
-    Wer_sonst13
+    <div class="logo-text">Wer_sonst13</div>
   </div>
 
   <div class="nav-links">
@@ -166,73 +286,83 @@ h2 { font-size:28px; margin:10px 0; }
 
 <!-- HOME -->
 <section id="home" class="active">
-  <p class="tag">Willkommen</p>
-  <h1>Hey, ich bin Justin</h1>
-  <p class="intro">Minecraft Dev & Programmer</p>
-  <button class="btn" onclick="show('contact')">Kontakt</button>
+  <p class="tag reveal">Willkommen</p>
+
+  <h1 class="reveal delay-1">Hey, ich bin<br><em>Justin.</em></h1>
+
+  <p class="intro reveal delay-2">
+    15-jähriger Programmierer mit Fokus auf Minecraft-Server & Plugins.
+  </p>
+
+  <button class="btn-primary reveal delay-2" onclick="show('contact')">Kontakt aufnehmen</button>
+  <button class="btn-line reveal delay-2" onclick="show('about')">Mehr →</button>
+
+  <div class="stats reveal delay-3">
+    <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
+    <div class="stat"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
+    <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
+  </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <p class="tag">Über mich</p>
-  <h2>Programmierung</h2>
-  <p class="intro">Plugins, Server, Configs</p>
+  <p class="tag reveal">Über mich</p>
+
+  <h2 class="reveal delay-1">Programmieren & Minecraft</h2>
+
+  <p class="intro reveal delay-2">
+    Ich entwickle Plugins, Server-Systeme und komplette Setups.
+  </p>
+
+  <div class="chips reveal delay-3">
+    <span class="chip">Java</span>
+    <span class="chip">Spigot</span>
+    <span class="chip">Paper</span>
+    <span class="chip">Plugins</span>
+    <span class="chip">Configs</span>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="tag">Kontakt</p>
-  <h2>Schreib mir</h2>
+  <p class="tag reveal">Kontakt</p>
 
-  <div class="dc">
+  <h2 class="reveal delay-1">Schreib mir auf Discord</h2>
+
+  <div class="dc-block reveal delay-2">
     <div>
       <strong>Wer_sonst13</strong><br>
       <span style="color:var(--sub);font-size:13px;">Discord</span>
     </div>
 
-    <a href="https://discord.com/users/Wer_sonst13" target="_blank">
-      DM →
-    </a>
+    <a class="dc-cta" href="https://discord.com" target="_blank">DM</a>
   </div>
 </section>
+
+<footer>
+  <span>Wer_sonst13</span>
+  <span>© 2026 Justin</span>
+</footer>
 
 </div>
 
 <script>
-let current = "home";
-const order = ["home","about","contact"];
-
 function show(id) {
-  if (id === current) return;
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 
-  const currentEl = document.getElementById(current);
-  const nextEl = document.getElementById(id);
-
-  const currentIndex = order.indexOf(current);
-  const nextIndex = order.indexOf(id);
-
-  const direction = nextIndex > currentIndex ? "right" : "left";
-
-  nextEl.classList.remove("enter-left","enter-right");
-  nextEl.classList.add(direction === "right" ? "enter-right" : "enter-left");
-
-  nextEl.offsetHeight;
-
-  nextEl.classList.add("active");
-  nextEl.classList.remove(direction === "right" ? "enter-right" : "enter-left");
-
-  currentEl.classList.add(direction === "right" ? "exit-left" : "exit-right");
-  currentEl.classList.remove("active");
-
-  setTimeout(()=>{
-    currentEl.classList.remove("exit-left","exit-right");
-  },450);
-
-  document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active'));
-  document.getElementById('nav-'+id).classList.add('active');
-
-  current = id;
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.getElementById('nav-' + id).classList.add('active');
 }
+
+/* Scroll Animation */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('active');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
