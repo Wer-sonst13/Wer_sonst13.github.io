@@ -88,66 +88,13 @@
     }
 
     .logo-dot {
+      width: 7px; height: 7px;
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: var(--green);
     }
-
-    .logo-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2px;
-      list-style: none;
-    }
-
-    .nav-links button {
-      background: none;
-      border: none;
-      color: var(--sub);
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .nav-links button:hover { color: var(--text); }
-    .nav-links button.active { color: var(--text); }
-
-    section { display: none; }
-    section.active { display: block; }
-
-    .home { padding: 80px 0 0; }
-
-    .tag {
-      font-size: 11px;
-      color: var(--green);
-      margin-bottom: 28px;
-    }
-
-    h1 {
-      font-size: 52px;
-      margin-bottom: 22px;
-    }
-
-    h1 em { color: var(--sub); }
-
-    .intro {
-      font-size: 15px;
-      color: var(--sub);
-      margin-bottom: 40px;
-    }
-
-    .btn-primary {
-      background: var(--text);
-      color: var(--bg);
-      padding: 10px 20px;
-      border-radius: 7px;
-      cursor: pointer;
+@@ -150,6 +151,23 @@
       border: none;
     }
 
@@ -171,35 +118,11 @@
     footer {
       margin-top: 80px;
       padding-top: 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
-</head>
-
-<body>
-
-<div id="cursor-glow"></div>
-
-<div class="wrap">
-
-  <nav>
-    <a class="logo" onclick="show('home')">
-      <div class="logo-dot"></div>
-      <span class="logo-text">Wer_sonst13</span>
-    </a>
-    <ul class="nav-links">
-      <li><button id="nav-home" class="active" onclick="show('home')">Start</button></li>
-      <li><button id="nav-about" onclick="show('about')">Über mich</button></li>
-      <li><button id="nav-contact" onclick="show('contact')">Kontakt</button></li>
-    </ul>
-  </nav>
-
-  <section id="home" class="active">
+@@ -182,24 +200,56 @@
     <div class="home">
       <p class="tag">Willkommen</p>
       <h1>Hey, ich bin<br><em>Justin.</em></h1>
+      <p class="intro">Ich bin ein Programmierer für Minecraft Server.</p>
       <p class="intro">
   Ich bin Justin, ein <strong>15-jähriger Programmierer</strong>, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!
 </p>
@@ -207,7 +130,10 @@
     </div>
   </section>
 
-<section id="about">
+  <section id="about">
+    <h1>Über mich</h1>
+    <p>Ich mache Plugins und Server Setups.</p>
+  </section>
   <div class="about">
 
     <p class="tag">Über mich</p>
@@ -396,6 +322,34 @@
   </div>
 
   <div class="contact-location">
-    <span class="dot"></span> Frankfurt am Main, Deutschland
+    <span class="dot"></span> Heilbronn, Deutschland
   </div>
 </section>
+
+  <footer>
+    <span>Wer_sonst13</span>
+    <span>© 2026</span>
+    <span>© 2026 Justin </span>
+  </footer>
+
+</div>
+@@ -208,16 +258,19 @@
+function show(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.getElementById('nav-' + id).classList.add('active');
+}
+
+/* Cursor Glow */
+const glow = document.getElementById("cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+</script>
+
+</body>
+</html>
