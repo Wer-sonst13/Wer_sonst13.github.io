@@ -6,7 +6,31 @@
   <title>Wer_sonst13 — Justin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background:
+      radial-gradient(circle at 20% 30%, rgba(61,220,132,0.12), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(88,101,242,0.12), transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 60%);
+
+    animation: moveBg 18s ease-in-out infinite alternate;
+  }
+
+    @keyframes moveBg {
+     0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+     50% {
+      transform: translate(-30px, 20px) scale(1.05);
+    }
+     100% {
+      transform: translate(30px, -20px) scale(1.08);
+    }
+  }
 
     :root {
       --bg: #0e0e10;
@@ -19,12 +43,12 @@
     }
 
     body {
-      .wrap::before {
-       content: "";
-       position: fixed;
-       inset: 0;
-       pointer-events: none;
-       background: radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 60%);;
+     font-family: 'Inter', sans-serif;
+     min-height: 100vh;
+     color: var(--text);
+     overflow-x: hidden;
+
+     background: #0b0b0c;
     }
 
     .wrap {
@@ -341,7 +365,7 @@
       .dc-block { flex-direction: column; align-items: flex-start; }
       nav { flex-wrap: wrap; gap: 12px; }
     }
-  </style>
+</style>
 </head>
 <body>
   <div class="wrap">
