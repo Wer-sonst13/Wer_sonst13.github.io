@@ -177,37 +177,48 @@
     }
   </style>
 </head>
-
 <body>
+  <div class="wrap">
 
-<div id="cursor-glow"></div>
+    <nav>
+      <a class="logo" onclick="show('home')">
+        <div class="logo-dot"></div>
+        <span class="logo-text">Wer_sonst13</span>
+      </a>
+      <ul class="nav-links">
+        <li><button id="nav-home" class="active" onclick="show('home')">Start</button></li>
+        <li><button id="nav-about" onclick="show('about')">Über mich</button></li>
+        <li><button id="nav-contact" onclick="show('contact')">Kontakt</button></li>
+      </ul>
+    </nav>
 
-<div class="wrap">
+    <section id="home" class="active">
+      <div class="home">
+        <p class="tag">Willkommen</p>
+        <h1>Hey, ich bin<br><em>Justin.</em></h1>
+        <p class="intro">Ich bin Justin, ein <strong>15-jähriger Programmierer</strong>, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!</p>
+        <div class="actions">
+          <button class="btn-primary" onclick="show('contact')">Kontakt aufnehmen</button>
+          <button class="btn-line" onclick="show('about')">Mehr über mich →</button>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-n">1<small>+</small></div>
+            <div class="stat-l">Jahr Coding</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n"><small style="font-size:22px">MC</small></div>
+            <div class="stat-l">Spezialisiert</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">24<small>/7</small></div>
+            <div class="stat-l">Erreichbar</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <nav>
-    <a class="logo" onclick="show('home')">
-      <div class="logo-dot"></div>
-      <span class="logo-text">Wer_sonst13</span>
-    </a>
-    <ul class="nav-links">
-      <li><button id="nav-home" class="active" onclick="show('home')">Start</button></li>
-      <li><button id="nav-about" onclick="show('about')">Über mich</button></li>
-      <li><button id="nav-contact" onclick="show('contact')">Kontakt</button></li>
-    </ul>
-  </nav>
-
-  <section id="home" class="active">
-    <div class="home">
-      <p class="tag">Willkommen</p>
-      <h1>Hey, ich bin<br><em>Justin.</em></h1>
-      <p class="intro">
-  Ich bin Justin, ein <strong>15-jähriger Programmierer</strong>, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!
-</p>
-      <button class="btn-primary" onclick="show('contact')">Kontakt</button>
-    </div>
-  </section>
-
-  <section id="about">
+    <section id="about">
       <div class="about">
         <p class="tag">Über mich</p>
         <h2>Ich bin Programmierer —<br>und Minecraft ist mein Spielfeld.</h2>
@@ -225,7 +236,7 @@
       </div>
     </section>
 
-   <section id="contact">
+    <section id="contact">
       <div class="contact">
         <p class="tag">Kontakt</p>
         <h2>Lass uns reden.</h2>
@@ -249,11 +260,10 @@
       </div>
     </section>
 
-
-  <footer>
-    <span>Wer_sonst13</span>
-    <span>© 2026 Justin </span>
-  </footer>
+    <footer>
+      <span>Wer_sonst13</span>
+      <span>© 2026 Justin</span>
+    </footer>
 
 </div>
 
