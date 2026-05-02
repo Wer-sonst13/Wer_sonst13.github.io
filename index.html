@@ -207,7 +207,7 @@
     </div>
   </section>
 
-  <section id="about">
+<section id="about">
   <div class="about">
 
     <p class="tag">Über mich</p>
@@ -239,38 +239,163 @@
 </section>
 
   <section id="contact">
-    <h1>Kontakt</h1>
-    <p>Du hast eine Frage oder brauchst Hilfe mit deinem Server? Schreib mir einfach auf Discord — ich antworte dir so schnell ich kann.</p>
+  <style>
+    /* ===== Contact Section ===== */
+    #contact h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
 
-    <a href="https://discord.com/users/Wer_sonst13" target="_blank" class="discord-btn">
-      Discord DM →
+    .contact-text {
+      color: var(--sub);
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .discord-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: 14px;
+      margin-top: 10px;
+      transition: 0.25s;
+    }
+
+    .discord-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(88,101,242,0.15);
+    }
+
+    .dc-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dc-icon {
+      width: 44px;
+      height: 44px;
+      background: #5865F2;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dc-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dc-label {
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: 1px;
+    }
+
+    .dc-name {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .dc-btn {
+      background: #5865F2;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .dc-btn:hover {
+      background: #4752c4;
+    }
+
+    .contact-location {
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    /* ===== Animation ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #contact h1,
+    #contact .contact-text,
+    #contact .discord-card,
+    #contact .contact-location {
+      opacity: 0;
+    }
+
+    #contact.active h1 {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    #contact.active .contact-text {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    #contact.active .discord-card {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    #contact.active .contact-location {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.3s;
+    }
+  </style>
+
+  <h1>Lass uns reden.</h1>
+
+  <p class="contact-text">
+    Du hast eine Frage oder brauchst Hilfe mit deinem Server?<br>
+    Schreib mir auf Discord — ich antworte so schnell ich kann.
+  </p>
+
+  <div class="discord-card">
+    <div class="dc-left">
+      <div class="dc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+          <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.07.07 0 0 0-.032.027C.533 9.045-.32 13.579.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.027c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.873.891.076.076 0 0 0-.04.107c.36.698.771 1.363 1.225 1.993a.076.076 0 0 0 .084.028 19.876 19.876 0 0 0 6.002-3.03.077.077 0 0 0 .03-.055c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.166 1.094 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.166 1.094 2.157 2.418 0 1.334-.946 2.419-2.157 2.419Z"/>
+        </svg>
+      </div>
+
+      <div class="dc-text">
+        <span class="dc-label">DISCORD</span>
+        <span class="dc-name">wer_sonst13</span>
+      </div>
+    </div>
+
+    <a href="https://discord.com/users/Wer_sonst13" target="_blank" class="dc-btn">
+      Schreiben →
     </a>
-  </section>
+  </div>
 
-  <footer>
-    <span>Wer_sonst13</span>
-    <span>© 2026 Justin </span>
-  </footer>
-
-</div>
-
-<script>
-function show(id) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-
-  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-  document.getElementById('nav-' + id).classList.add('active');
-}
-
-/* Cursor Glow */
-const glow = document.getElementById("cursor-glow");
-
-document.addEventListener("mousemove", (e) => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-</script>
-
-</body>
-</html>
+  <div class="contact-location">
+    <span class="dot"></span> Frankfurt am Main, Deutschland
+  </div>
+</section>
