@@ -1,269 +1,347 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wer_sonst13 — Justin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wer_sonst13 — Justin</title>
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    :root {
-      --bg: #0e0e10;
-      --surface: #161618;
-      --border: #222226;
-      --text: #ececec;
-      --sub: #666668;
-      --dim: #333336;
-      --green: #3ddc84;
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      color: var(--text);
-      overflow-x: hidden;
-      background: #0b0b0c;
-    }
+:root {
+  --bg:#0b0b0c;
+  --text:#ececec;
+  --sub:#888;
+  --border:#222226;
+  --green:#3ddc84;
+}
 
-    /* ===== Animated Background ===== */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
 
-      background:
-        radial-gradient(circle at 20% 30%, rgba(61,220,132,0.12), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(88,101,242,0.12), transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 60%);
+/* ===== Background ===== */
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(61,220,132,0.12), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(88,101,242,0.12), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 60%);
+  filter: blur(20px);
+  opacity:0.7;
+  animation: move 18s ease-in-out infinite alternate;
+}
 
-      animation: moveBg 18s ease-in-out infinite alternate;
-    }
+@keyframes move {
+  0% { transform:translate(0,0) scale(1); }
+  50% { transform:translate(-30px,20px) scale(1.05); }
+  100% { transform:translate(30px,-20px) scale(1.08); }
+}
 
-    @keyframes moveBg {
-      0% { transform: translate(0px, 0px) scale(1); }
-      50% { transform: translate(-30px, 20px) scale(1.05); }
-      100% { transform: translate(30px, -20px) scale(1.08); }
-    }
+/* ===== Layout ===== */
+.wrap {
+  max-width:640px;
+  margin:auto;
+  padding:0 24px 120px;
+  position:relative;
+  z-index:1;
+}
 
-    /* ===== Cursor Glow ===== */
-    #cursor-glow {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      pointer-events: none;
-      border-radius: 50%;
-      z-index: 0;
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:36px 0;
+}
 
-      background: radial-gradient(circle, rgba(61,220,132,0.18), rgba(88,101,242,0.12), transparent 70%);
-      filter: blur(60px);
+.logo {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  cursor:pointer;
+}
 
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease-out;
-    }
+.logo-dot {
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--green);
+}
 
-    .wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 24px 120px;
-      position: relative;
-      z-index: 1;
-    }
+.logo-text {
+  font-family:'JetBrains Mono';
+  font-size:14px;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 36px 0;
-    }
+.nav-links {
+  display:flex;
+  gap:6px;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      cursor: pointer;
-      text-decoration: none;
-    }
+.nav-links button {
+  background:transparent;
+  border:1px solid transparent;
+  color:var(--sub);
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .logo-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-    }
+.nav-links button:hover {
+  color:var(--text);
+  border-color:var(--border);
+  background:rgba(255,255,255,0.03);
+}
 
-    .logo-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      color: var(--text);
-    }
+.nav-links button.active {
+  color:var(--green);
+  border-color:rgba(61,220,132,0.25);
+  background:rgba(61,220,132,0.08);
+}
 
-    .nav-links {
-      display: flex;
-      gap: 2px;
-      list-style: none;
-    }
+/* ===== Sections ===== */
+section { display:none; }
+section.active { display:block; }
 
-    .nav-links button {
-      background: none;
-      border: none;
-      color: var(--sub);
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+/* ===== Text ===== */
+.tag {
+  font-size:11px;
+  color:var(--green);
+  margin-bottom:20px;
+}
 
-    .nav-links button:hover { color: var(--text); }
-    .nav-links button.active { color: var(--text); }
+h1 {
+  font-size:clamp(40px,5vw,56px);
+  line-height:1.1;
+  margin-bottom:18px;
+}
 
-    section { display: none; }
-    section.active { display: block; }
+h1 em { color:var(--sub); }
 
-    .home { padding: 80px 0 0; }
+h2 {
+  font-size:clamp(26px,3vw,34px);
+  margin-bottom:16px;
+}
 
-    .tag {
-      font-size: 11px;
-      color: var(--green);
-      margin-bottom: 28px;
-    }
+.intro {
+  color:var(--sub);
+  max-width:60ch;
+  margin-bottom:30px;
+}
 
-    h1 {
-      font-size: 52px;
-      margin-bottom: 22px;
-    }
+/* ===== Buttons ===== */
+.btn-primary {
+  background:var(--text);
+  color:#000;
+  padding:11px 18px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:500;
+  transition:.2s;
+}
 
-    h1 em { color: var(--sub); }
+.btn-primary:hover { transform:translateY(-2px); opacity:.9; }
 
-    .intro {
-      font-size: 15px;
-      color: var(--sub);
-      margin-bottom: 40px;
-    }
+.btn-line {
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:11px 18px;
+  border-radius:10px;
+  margin-left:10px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .btn-primary {
-      background: var(--text);
-      color: var(--bg);
-      padding: 10px 20px;
-      border-radius: 7px;
-      cursor: pointer;
-      border: none;
-    }
+.btn-line:hover {
+  border-color:var(--green);
+  color:var(--green);
+}
 
-    /* ===== Discord Button ===== */
-    .discord-btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #5865F2;
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-size: 14px;
-      transition: opacity 0.15s ease;
-    }
+/* ===== Stats ===== */
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:40px;
+}
 
-    .discord-btn:hover {
-      opacity: 0.85;
-    }
+.stat {
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  padding:14px;
+  border-radius:12px;
+  text-align:center;
+  transition:.2s;
+}
 
-    footer {
-      margin-top: 80px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
+.stat:hover {
+  transform:translateY(-3px);
+  border-color:rgba(61,220,132,0.3);
+}
+
+.stat-n { font-size:20px; font-weight:600; }
+.stat-l { font-size:12px; color:var(--sub); }
+
+/* ===== Chips ===== */
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:20px;
+}
+
+.chip {
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  background:rgba(255,255,255,0.02);
+}
+
+/* ===== Contact ===== */
+.dc-block {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+  margin-top:20px;
+  transition:.2s;
+}
+
+.dc-block:hover {
+  transform:translateY(-3px);
+  border-color:rgba(88,101,242,0.3);
+}
+
+.dc-cta {
+  background:#5865F2;
+  padding:8px 12px;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top:80px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  color:var(--sub);
+  font-size:13px;
+}
+
+/* ===== Scroll Animation ===== */
+.reveal {
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .7s ease;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.delay-1 { transition-delay:.1s; }
+.delay-2 { transition-delay:.2s; }
+.delay-3 { transition-delay:.3s; }
+</style>
 </head>
+
 <body>
-  <div class="wrap">
 
-    <nav>
-      <a class="logo" onclick="show('home')">
-        <div class="logo-dot"></div>
-        <span class="logo-text">Wer_sonst13</span>
-      </a>
-      <ul class="nav-links">
-        <li><button id="nav-home" class="active" onclick="show('home')">Start</button></li>
-        <li><button id="nav-about" onclick="show('about')">Über mich</button></li>
-        <li><button id="nav-contact" onclick="show('contact')">Kontakt</button></li>
-      </ul>
-    </nav>
+<div class="wrap">
 
-    <section id="home" class="active">
-      <div class="home">
-        <p class="tag">Willkommen</p>
-        <h1>Hey, ich bin<br><em>Justin.</em></h1>
-        <p class="intro">Ich bin Justin, ein <strong>15-jähriger Programmierer</strong>, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!</p>
-        <div class="actions">
-          <button class="btn-primary" onclick="show('contact')">Kontakt aufnehmen</button>
-          <button class="btn-line" onclick="show('about')">Mehr über mich →</button>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-n">1<small>+</small></div>
-            <div class="stat-l">Jahr Coding</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n"><small style="font-size:22px">MC</small></div>
-            <div class="stat-l">Spezialisiert</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n">24<small>/7</small></div>
-            <div class="stat-l">Erreichbar</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<nav>
+  <div class="logo" onclick="show('home')">
+    <div class="logo-dot"></div>
+    <div class="logo-text">Wer_sonst13</div>
+  </div>
 
-    <section id="about">
-      <div class="about">
-        <p class="tag">Über mich</p>
-        <h2>Ich bin Programmierer —<br>und Minecraft ist mein Spielfeld.</h2>
-        <p class="body-text">Ich bin Justin, auch bekannt als <strong>Wer_sonst13</strong>. Seit über einem Jahr beschäftige ich mich intensiv mit dem Programmieren und habe mich dabei besonders auf Minecraft-Server spezialisiert. Mein Fokus liegt auf <strong>Plugin-Entwicklung</strong> sowie auf Server-Konfigurationen und kompletten Setups.</p>
-        <p class="body-text">Egal ob du Unterstützung bei der Einrichtung deines Servers brauchst, Hilfe bei Configs suchst oder ein individuelles Plugin entwickeln möchtest — ich stehe dir gerne zur Seite und helfe dir weiter.</p>
-        <p class="body-text">Schreib mir einfach!</p>
-        <div class="chips">
-          <span class="chip">Java</span>
-          <span class="chip">Plugins</span>
-          <span class="chip">Spigot</span>
-          <span class="chip">Paper</span>
-          <span class="chip">Configs</span>
-          <span class="chip">Server Setup</span>
-        </div>
-      </div>
-    </section>
+  <div class="nav-links">
+    <button id="nav-home" class="active" onclick="show('home')">Start</button>
+    <button id="nav-about" onclick="show('about')">Über mich</button>
+    <button id="nav-contact" onclick="show('contact')">Kontakt</button>
+  </div>
+</nav>
 
-    <section id="contact">
-      <div class="contact">
-        <p class="tag">Kontakt</p>
-        <h2>Lass uns reden.</h2>
-        <p class="contact-sub">Du hast eine Frage oder brauchst Hilfe mit deinem Server? Schreib mir auf Discord — ich antworte so schnell ich kann.</p>
-        <div class="dc-block">
-          <div class="dc-left">
-            <div class="dc-ico">
-              <svg width="20" height="15" viewBox="0 0 24 18" fill="#5865F2"><path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.036c-.21.375-.444.864-.608 1.25a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.25.077.077 0 0 0-.079-.036A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.584.099 15.02a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.026 14.09 14.09 0 0 0 1.226-1.993.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03ZM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418Zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z"/></svg>
-            </div>
-            <div>
-              <div class="dc-lbl">Discord</div>
-              <div class="dc-handle">Wer_sonst13</div>
-            </div>
-          </div>
-          <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">DM Mir →</a>
-        </div>
-        <div class="loc">
-          <div class="loc-dot"></div>
-          Frankfurt am Main, Deutschland
-        </div>
-      </div>
-    </section>
+<!-- HOME -->
+<section id="home" class="active">
+  <p class="tag reveal">Willkommen</p>
 
-    <footer>
-      <span>Wer_sonst13</span>
-      <span>© 2026 Justin</span>
-    </footer>
+  <h1 class="reveal delay-1">Hey, ich bin<br><em>Justin.</em></h1>
+
+  <p class="intro reveal delay-2">
+    15-jähriger Programmierer mit Fokus auf Minecraft-Server & Plugins.
+  </p>
+
+  <button class="btn-primary reveal delay-2" onclick="show('contact')">Kontakt aufnehmen</button>
+  <button class="btn-line reveal delay-2" onclick="show('about')">Mehr →</button>
+
+  <div class="stats reveal delay-3">
+    <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
+    <div class="stat"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
+    <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="tag reveal">Über mich</p>
+
+  <h2 class="reveal delay-1">Programmieren & Minecraft</h2>
+
+  <p class="intro reveal delay-2">
+    Ich entwickle Plugins, Server-Systeme und komplette Setups.
+  </p>
+
+  <div class="chips reveal delay-3">
+    <span class="chip">Java</span>
+    <span class="chip">Spigot</span>
+    <span class="chip">Paper</span>
+    <span class="chip">Plugins</span>
+    <span class="chip">Configs</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="tag reveal">Kontakt</p>
+
+  <h2 class="reveal delay-1">Schreib mir auf Discord</h2>
+
+  <div class="dc-block reveal delay-2">
+    <div>
+      <strong>Wer_sonst13</strong><br>
+      <span style="color:var(--sub);font-size:13px;">Discord</span>
+    </div>
+
+    <a class="dc-cta" href="https://discord.com" target="_blank">DM</a>
+  </div>
+</section>
+
+<footer>
+  <span>Wer_sonst13</span>
+  <span>© 2026 Justin</span>
+</footer>
 
 </div>
 
@@ -276,13 +354,14 @@ function show(id) {
   document.getElementById('nav-' + id).classList.add('active');
 }
 
-/* Cursor Glow */
-const glow = document.getElementById("cursor-glow");
+/* Scroll Animation */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('active');
+  });
+}, { threshold: 0.15 });
 
-document.addEventListener("mousemove", (e) => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
