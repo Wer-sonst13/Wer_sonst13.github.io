@@ -88,7 +88,8 @@
     }
 
     .logo-dot {
-      width: 7px; height: 7px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--green);
     }
@@ -150,6 +151,23 @@
       border: none;
     }
 
+    /* ===== Discord Button ===== */
+    .discord-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #5865F2;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: opacity 0.15s ease;
+    }
+
+    .discord-btn:hover {
+      opacity: 0.85;
+    }
+
     footer {
       margin-top: 80px;
       padding-top: 20px;
@@ -182,24 +200,56 @@
     <div class="home">
       <p class="tag">Willkommen</p>
       <h1>Hey, ich bin<br><em>Justin.</em></h1>
-      <p class="intro">Ich bin ein Programmierer für Minecraft Server.</p>
+      <p class="intro">
+  Ich bin Justin, ein <strong>15-jähriger Programmierer</strong>, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!
+</p>
       <button class="btn-primary" onclick="show('contact')">Kontakt</button>
     </div>
   </section>
 
   <section id="about">
-    <h1>Über mich</h1>
-    <p>Ich mache Plugins und Server Setups.</p>
-  </section>
+  <div class="about">
+
+    <p class="tag">Über mich</p>
+
+    <h2>Ich bin Programmierer —<br>und Minecraft ist mein Spielfeld.</h2>
+
+    <p class="body-text">
+      Ich bin Justin, auch bekannt als <strong>Wer_sonst13</strong>. Seit über einem Jahr beschäftige ich mich intensiv mit dem Programmieren und habe mich dabei besonders auf Minecraft-Server spezialisiert. Mein Fokus liegt auf <strong>Plugin-Entwicklung</strong> sowie auf Server-Konfigurationen und kompletten Setups.
+    </p>
+
+    <p class="body-text">
+      Egal ob du Unterstützung bei der Einrichtung deines Servers brauchst, Hilfe bei Configs suchst oder ein individuelles Plugin entwickeln möchtest — ich stehe dir gerne zur Seite und helfe dir weiter.
+    </p>
+
+    <p class="body-text">
+      Schreib mir einfach!
+    </p>
+
+    <div class="chips">
+      <span class="chip">Java</span>
+      <span class="chip">Plugins</span>
+      <span class="chip">Spigot</span>
+      <span class="chip">Paper</span>
+      <span class="chip">Configs</span>
+      <span class="chip">Server Setup</span>
+    </div>
+
+  </div>
+</section>
 
   <section id="contact">
     <h1>Kontakt</h1>
-    <p>Discord: Wer_sonst13</p>
+    <p>Du hast eine Frage oder brauchst Hilfe mit deinem Server? Schreib mir einfach auf Discord — ich antworte dir so schnell ich kann.</p>
+
+    <a href="https://discord.com/users/Wer_sonst13" target="_blank" class="discord-btn">
+      Discord DM →
+    </a>
   </section>
 
   <footer>
     <span>Wer_sonst13</span>
-    <span>© 2026</span>
+    <span>© 2026 Justin </span>
   </footer>
 
 </div>
@@ -208,6 +258,9 @@
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.getElementById('nav-' + id).classList.add('active');
 }
 
 /* Cursor Glow */
