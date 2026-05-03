@@ -8,107 +8,118 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== PROJECT GRID NEU ===== */
-
+  /* ===== MODERN PROJECT GRID ===== */
 .projects-grid {
-  margin-top: 40px;
+  margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
 }
 
+/* Mobile */
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
 
+/* ===== MODERN PROJECT CARD ===== */
 .project-card {
   position: relative;
-  border-radius: 20px;
-  padding: 40px;
-  background: linear-gradient(135deg, #0b0b12, #0a0a0a);
-  border: 1px solid rgba(255, 51, 51, 0.15);
+  padding: 60px 45px;
+  min-height: 380px;
+
+  border-radius: 26px;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 51, 51, 0.18);
+
   overflow: hidden;
-  transition: 0.4s ease;
+  transition: all 0.35s ease;
 
   opacity: 0;
   transform: translateY(40px);
   animation: projectFade 0.8s ease forwards;
 }
 
-@keyframes projectFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Glow Background Effekt */
 .project-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(255,51,51,0.25), transparent 60%);
+  inset: -2px;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 51, 51, 0.25),
+    transparent 60%
+  );
   opacity: 0;
-  transition: 0.4s;
+  transition: 0.4s ease;
 }
 
+/* Hover Glow */
 .project-card:hover::before {
   opacity: 1;
 }
 
 .project-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  border-color: rgba(255, 51, 51, 0.4);
-  box-shadow: 0 20px 60px rgba(255, 51, 51, 0.25);
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255, 51, 51, 0.5);
+  box-shadow: 0 25px 70px rgba(255, 51, 51, 0.25);
 }
 
+/* Badge moderner */
 .project-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 12px;
+  top: 22px;
+  right: 22px;
+
+  font-size: 11px;
   padding: 8px 14px;
   border-radius: 999px;
-  font-weight: 600;
-  box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+
+  background: rgba(255, 51, 51, 0.15);
+  border: 1px solid rgba(255, 51, 51, 0.4);
+  color: #fff;
+
+  backdrop-filter: blur(10px);
 }
 
+/* Titel größer + cleaner */
 .project-title {
-  font-size: 28px;
-  margin-top: 120px;
-  margin-bottom: 10px;
+  font-size: 34px;
+  margin-top: 90px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
+/* Beschreibung */
 .project-desc {
   color: var(--sub);
-  max-width: 500px;
   line-height: 1.7;
-  margin-bottom: 20px;
+  font-size: 15px;
+  max-width: 520px;
+  margin-bottom: 22px;
 }
 
-.project-tags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
+/* Tags moderner */
 .project-tag {
-  background: rgba(255,255,255,0.05);
-  padding: 6px 12px;
-  border-radius: 999px;
   font-size: 12px;
-  color: var(--sub);
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
   transition: 0.3s;
 }
 
 .project-tag:hover {
-  color: #fff;
+  background: rgba(255, 51, 51, 0.12);
   border-color: var(--accent);
-  background: rgba(255, 51, 51, 0.1);
+  color: #fff;
 }
   
   /* ===== ABOUT SECTION ===== */
