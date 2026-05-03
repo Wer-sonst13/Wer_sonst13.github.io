@@ -8,6 +8,109 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+  /* ===== PROJECT GRID NEU ===== */
+
+.projects-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 40px;
+  background: linear-gradient(135deg, #0b0b12, #0a0a0a);
+  border: 1px solid rgba(255, 51, 51, 0.15);
+  overflow: hidden;
+  transition: 0.4s ease;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: projectFade 0.8s ease forwards;
+}
+
+@keyframes projectFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255,51,51,0.25), transparent 60%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(255, 51, 51, 0.4);
+  box-shadow: 0 20px 60px rgba(255, 51, 51, 0.25);
+}
+
+.project-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+}
+
+.project-title {
+  font-size: 28px;
+  margin-top: 120px;
+  margin-bottom: 10px;
+}
+
+.project-desc {
+  color: var(--sub);
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--sub);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.project-tag:hover {
+  color: #fff;
+  border-color: var(--accent);
+  background: rgba(255, 51, 51, 0.1);
+}
+  
   /* ===== ABOUT SECTION ===== */
 
 .about-title {
@@ -833,17 +936,17 @@ footer {
 
     <div class="about-card">
       <h3>👤 Who am I?</h3>
-      <p>I’m a 15-year-old developer from Frankfurt am Main, Germany.</p>
+      <p>I’m Justin (Wer_sonst13) a 15-year-old developer from Frankfurt am Main, Germany.</p>
     </div>
 
     <div class="about-card">
       <h3>💻 What I do</h3>
-      <p>I build own Plugins,Minecraft Setups and Plugins configs for Server.</p>
+      <p>I make my own Plugin´s,Setups and configs for Minecraft Server´s.</p>
     </div>
 
     <div class="about-card">
       <h3>🎯 Vision</h3>
-      <p>Creating New cool, modern Minecraft Server.</p>
+      <p>Creating New cool and modern Minecraft Servers.</p>
     </div>
 
     <div class="about-card">
@@ -857,8 +960,56 @@ footer {
 
 <section id="projects">
   <p class="tag reveal">Meine Arbeiten</p>
-  <h2 class="reveal delay-1">Projekte</h2>
-  <p class="intro reveal delay-2">Demnächst verfügbar...</p>
+  <h2 class="reveal delay-1">My Work</h2>
+
+  <div class="projects-grid">
+
+    <!-- CARD 1 -->
+    <div class="project-card reveal delay-2">
+      <div class="project-badge">PROJEKT IDEE (2026)</div>
+      <h3 class="project-title">Aera Craft</h3>
+      <p class="project-desc">
+        Ein evolutionäres Minecraft-Konzept: Vier Wochen, vier Epochen.
+        Vom Steinzeit-Survival bis zum Fraktionskrieg.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Minecraft</span>
+        <span class="project-tag">Java</span>
+        <span class="project-tag">Game Design</span>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="project-card reveal delay-3">
+      <div class="project-badge">COMING SOON</div>
+      <h3 class="project-title">Core System</h3>
+      <p class="project-desc">
+        Modulares Core-System für Minecraft Server mit Config-Setup,
+        Permissions und Performance Optimierung.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Plugin</span>
+        <span class="project-tag">Spigot</span>
+        <span class="project-tag">API</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="project-card reveal delay-3">
+      <div class="project-badge">IN ARBEIT</div>
+      <h3 class="project-title">Setup Pack</h3>
+      <p class="project-desc">
+        Komplettes Server Setup mit fertigen Configs,
+        optimiert für Performance & modernes Gameplay.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Configs</span>
+        <span class="project-tag">Paper</span>
+        <span class="project-tag">Optimization</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <section id="contact">
