@@ -11,12 +11,11 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg:#000000;
+  --bg:#0a0a0a;
   --text:#ffffff;
   --sub:#b0b0b0;
-  --border:#333333;
-  --accent:#ffffff;
-  --discord:#5865F2;
+  --accent:#ff3333;
+  --green:#00ff00;
 }
 
 body {
@@ -41,14 +40,16 @@ body {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
-/* ===== Background ===== */
+/* ===== Background with Gradient ===== */
 body::before {
   content:"";
   position:fixed;
   inset:0;
   z-index:0;
-  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-  opacity:1;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 51, 51, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.05), transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
 }
 
 /* ===== Noise Texture ===== */
@@ -60,26 +61,17 @@ body::after {
   background-image: 
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
       transparent 1px,
       transparent 2px
     );
   pointer-events: none;
 }
 
-/* ===== Glass UI ===== */
-.glass {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
-}
-
 /* ===== Layout ===== */
 .wrap {
-  max-width:700px;
+  max-width:900px;
   margin:auto;
   padding:0 32px 120px;
   position:relative;
@@ -91,7 +83,7 @@ nav {
   justify-content:space-between;
   align-items:center;
   padding:48px 0 64px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 51, 51, 0.2);
 }
 
 .logo {
@@ -100,21 +92,22 @@ nav {
   align-items:center;
   cursor:pointer;
   font-weight:700;
-  font-size:14px;
-  letter-spacing: 0.5px;
+  font-size:16px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  color: var(--accent);
 }
 
 .logo-dot {
-  width:6px;height:6px;
+  width:8px;height:8px;
   border-radius:50%;
-  background:var(--text);
+  background:var(--accent);
 }
 
 .logo-text {
   font-family:'JetBrains Mono';
-  font-size:12px;
-  letter-spacing: 1px;
+  font-size:14px;
+  letter-spacing: 1.5px;
 }
 
 .nav-links {
@@ -124,7 +117,7 @@ nav {
 
 .nav-links button {
   background:transparent;
-  border:1px solid rgba(255, 255, 255, 0.1);
+  border:1px solid rgba(255, 51, 51, 0.2);
   color:var(--sub);
   padding:10px 16px;
   border-radius:6px;
@@ -137,14 +130,14 @@ nav {
 
 .nav-links button:hover {
   color:var(--text);
-  border-color:rgba(255, 255, 255, 0.3);
-  background:rgba(255,255,255,0.05);
+  border-color:var(--accent);
+  background:rgba(255, 51, 51, 0.05);
 }
 
 .nav-links button.active {
   color:var(--text);
-  border-color:rgba(255, 255, 255, 0.3);
-  background:rgba(255,255,255,0.08);
+  border-color:var(--accent);
+  background:rgba(255, 51, 51, 0.1);
 }
 
 /* ===== Sections ===== */
@@ -153,25 +146,31 @@ section.active { display:block; }
 
 /* ===== Text ===== */
 .tag {
-  font-size:11px;
-  color:var(--sub);
+  font-size:12px;
+  color:var(--green);
   margin-bottom:20px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  display: inline-block;
 }
 
 h1 {
-  font-size:clamp(48px,6vw,72px);
+  font-size:clamp(56px,7vw,84px);
   line-height:1.1;
   margin-bottom:24px;
   font-weight:700;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
 }
 
 h1 em { 
-  color:var(--sub);
+  color:var(--accent);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 h2 {
@@ -179,6 +178,7 @@ h2 {
   margin-bottom:20px;
   font-weight:700;
   letter-spacing: -0.5px;
+  color: var(--accent);
 }
 
 .intro {
@@ -189,26 +189,19 @@ h2 {
   line-height: 1.8;
 }
 
-.intro-extended {
-  color:var(--sub);
-  max-width:70ch;
-  margin-bottom:40px;
-  font-size: 16px;
-  line-height: 1.8;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.intro-extended p {
-  margin: 0;
+.subtitle {
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 60px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 /* ===== Buttons ===== */
 .btn-primary {
-  background:var(--text);
+  background:var(--accent);
   color:#000;
-  padding:13px 28px;
+  padding:13px 32px;
   border-radius:8px;
   border:none;
   cursor:pointer;
@@ -221,14 +214,14 @@ h2 {
 .btn-primary:hover { 
   transform:translateY(-2px);
   opacity:.85;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(255, 51, 51, 0.3);
 }
 
 .btn-line {
   background:transparent;
-  border:1px solid rgba(255, 255, 255, 0.2);
+  border:1px solid rgba(255, 51, 51, 0.3);
   color:var(--text);
-  padding:13px 28px;
+  padding:13px 32px;
   border-radius:8px;
   margin-left:12px;
   cursor:pointer;
@@ -239,8 +232,142 @@ h2 {
 }
 
 .btn-line:hover {
-  border-color:rgba(255, 255, 255, 0.4);
-  background:rgba(255, 255, 255, 0.05);
+  border-color:var(--accent);
+  background:rgba(255, 51, 51, 0.05);
+}
+
+/* ===== Hero Section ===== */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 80px;
+}
+
+/* ===== Discord Card ===== */
+.discord-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 51, 51, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  transition: .3s ease;
+}
+
+.discord-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255, 51, 51, 0.4);
+  box-shadow: 0 12px 40px rgba(255, 51, 51, 0.1);
+  transform: translateY(-4px);
+}
+
+.discord-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.discord-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.discord-info h3 {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.discord-info p {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+.discord-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 51, 51, 0.1);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--sub);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ===== Code Block ===== */
+.code-block {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 51, 51, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.code-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.code-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.code-dot:nth-child(1) { background: #ff5f56; }
+.code-dot:nth-child(2) { background: #ffbd2e; }
+.code-dot:nth-child(3) { background: #27c93f; }
+
+.code-line {
+  display: flex;
+  gap: 16px;
+}
+
+.code-number {
+  color: rgba(255, 51, 51, 0.3);
+  min-width: 30px;
+  text-align: right;
+}
+
+.code-text {
+  color: #a8cc8c;
+}
+
+.code-text.keyword {
+  color: #ff6b6b;
+}
+
+.code-text.string {
+  color: #a8cc8c;
+}
+
+.code-text.comment {
+  color: rgba(255, 51, 51, 0.4);
+  font-style: italic;
 }
 
 /* ===== Stats (Glass) ===== */
@@ -255,20 +382,22 @@ h2 {
   padding:20px;
   text-align:center;
   transition:.3s;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 51, 51, 0.1);
   border-radius: 12px;
+  background: rgba(255, 51, 51, 0.02);
 }
 
 .stat:hover {
   transform:translateY(-4px);
-  border-color:rgba(255, 255, 255, 0.2);
-  background:rgba(255, 255, 255, 0.03);
+  border-color:rgba(255, 51, 51, 0.2);
+  background:rgba(255, 51, 51, 0.05);
 }
 
 .stat-n { 
   font-size:24px;
   font-weight:700;
   margin-bottom: 8px;
+  color: var(--accent);
 }
 
 .stat-l { 
@@ -290,20 +419,20 @@ h2 {
   font-size:13px;
   padding:8px 14px;
   border-radius:6px;
-  border:1px solid rgba(255, 255, 255, 0.15);
+  border:1px solid rgba(255, 51, 51, 0.2);
   color:var(--sub);
-  background:rgba(255,255,255,0.03);
+  background:rgba(255, 51, 51, 0.03);
   transition: .3s;
   font-weight: 500;
 }
 
 .chip:hover {
-  border-color:rgba(255, 255, 255, 0.3);
-  background:rgba(255, 255, 255, 0.06);
+  border-color:rgba(255, 51, 51, 0.4);
+  background:rgba(255, 51, 51, 0.08);
   color: var(--text);
 }
 
-/* ===== Discord Card ===== */
+/* ===== Discord Card Contact ===== */
 .dc-block {
   display:flex;
   justify-content:space-between;
@@ -312,33 +441,17 @@ h2 {
   border-radius:12px;
   margin-top:32px;
   transition:.3s ease;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 51, 51, 0.05);
+  border: 1px solid rgba(255, 51, 51, 0.2);
   position: relative;
   overflow: hidden;
 }
 
-.dc-block::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-  transition: left 0.6s;
-  pointer-events: none;
-}
-
 .dc-block:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-
-.dc-block:hover::before {
-  left: 100%;
+  border-color: rgba(255, 51, 51, 0.4);
+  background: rgba(255, 51, 51, 0.08);
+  box-shadow: 0 12px 40px rgba(255, 51, 51, 0.15);
 }
 
 .dc-left {
@@ -354,18 +467,18 @@ h2 {
   width:52px;
   height:52px;
   border-radius:10px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 51, 51, 0.1);
   display:flex;
   align-items:center;
   justify-content:center;
   flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 51, 51, 0.2);
   transition: all 0.3s ease;
 }
 
 .dc-block:hover .dc-icon {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.25);
+  background: rgba(255, 51, 51, 0.15);
+  border-color: rgba(255, 51, 51, 0.3);
   transform: scale(1.08);
 }
 
@@ -390,27 +503,9 @@ h2 {
   z-index: 1;
 }
 
-.dc-icon-secondary {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: all 0.3s ease;
-}
-
-.dc-block:hover .dc-icon-secondary {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.2);
-  transform: scale(1.06) rotate(5deg);
-}
-
 .dc-cta {
-  background: rgba(255,255,255,0.95);
-  padding:11px 22px;
+  background: var(--accent);
+  padding:11px 24px;
   border-radius:8px;
   color:#000;
   text-decoration:none;
@@ -422,18 +517,13 @@ h2 {
   border: none;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(255, 51, 51, 0.2);
   letter-spacing: 0.3px;
 }
 
 .dc-cta:hover {
   transform: translateY(-2px);
-  background: rgba(255,255,255,1);
-  box-shadow: 0 8px 28px rgba(255, 255, 255, 0.25);
-}
-
-.dc-cta:active {
-  transform: scale(0.98);
+  box-shadow: 0 8px 28px rgba(255, 51, 51, 0.3);
 }
 
 /* ===== Footer ===== */
@@ -441,7 +531,7 @@ footer {
   margin-top:100px;
   padding-top:32px;
   padding-bottom: 32px;
-  border-top:1px solid rgba(255, 255, 255, 0.08);
+  border-top:1px solid rgba(255, 51, 51, 0.1);
   display:flex;
   justify-content:space-between;
   color:var(--sub);
@@ -464,6 +554,13 @@ footer {
 .delay-1 { transition-delay:.1s; }
 .delay-2 { transition-delay:.2s; }
 .delay-3 { transition-delay:.3s; }
+
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
 
 </style>
 </head>
@@ -490,23 +587,97 @@ footer {
 
 <!-- HOME -->
 <section id="home" class="active">
-  <p class="tag reveal">Willkommen</p>
+  <div class="reveal">
+    <p class="tag">Available for Custom Websites & Freelance</p>
+  </div>
 
-  <h1 class="reveal delay-1">Ich bin<br><em>Justin.</em></h1>
+  <h1 class="reveal delay-1">Wer_sonst13 DEV</h1>
 
-  <p class="intro reveal delay-2">
-    Ein 15-jähriger Programmierer, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!
-  </p>
+  <p class="subtitle reveal delay-2">Building digital exp</p>
 
-  <div class="reveal delay-2">
-    <button class="btn-primary" onclick="show('contact')">Kontakt aufnehmen</button>
-    <button class="btn-line" onclick="show('about')">Mehr →</button>
+  <div class="hero-content reveal delay-3">
+    <div>
+      <button class="btn-primary" onclick="show('contact')">Kontakt aufnehmen</button>
+      <button class="btn-line" onclick="show('about')">Mehr →</button>
+    </div>
+
+    <div class="discord-card">
+      <div class="discord-header">
+        <div class="discord-avatar">J</div>
+        <div class="discord-info">
+          <h3>Wer_sonst13</h3>
+          <p>@craftcore14</p>
+        </div>
+      </div>
+      <div class="discord-status">
+        <div class="status-item">
+          <div class="status-dot"></div>
+          <span>Do Not Disturb</span>
+        </div>
+        <div class="status-item">
+          <div class="status-dot"></div>
+          <span>Playing <strong>Lunar Client</strong></span>
+        </div>
+        <div class="status-item">
+          <div class="status-dot"></div>
+          <span>Watching <strong>zarbex</strong></span>
+        </div>
+        <div class="status-item">
+          <div class="status-dot"></div>
+          <span>Watching <strong>Trymacs</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-block reveal delay-2">
+    <div class="code-header">
+      <div class="code-dot"></div>
+      <div class="code-dot"></div>
+      <div class="code-dot"></div>
+    </div>
+    <div class="code-line">
+      <span class="code-number">1</span>
+      <span><span class="code-text keyword">const</span> <span class="code-text">developer</span> = {</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">2</span>
+      <span>&nbsp;&nbsp;<span class="code-text">name:</span> <span class="code-text string">"Wer_sonst13"</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">3</span>
+      <span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Stack Dev"</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">4</span>
+      <span>&nbsp;&nbsp;<span class="code-text">socials:</span> [</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">5</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;🐙</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">6</span>
+      <span>&nbsp;&nbsp;]</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">7</span>
+      <span>};</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">8</span>
+      <span><span class="code-text comment">// let's build something amazing</span></span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">9</span>
+      <span><span class="code-text keyword">init</span>(developer);</span>
+    </div>
   </div>
 
   <div class="stats reveal delay-3">
-    <div class="stat glass"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
-    <div class="stat glass"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
-    <div class="stat glass"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
+    <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
+    <div class="stat"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
+    <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
   </div>
 </section>
 
@@ -516,7 +687,7 @@ footer {
 
   <h2 class="reveal delay-1">Ich bin Justin</h2>
 
-  <div class="intro-extended reveal delay-2">
+  <div class="intro reveal delay-2">
     <p>Auch bekannt als Wer_sonst13. Seit über einem Jahr beschäftige ich mich intensiv mit dem Programmieren und habe mich dabei besonders auf Minecraft-Server spezialisiert. Mein Fokus liegt auf Plugin-Entwicklung sowie auf Server-Konfigurationen und kompletten Setups.</p>
     
     <p>Egal ob du Unterstützung bei der Einrichtung deines Servers brauchst, Hilfe bei Configs suchst oder ein individuelles Plugin entwickeln möchtest — ich stehe dir gerne zur Seite und helfe dir weiter.</p>
@@ -543,7 +714,7 @@ footer {
 
     <div class="dc-left">
       <div class="dc-icon">
-        <svg width="24" height="18" viewBox="0 0 24 18" fill="#ffffff">
+        <svg width="24" height="18" viewBox="0 0 24 18" fill="#ff3333">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a19.946 19.946 0 0 0-8.864 0 19.823 19.823 0 0 0-4.885 1.481 19.902 19.902 0 0 0-3.696 3.12A19.88 19.88 0 0 0 .63 9.056a20.016 20.016 0 0 0-.57 2.064 19.876 19.876 0 0 0-.05 2.15 19.974 19.974 0 0 0 1.328 6.066 19.928 19.928 0 0 0 3.723 5.5 19.901 19.901 0 0 0 5.5 3.723 19.874 19.874 0 0 0 6.066 1.328c.714 0 1.427-.02 2.138-.057a19.902 19.902 0 0 0 2.06-.57 19.88 19.88 0 0 0 1.97-1.089 19.94 19.94 0 0 0 1.828-1.527 19.991 19.991 0 0 0 1.595-1.901 20.053 20.053 0 0 0 1.293-2.23 20.1 20.1 0 0 0 .832-2.518 20.034 20.034 0 0 0 .306-2.765c0-.714.02-1.427.057-2.138.038-.713.095-1.424.17-2.133a19.944 19.944 0 0 0 .348-2.098 19.84 19.84 0 0 0 .602-1.985 19.852 19.852 0 0 0 .91-1.81 19.901 19.901 0 0 0 1.194-1.587 19.943 19.943 0 0 0 1.459-1.317 20.002 20.002 0 0 0 1.7-.99z"/>
         </svg>
       </div>
@@ -554,14 +725,7 @@ footer {
       </div>
     </div>
 
-    <div class="dc-right">
-      <div class="dc-icon-secondary">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
-          <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a19.946 19.946 0 0 0-8.864 0 19.823 19.823 0 0 0-4.885 1.481 19.902 19.902 0 0 0-3.696 3.12A19.88 19.88 0 0 0 .63 9.056a20.016 20.016 0 0 0-.57 2.064 19.876 19.876 0 0 0-.05 2.15 19.974 19.974 0 0 0 1.328 6.066 19.928 19.928 0 0 0 3.723 5.5 19.901 19.901 0 0 0 5.5 3.723 19.874 19.874 0 0 0 6.066 1.328c.714 0 1.427-.02 2.138-.057a19.902 19.902 0 0 0 2.06-.57 19.88 19.88 0 0 0 1.97-1.089 19.94 19.94 0 0 0 1.828-1.527 19.991 19.991 0 0 0 1.595-1.901 20.053 20.053 0 0 0 1.293-2.23 20.1 20.1 0 0 0 .832-2.518 20.034 20.034 0 0 0 .306-2.765c0-.714.02-1.427.057-2.138.038-.713.095-1.424.17-2.133a19.944 19.944 0 0 0 .348-2.098 19.84 19.84 0 0 0 .602-1.985 19.852 19.852 0 0 0 .91-1.81 19.901 19.901 0 0 0 1.194-1.587 19.943 19.943 0 0 0 1.459-1.317 20.002 20.002 0 0 0 1.7-.99z"/>
-        </svg>
-      </div>
-      <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Schreib mir</a>
-    </div>
+    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Schreib mir</a>
 
   </div>
 </section>
