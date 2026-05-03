@@ -78,10 +78,36 @@ body::after {
   backdrop-filter: blur(10px);
 }
 
-.progress-bar {
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--green));
-  width: 89%;
+/* ===== Segmented Progress Bar ===== */
+.progress-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 4px;
+  padding: 0;
+}
+
+.progress-seg {
+  flex: 1;
+  height: 100%;
+  border-radius: 2px;
+  background: #1e1e1e;
+  transition: background 0.3s;
+}
+
+.progress-seg.filled {
+  background: var(--accent);
+}
+
+.progress-seg.active {
+  background: var(--accent);
+  opacity: 0.55;
+  animation: seg-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes seg-blink {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
 }
 
 .status-header {
@@ -155,7 +181,6 @@ body::after {
   padding: 16px 32px;
 }
 
-/* ===== Nav: Logo links, Links rechts ===== */
 nav {
   display: flex;
   justify-content: space-between;
@@ -207,7 +232,6 @@ nav {
   background: none;
 }
 
-/* ===== Layout ===== */
 .wrap {
   max-width:900px;
   margin:auto;
@@ -564,8 +588,10 @@ footer {
 <div class="cursor-dot" id="cursorDot"></div>
 
 <div class="top-nav">
-  <div class="progress-bar"></div>
-  
+
+  <!-- Segmented Progress Bar -->
+  <div class="progress-bar-wrap" id="progressBar"></div>
+
   <div class="status-header">
     <div class="status-left">
       <div class="status-icon"></div>
@@ -738,6 +764,26 @@ footer {
 </div>
 
 <script>
+// Segmented Progress Bar aufbauen
+(function() {
+  const total = 24;
+  const pct = 0.89;
+  const filled = Math.round(total * pct);
+  const bar = document.getElementById('progressBar');
+  for (let i = 0; i < total; i++) {
+    const seg = document.createElement('div');
+    if (i < filled - 1) {
+      seg.className = 'progress-seg filled';
+    } else if (i === filled - 1) {
+      seg.className = 'progress-seg active';
+    } else {
+      seg.className = 'progress-seg';
+    }
+    bar.appendChild(seg);
+  }
+})();
+
+// Discord
 const DISCORD_USER_ID = '1234567890';
 
 async function fetchDiscordStatus() {
@@ -786,12 +832,14 @@ function updateDiscordCard(userData) {
 fetchDiscordStatus();
 setInterval(fetchDiscordStatus, 10000);
 
+// Cursor
 const cursorDot = document.getElementById('cursorDot');
 document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 });
 
+// Navigation
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -799,6 +847,7 @@ function show(id) {
   document.getElementById('nav-' + id).classList.add('active');
 }
 
+// Reveal on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.15 });
