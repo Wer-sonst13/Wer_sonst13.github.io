@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wer_sonst13 — Justin</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -25,6 +25,91 @@ body {
   line-height:1.6;
   overflow-x:hidden;
   cursor: none;
+}
+
+/* ===== Progress Bar ===== */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  width: 0%;
+  z-index: 9998;
+  animation: progress 0.3s ease;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 89%; }
+  100% { width: 89%; }
+}
+
+/* ===== Top Status Bar ===== */
+.top-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 9997;
+  backdrop-filter: blur(10px);
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--sub);
+}
+
+.status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.status-percentage {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.language-switch {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--sub);
+}
+
+.language-switch a {
+  color: var(--sub);
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.language-switch a.active {
+  color: var(--accent);
+}
+
+.language-switch a:hover {
+  color: var(--text);
 }
 
 /* ===== Custom Cursor - White Dot ===== */
@@ -73,17 +158,18 @@ body::after {
 .wrap {
   max-width:900px;
   margin:auto;
-  padding:0 32px 120px;
+  padding:40px 32px 120px;
   position:relative;
   z-index:1;
+  margin-top: 60px;
 }
 
 nav {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:48px 0 64px;
-  border-bottom: 1px solid rgba(255, 51, 51, 0.2);
+  padding:0;
+  border-bottom: none;
 }
 
 .logo {
@@ -92,52 +178,48 @@ nav {
   align-items:center;
   cursor:pointer;
   font-weight:700;
-  font-size:16px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-size:24px;
+  letter-spacing: 0.5px;
+  font-family: 'Pacifico', cursive;
+  color: var(--text);
 }
 
 .logo-dot {
-  width:8px;height:8px;
-  border-radius:50%;
-  background:var(--accent);
+  display: none;
 }
 
 .logo-text {
-  font-family:'JetBrains Mono';
-  font-size:14px;
-  letter-spacing: 1.5px;
+  font-family: 'Pacifico', cursive;
+  font-size:24px;
+  letter-spacing: 0;
 }
 
 .nav-links {
   display:flex;
-  gap:8px;
+  gap:32px;
+  align-items: center;
 }
 
 .nav-links button {
   background:transparent;
-  border:1px solid rgba(255, 51, 51, 0.2);
+  border:none;
   color:var(--sub);
-  padding:10px 16px;
-  border-radius:6px;
+  padding:0;
   cursor:pointer;
   transition:.3s;
-  font-size:13px;
-  font-weight: 500;
+  font-size:14px;
+  font-weight: 400;
   letter-spacing: 0.3px;
 }
 
 .nav-links button:hover {
   color:var(--text);
-  border-color:var(--accent);
-  background:rgba(255, 51, 51, 0.05);
 }
 
 .nav-links button.active {
   color:var(--text);
-  border-color:var(--accent);
-  background:rgba(255, 51, 51, 0.1);
+  border: none;
+  background: none;
 }
 
 /* ===== Sections ===== */
@@ -277,6 +359,37 @@ h2 {
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.discord-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #43B581;
+  border: 2px solid #1a1a1a;
+}
+
+.status-badge.idle {
+  background: #FAA61A;
+}
+
+.status-badge.dnd {
+  background: #F04747;
+}
+
+.status-badge.offline {
+  background: #747F8D;
 }
 
 .discord-info h3 {
@@ -312,6 +425,18 @@ h2 {
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+.status-dot.online {
+  background: #43B581;
+}
+
+.status-dot.idle {
+  background: #FAA61A;
+}
+
+.status-dot.dnd {
+  background: #F04747;
 }
 
 /* ===== Code Block ===== */
@@ -560,12 +685,40 @@ footer {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  
+  .nav-links {
+    gap: 16px;
+  }
+  
+  .nav-links button {
+    font-size: 12px;
+  }
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- Progress Bar -->
+<div class="progress-bar"></div>
+
+<!-- Top Status Bar -->
+<div class="top-status">
+  <div class="status-left">
+    <div class="status-icon"></div>
+    <span>Site in Entwicklung</span>
+    <div style="width: 800px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 0 16px;"></div>
+  </div>
+  <div class="status-right">
+    <div class="status-percentage">89%</div>
+    <div class="language-switch">
+      <a class="active" href="#de">DE</a>
+      <span>/</span>
+      <a href="#en">EN</a>
+    </div>
+  </div>
+</div>
 
 <!-- White Custom Cursor Dot -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -574,14 +727,14 @@ footer {
 
 <nav>
   <div class="logo" onclick="show('home')">
-    <div class="logo-dot"></div>
-    <div class="logo-text">Wer_sonst13</div>
+    <div class="logo-text">Vxlancy</div>
   </div>
 
   <div class="nav-links">
-    <button id="nav-home" class="active" onclick="show('home')">Start</button>
-    <button id="nav-about" onclick="show('about')">Über mich</button>
-    <button id="nav-contact" onclick="show('contact')">Kontakt</button>
+    <button id="nav-home" class="active" onclick="show('home')">Home</button>
+    <button id="nav-about" onclick="show('about')">About</button>
+    <button id="nav-projects" onclick="show('projects')">Projects</button>
+    <button id="nav-contact" onclick="show('contact')">Contact</button>
   </div>
 </nav>
 
@@ -603,28 +756,19 @@ footer {
 
     <div class="discord-card">
       <div class="discord-header">
-        <div class="discord-avatar">J</div>
+        <div class="discord-avatar">
+          <img id="discordAvatar" src="" alt="Avatar">
+          <div class="status-badge" id="statusBadge"></div>
+        </div>
         <div class="discord-info">
-          <h3>Wer_sonst13</h3>
-          <p>@craftcore14</p>
+          <h3 id="discordUsername">Wer_sonst13</h3>
+          <p id="discordTag">@craftcore14</p>
         </div>
       </div>
-      <div class="discord-status">
+      <div class="discord-status" id="discordStatus">
         <div class="status-item">
-          <div class="status-dot"></div>
-          <span>Do Not Disturb</span>
-        </div>
-        <div class="status-item">
-          <div class="status-dot"></div>
-          <span>Playing <strong>Lunar Client</strong></span>
-        </div>
-        <div class="status-item">
-          <div class="status-dot"></div>
-          <span>Watching <strong>zarbex</strong></span>
-        </div>
-        <div class="status-item">
-          <div class="status-dot"></div>
-          <span>Watching <strong>Trymacs</strong></span>
+          <div class="status-dot dnd"></div>
+          <span>Laden...</span>
         </div>
       </div>
     </div>
@@ -704,6 +848,13 @@ footer {
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="tag reveal">Meine Arbeiten</p>
+  <h2 class="reveal delay-1">Projekte</h2>
+  <p class="intro reveal delay-2">Demnächst verfügbar...</p>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="tag reveal">Kontakt</p>
@@ -738,6 +889,87 @@ footer {
 </div>
 
 <script>
+// ===== Discord Lanyard API Integration =====
+const DISCORD_USER_ID = '1234567890'; // Ersetze mit deiner Discord User ID
+
+async function fetchDiscordStatus() {
+  try {
+    const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
+    const data = await response.json();
+    
+    if (data.success) {
+      updateDiscordCard(data.data);
+    }
+  } catch (error) {
+    console.error('Discord API Error:', error);
+  }
+}
+
+function updateDiscordCard(userData) {
+  // Avatar
+  const avatar = document.getElementById('discordAvatar');
+  if (userData.discord_user.avatar) {
+    avatar.src = `https://cdn.discordapp.com/avatars/${userData.discord_user.id}/${userData.discord_user.avatar}.png`;
+  }
+  
+  // Username und Tag
+  document.getElementById('discordUsername').textContent = userData.discord_user.username;
+  document.getElementById('discordTag').textContent = `#${userData.discord_user.discriminator}`;
+  
+  // Status Badge
+  const statusBadge = document.getElementById('statusBadge');
+  statusBadge.className = `status-badge ${userData.discord_status}`;
+  
+  // Status Items
+  const statusContainer = document.getElementById('discordStatus');
+  statusContainer.innerHTML = '';
+  
+  // Status Text
+  const statusText = {
+    'online': '🟢 Online',
+    'idle': '🟡 Idle',
+    'dnd': '🔴 Do Not Disturb',
+    'offline': '⚪ Offline'
+  };
+  
+  const statusItem = document.createElement('div');
+  statusItem.className = 'status-item';
+  statusItem.innerHTML = `
+    <div class="status-dot ${userData.discord_status}"></div>
+    <span>${statusText[userData.discord_status]}</span>
+  `;
+  statusContainer.appendChild(statusItem);
+  
+  // Activities (Playing, Watching, etc.)
+  if (userData.activities && userData.activities.length > 0) {
+    userData.activities.forEach(activity => {
+      const activityItem = document.createElement('div');
+      activityItem.className = 'status-item';
+      
+      const typeName = {
+        'Playing': '🎮',
+        'Streaming': '📺',
+        'Listening': '🎵',
+        'Watching': '👀'
+      };
+      
+      const emoji = typeName[activity.type] || '•';
+      
+      activityItem.innerHTML = `
+        <div class="status-dot ${userData.discord_status}"></div>
+        <span>${emoji} ${activity.type} <strong>${activity.name}</strong></span>
+      `;
+      statusContainer.appendChild(activityItem);
+    });
+  }
+}
+
+// Update auf Seite laden
+fetchDiscordStatus();
+
+// Alle 10 Sekunden aktualisieren
+setInterval(fetchDiscordStatus, 10000);
+
 // ===== White Cursor Dot Animation =====
 const cursorDot = document.getElementById('cursorDot');
 
