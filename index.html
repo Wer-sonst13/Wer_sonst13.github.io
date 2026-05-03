@@ -27,7 +27,6 @@ body {
   cursor: none;
 }
 
-/* ===== Custom Cursor - White Dot ===== */
 .cursor-dot {
   position: fixed;
   width: 6px;
@@ -40,7 +39,33 @@ body {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
-/* ===== Top Navigation Bar ===== */
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 51, 51, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.05), transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+}
+
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  pointer-events: none;
+}
+
 .top-nav {
   position: fixed;
   top: 0;
@@ -53,14 +78,12 @@ body {
   backdrop-filter: blur(10px);
 }
 
-/* small progress strip below top-nav (visual) */
 .progress-bar {
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--green));
   width: 89%;
 }
 
-/* header row with "Site in Entwicklung" + progress visual + percent */
 .status-header {
   display: flex;
   align-items: center;
@@ -91,12 +114,9 @@ body {
 }
 
 .progress-line {
-  width: 420px;
-  max-width: 40vw;
+  width: 1000px;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
-  border-radius: 4px;
-  opacity: 0.9;
 }
 
 .status-right {
@@ -112,19 +132,34 @@ body {
   letter-spacing: 1px;
 }
 
-/* ===== Navigation Content ===== */
+.language-switch {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--sub);
+}
+
+.language-switch a {
+  color: var(--sub);
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.language-switch a.active { color: var(--accent); }
+.language-switch a:hover { color: var(--text); }
+
 .nav-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 32px;
+  padding: 16px 32px;
 }
 
-/* nav layout: logo left, links pushed right, language toggle to the far right */
+/* ===== Nav: Logo links, Links rechts ===== */
 nav {
-  display:flex;
-  align-items:center;
-  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
@@ -135,36 +170,23 @@ nav {
   cursor:pointer;
   font-weight:700;
   font-size:24px;
-  letter-spacing: 0.5px;
   font-family: 'Pacifico', cursive;
   color: var(--text);
+  flex-shrink: 0;
 }
 
 .logo-text {
   font-family: 'Pacifico', cursive;
   font-size:24px;
-  letter-spacing: 0;
 }
 
-/* push nav-links to the right */
 .nav-links {
   display:flex;
   gap:32px;
   align-items: center;
-  margin-left: auto; /* pushes links to far right */
+  margin-left: auto;
 }
 
-/* space for language toggle to the very right */
-.lang-toggle {
-  margin-left: 18px;
-  display:flex;
-  gap:8px;
-  align-items:center;
-  font-size:12px;
-  color:var(--sub);
-}
-
-/* nav buttons */
 .nav-links button {
   background:transparent;
   border:none;
@@ -177,37 +199,27 @@ nav {
   letter-spacing: 0.3px;
 }
 
-.nav-links button:hover {
-  color:var(--text);
-}
+.nav-links button:hover { color:var(--text); }
 
 .nav-links button.active {
   color:var(--text);
+  border: none;
+  background: none;
 }
 
-/* language links */
-.lang-toggle a {
-  color:var(--sub);
-  text-decoration:none;
-  cursor:pointer;
-  transition:.2s;
-  padding:4px 6px;
-  font-size:12px;
-}
-
-.lang-toggle a.active { color:var(--accent); }
-
-/* ===== Layout rest ===== */
+/* ===== Layout ===== */
 .wrap {
   max-width:900px;
   margin:auto;
   padding:40px 32px 120px;
   position:relative;
   z-index:1;
-  margin-top: 120px; /* space for the fixed top bar */
+  margin-top: 80px;
 }
 
-/* ===== Page styles (kept from previous design) ===== */
+section { display:none; }
+section.active { display:block; }
+
 .tag {
   font-size:12px;
   color:var(--green);
@@ -228,12 +240,6 @@ h1 {
   letter-spacing: -2px;
   color: var(--accent);
   text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
-}
-
-h1 em { 
-  color:var(--accent);
-  font-style: normal;
-  font-weight: 700;
 }
 
 h2 {
@@ -260,7 +266,6 @@ h2 {
   letter-spacing: 0.5px;
 }
 
-/* Buttons */
 .btn-primary {
   background:var(--accent);
   color:#000;
@@ -271,7 +276,6 @@ h2 {
   font-weight:600;
   transition:.3s;
   font-size: 14px;
-  letter-spacing: 0.3px;
 }
 
 .btn-primary:hover { 
@@ -291,7 +295,6 @@ h2 {
   transition:.3s;
   font-weight: 600;
   font-size: 14px;
-  letter-spacing: 0.3px;
 }
 
 .btn-line:hover {
@@ -299,7 +302,6 @@ h2 {
   background:rgba(255, 51, 51, 0.05);
 }
 
-/* Hero layout */
 .hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -308,7 +310,6 @@ h2 {
   margin-top: 80px;
 }
 
-/* Discord card + avatar/status */
 .discord-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255, 51, 51, 0.2);
@@ -344,11 +345,7 @@ h2 {
   position: relative;
 }
 
-.discord-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.discord-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
 .status-badge {
   position: absolute;
@@ -361,28 +358,12 @@ h2 {
   border: 2px solid #1a1a1a;
 }
 
-.status-badge.idle {
-  background: #FAA61A;
-}
+.status-badge.idle { background: #FAA61A; }
+.status-badge.dnd { background: #F04747; }
+.status-badge.offline { background: #747F8D; }
 
-.status-badge.dnd {
-  background: #F04747;
-}
-
-.status-badge.offline {
-  background: #747F8D;
-}
-
-.discord-info h3 {
-  font-size: 14px;
-  color: var(--text);
-  margin-bottom: 2px;
-}
-
-.discord-info p {
-  font-size: 12px;
-  color: var(--sub);
-}
+.discord-info h3 { font-size: 14px; color: var(--text); margin-bottom: 2px; }
+.discord-info p { font-size: 12px; color: var(--sub); }
 
 .discord-status {
   display: flex;
@@ -414,23 +395,28 @@ h2 {
   50% { opacity: 0.5; }
 }
 
-.status-dot.online {
-  background: #43B581;
+.status-dot.online { background: #43B581; }
+.status-dot.idle { background: #FAA61A; }
+.status-dot.dnd { background: #F04747; }
+
+.code-block {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 51, 51, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
 }
 
-.status-dot.idle {
-  background: #FAA61A;
-}
-
-.status-dot.dnd {
-  background: #F04747;
-}
-
-/* Code block, stats, chips etc. */
-.code-block { background: rgba(0,0,0,0.5); border: 1px solid rgba(255, 51, 51, 0.2); border-radius: 12px; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; overflow-x: auto; }
 .code-header { display: flex; gap: 8px; margin-bottom: 16px; }
+
 .code-dot { width: 12px; height: 12px; border-radius: 50%; }
-.code-dot:nth-child(1) { background: #ff5f56; } .code-dot:nth-child(2) { background: #ffbd2e; } .code-dot:nth-child(3) { background: #27c93f; }
+.code-dot:nth-child(1) { background: #ff5f56; }
+.code-dot:nth-child(2) { background: #ffbd2e; }
+.code-dot:nth-child(3) { background: #27c93f; }
+
 .code-line { display: flex; gap: 16px; }
 .code-number { color: rgba(255, 51, 51, 0.3); min-width: 30px; text-align: right; }
 .code-text { color: #a8cc8c; }
@@ -438,78 +424,177 @@ h2 {
 .code-text.string { color: #a8cc8c; }
 .code-text.comment { color: rgba(255, 51, 51, 0.4); font-style: italic; }
 
-.stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:60px; }
-.stat { padding:20px; text-align:center; transition:.3s; border: 1px solid rgba(255, 51, 51, 0.1); border-radius: 12px; background: rgba(255, 51, 51, 0.02); }
-.stat:hover { transform:translateY(-4px); border-color:rgba(255, 51, 51, 0.2); background:rgba(255, 51, 51, 0.05); }
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:60px;
+}
+
+.stat {
+  padding:20px;
+  text-align:center;
+  transition:.3s;
+  border: 1px solid rgba(255, 51, 51, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 51, 51, 0.02);
+}
+
+.stat:hover {
+  transform:translateY(-4px);
+  border-color:rgba(255, 51, 51, 0.2);
+  background:rgba(255, 51, 51, 0.05);
+}
+
 .stat-n { font-size:24px; font-weight:700; margin-bottom: 8px; color: var(--accent); }
 .stat-l { font-size:12px; color:var(--sub); letter-spacing: 0.5px; text-transform: uppercase; }
 
 .chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
-.chip { font-size:13px; padding:8px 14px; border-radius:6px; border:1px solid rgba(255, 51, 51, 0.2); color:var(--sub); background:rgba(255, 51, 51, 0.03); transition: .3s; font-weight: 500; }
-.chip:hover { border-color:rgba(255, 51, 51, 0.4); background:rgba(255, 51, 51, 0.08); color: var(--text); }
 
-/* Contact small card */
-.dc-block { display:flex; justify-content:space-between; align-items:center; padding:24px; border-radius:12px; margin-top:32px; transition:.3s ease; background: rgba(255, 51, 51, 0.05); border: 1px solid rgba(255, 51, 51, 0.2); position: relative; overflow: hidden; }
+.chip {
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:6px;
+  border:1px solid rgba(255, 51, 51, 0.2);
+  color:var(--sub);
+  background:rgba(255, 51, 51, 0.03);
+  transition: .3s;
+  font-weight: 500;
+}
+
+.chip:hover {
+  border-color:rgba(255, 51, 51, 0.4);
+  background:rgba(255, 51, 51, 0.08);
+  color: var(--text);
+}
+
+.dc-block {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px;
+  border-radius:12px;
+  margin-top:32px;
+  transition:.3s ease;
+  background: rgba(255, 51, 51, 0.05);
+  border: 1px solid rgba(255, 51, 51, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.dc-block:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 51, 51, 0.4);
+  background: rgba(255, 51, 51, 0.08);
+  box-shadow: 0 12px 40px rgba(255, 51, 51, 0.15);
+}
+
 .dc-left { display:flex; align-items:center; gap:16px; flex: 1; position: relative; z-index: 1; }
 
-/* Footer & reveal animations */
-footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1px solid rgba(255, 51, 51, 0.1); display:flex; justify-content:space-between; color:var(--sub); font-size:12px; letter-spacing: 0.5px; }
+.dc-icon {
+  width:52px;
+  height:52px;
+  border-radius:10px;
+  background: rgba(255, 51, 51, 0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 51, 51, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dc-block:hover .dc-icon {
+  background: rgba(255, 51, 51, 0.15);
+  border-color: rgba(255, 51, 51, 0.3);
+  transform: scale(1.08);
+}
+
+.dc-title { font-weight:700; font-size:16px; color: var(--text); }
+.dc-sub { font-size:13px; color:var(--sub); margin-top: 4px; }
+
+.dc-cta {
+  background: var(--accent);
+  padding:11px 24px;
+  border-radius:8px;
+  color:#000;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s ease;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255, 51, 51, 0.2);
+}
+
+.dc-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 51, 51, 0.3);
+}
+
+footer {
+  margin-top:100px;
+  padding-top:32px;
+  padding-bottom: 32px;
+  border-top:1px solid rgba(255, 51, 51, 0.1);
+  display:flex;
+  justify-content:space-between;
+  color:var(--sub);
+  font-size:12px;
+}
+
 .reveal { opacity:0; transform:translateY(30px); transition:all .8s ease; }
 .reveal.active { opacity:1; transform:translateY(0); }
-.delay-1 { transition-delay:.1s; } .delay-2 { transition-delay:.2s; } .delay-3 { transition-delay:.3s; }
+.delay-1 { transition-delay:.1s; }
+.delay-2 { transition-delay:.2s; }
+.delay-3 { transition-delay:.3s; }
 
 @media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; gap: 40px; }
   .nav-links { gap: 16px; }
   .nav-links button { font-size: 12px; }
   .progress-line { width: 300px; }
-  .wrap { margin-top: 140px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Custom Cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
 
-<!-- Fixed Top Navigation Bar -->
-<div class="top-nav" role="navigation" aria-label="Top Navigation">
-  <!-- Progress strip (visual) -->
-  <div style="display:flex; justify-content:center; padding-top:4px;"><div class="progress-bar" aria-hidden="true"></div></div>
-
-  <!-- Status Header -->
+<div class="top-nav">
+  <div class="progress-bar"></div>
+  
   <div class="status-header">
     <div class="status-left">
-      <div class="status-icon" aria-hidden="true"></div>
+      <div class="status-icon"></div>
       <div class="status-text">
         <span>Site in Entwicklung</span>
-        <div class="progress-line" aria-hidden="true"></div>
+        <div class="progress-line"></div>
       </div>
     </div>
     <div class="status-right">
       <div class="status-percentage">89%</div>
+      <div class="language-switch">
+        <a class="active" href="#de">DE</a>
+        <span>/</span>
+        <a href="#en">EN</a>
+      </div>
     </div>
   </div>
 
-  <!-- Navigation Content -->
   <div class="nav-content">
     <nav>
-      <div class="logo" onclick="show('home')" aria-label="Logo">
+      <div class="logo" onclick="show('home')">
         <div class="logo-text">Wer_sonst13</div>
       </div>
 
-      <div class="nav-links" role="menubar" aria-label="Main Links">
-        <button id="nav-home" class="active" onclick="show('home')" role="menuitem">Home</button>
-        <button id="nav-about" onclick="show('about')" role="menuitem">About</button>
-        <button id="nav-projects" onclick="show('projects')" role="menuitem">Projects</button>
-        <button id="nav-contact" onclick="show('contact')" role="menuitem">Contact</button>
-      </div>
-
-      <div class="lang-toggle" aria-hidden="false">
-        <a href="#en" class="active">EN</a>
-        <span>/</span>
-        <a href="#de">DE</a>
+      <div class="nav-links">
+        <button id="nav-home" class="active" onclick="show('home')">Home</button>
+        <button id="nav-about" onclick="show('about')">About</button>
+        <button id="nav-projects" onclick="show('projects')">Projects</button>
+        <button id="nav-contact" onclick="show('contact')">Contact</button>
       </div>
     </nav>
   </div>
@@ -517,7 +602,6 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
 
 <div class="wrap">
 
-<!-- HOME -->
 <section id="home" class="active">
   <div class="reveal">
     <p class="tag">Available for Custom Websites & Freelance</p>
@@ -536,7 +620,7 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
     <div class="discord-card">
       <div class="discord-header">
         <div class="discord-avatar">
-          <img id="discordAvatar" src="" alt="Discord Avatar">
+          <img id="discordAvatar" src="" alt="Avatar">
           <div class="status-badge" id="statusBadge"></div>
         </div>
         <div class="discord-info">
@@ -559,15 +643,42 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
       <div class="code-dot"></div>
       <div class="code-dot"></div>
     </div>
-    <div class="code-line"><span class="code-number">1</span><span><span class="code-text keyword">const</span> <span class="code-text">developer</span> = {</span></div>
-    <div class="code-line"><span class="code-number">2</span><span>&nbsp;&nbsp;<span class="code-text">name:</span> <span class="code-text string">"Wer_sonst13"</span>,</span></div>
-    <div class="code-line"><span class="code-number">3</span><span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Stack Dev"</span>,</span></div>
-    <div class="code-line"><span class="code-number">4</span><span>&nbsp;&nbsp;<span class="code-text">socials:</span> [</span></div>
-    <div class="code-line"><span class="code-number">5</span><span>&nbsp;&nbsp;&nbsp;&nbsp;🐙</span></div>
-    <div class="code-line"><span class="code-number">6</span><span>&nbsp;&nbsp;]</span></div>
-    <div class="code-line"><span class="code-number">7</span><span>};</span></div>
-    <div class="code-line"><span class="code-number">8</span><span><span class="code-text comment">// let's build something amazing</span></span></div>
-    <div class="code-line"><span class="code-number">9</span><span><span class="code-text keyword">init</span>(developer);</span></div>
+    <div class="code-line">
+      <span class="code-number">1</span>
+      <span><span class="code-text keyword">const</span> <span class="code-text">developer</span> = {</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">2</span>
+      <span>&nbsp;&nbsp;<span class="code-text">name:</span> <span class="code-text string">"Wer_sonst13"</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">3</span>
+      <span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Stack Dev"</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">4</span>
+      <span>&nbsp;&nbsp;<span class="code-text">socials:</span> [</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">5</span>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;🐙</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">6</span>
+      <span>&nbsp;&nbsp;]</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">7</span>
+      <span>};</span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">8</span>
+      <span><span class="code-text comment">// let's build something amazing</span></span>
+    </div>
+    <div class="code-line">
+      <span class="code-number">9</span>
+      <span><span class="code-text keyword">init</span>(developer);</span>
+    </div>
   </div>
 
   <div class="stats reveal delay-3">
@@ -577,15 +688,14 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <p class="tag reveal">Über mich</p>
   <h2 class="reveal delay-1">Ich bin Justin</h2>
-
   <div class="intro reveal delay-2">
-    <p>Ich bin Justin, ein 15-jähriger Programmierer, der gerne bei Minecraft-Servern mit Setups, Configs und vielem mehr hilft. Du kannst mich jederzeit kontaktieren — ich stehe dir gerne zur Verfügung!</p>
+    <p>Auch bekannt als Wer_sonst13. Seit über einem Jahr beschäftige ich mich intensiv mit dem Programmieren und habe mich dabei besonders auf Minecraft-Server spezialisiert. Mein Fokus liegt auf Plugin-Entwicklung sowie auf Server-Konfigurationen und kompletten Setups.</p>
+    <p>Egal ob du Unterstützung bei der Einrichtung deines Servers brauchst, Hilfe bei Configs suchst oder ein individuelles Plugin entwickeln möchtest — ich stehe dir gerne zur Seite und helfe dir weiter.</p>
+    <p>Schreib mir einfach!</p>
   </div>
-
   <div class="chips reveal delay-3">
     <span class="chip">Java</span>
     <span class="chip">Spigot</span>
@@ -595,33 +705,28 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <p class="tag reveal">Meine Arbeiten</p>
   <h2 class="reveal delay-1">Projekte</h2>
   <p class="intro reveal delay-2">Demnächst verfügbar...</p>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="tag reveal">Kontakt</p>
   <h2 class="reveal delay-1">Schreib mir auf Discord</h2>
-
   <div class="dc-block reveal delay-2">
     <div class="dc-left">
-      <div class="dc-icon" aria-hidden="true">
-        <svg width="24" height="18" viewBox="0 0 24 18" fill="#ff3333" aria-hidden="true">
+      <div class="dc-icon">
+        <svg width="24" height="18" viewBox="0 0 24 18" fill="#ff3333">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a19.946 19.946 0 0 0-8.864 0 19.823 19.823 0 0 0-4.885 1.481 19.902 19.902 0 0 0-3.696 3.12A19.88 19.88 0 0 0 .63 9.056a20.016 20.016 0 0 0-.57 2.064 19.876 19.876 0 0 0-.05 2.15 19.974 19.974 0 0 0 1.328 6.066 19.928 19.928 0 0 0 3.723 5.5 19.901 19.901 0 0 0 5.5 3.723 19.874 19.874 0 0 0 6.066 1.328c.714 0 1.427-.02 2.138-.057a19.902 19.902 0 0 0 2.06-.57 19.88 19.88 0 0 0 1.97-1.089 19.94 19.94 0 0 0 1.828-1.527 19.991 19.991 0 0 0 1.595-1.901 20.053 20.053 0 0 0 1.293-2.23 20.1 20.1 0 0 0 .832-2.518 20.034 20.034 0 0 0 .306-2.765c0-.714.02-1.427.057-2.138.038-.713.095-1.424.17-2.133a19.944 19.944 0 0 0 .348-2.098 19.84 19.84 0 0 0 .602-1.985 19.852 19.852 0 0 0 .91-1.81 19.901 19.901 0 0 0 1.194-1.587 19.943 19.943 0 0 0 1.459-1.317 20.002 20.002 0 0 0 1.7-.99z"/>
         </svg>
       </div>
-
       <div>
         <div class="dc-title">Wer_sonst13</div>
         <div class="dc-sub">Discord • DM für Hilfe / Projekte</div>
       </div>
     </div>
-
-    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank" rel="noopener">Schreib mir</a>
+    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Schreib mir</a>
   </div>
 </section>
 
@@ -629,115 +734,73 @@ footer { margin-top:100px; padding-top:32px; padding-bottom: 32px; border-top:1p
   <span></span>
   <span>© 2026 Wer_sonst13</span>
 </footer>
+
 </div>
 
 <script>
-// ===== Discord Lanyard API Integration =====
-const DISCORD_USER_ID = '1234567890'; // Ersetze mit deiner Discord User ID
+const DISCORD_USER_ID = '1234567890';
 
 async function fetchDiscordStatus() {
   try {
     const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
     const data = await response.json();
-    
-    if (data.success) {
-      updateDiscordCard(data.data);
-    }
+    if (data.success) updateDiscordCard(data.data);
   } catch (error) {
     console.error('Discord API Error:', error);
   }
 }
 
 function updateDiscordCard(userData) {
-  // Avatar
   const avatar = document.getElementById('discordAvatar');
   if (userData.discord_user.avatar) {
-    // use png format (fallback)
-    avatar.src = `https://cdn.discordapp.com/avatars/${userData.discord_user.id}/${userData.discord_user.avatar}.png?size=128`;
+    avatar.src = `https://cdn.discordapp.com/avatars/${userData.discord_user.id}/${userData.discord_user.avatar}.png`;
   }
-
-  // Username und Tag
   document.getElementById('discordUsername').textContent = userData.discord_user.username;
   document.getElementById('discordTag').textContent = `#${userData.discord_user.discriminator}`;
   
-  // Status Badge
   const statusBadge = document.getElementById('statusBadge');
   statusBadge.className = `status-badge ${userData.discord_status}`;
-
-  // Status Items
+  
   const statusContainer = document.getElementById('discordStatus');
   statusContainer.innerHTML = '';
-
-  // Status Text mapping
-  const statusText = {
-    'online': '🟢 Online',
-    'idle': '🟡 Idle',
-    'dnd': '🔴 Do Not Disturb',
-    'offline': '⚪ Offline'
-  };
-
+  
+  const statusText = { 'online': '🟢 Online', 'idle': '🟡 Idle', 'dnd': '🔴 Do Not Disturb', 'offline': '⚪ Offline' };
+  
   const statusItem = document.createElement('div');
   statusItem.className = 'status-item';
-  statusItem.innerHTML = `
-    <div class="status-dot ${userData.discord_status}"></div>
-    <span>${statusText[userData.discord_status] || 'Unbekannt'}</span>
-  `;
+  statusItem.innerHTML = `<div class="status-dot ${userData.discord_status}"></div><span>${statusText[userData.discord_status]}</span>`;
   statusContainer.appendChild(statusItem);
-
-  // Activities (Playing, Watching, Listening etc.)
+  
   if (userData.activities && userData.activities.length > 0) {
     userData.activities.forEach(activity => {
       const activityItem = document.createElement('div');
       activityItem.className = 'status-item';
-      const typeName = {
-        0: '🎮', // Custom (unknown) - some Lanyard activities use numeric types; handle both
-        'Playing': '🎮',
-        'Streaming': '📺',
-        'Listening': '🎵',
-        'Watching': '👀'
-      };
-      // normalize type from possible numeric value or string
-      const actType = (activity.type && typeof activity.type === 'number') ? activity.type : activity.type;
-      const emoji = typeName[activity.type] || (activity.name && activity.type === 0 ? '•' : (typeName[actType] || '•'));
-
-      // Show name and details if available (like details/state for Rich Presence)
-      const details = activity.details ? ` — ${activity.details}` : '';
-      activityItem.innerHTML = `
-        <div class="status-dot ${userData.discord_status}"></div>
-        <span>${emoji} ${activity.name || activity.type}${details}</span>
-      `;
+      const typeName = { 'Playing': '🎮', 'Streaming': '📺', 'Listening': '🎵', 'Watching': '👀' };
+      const emoji = typeName[activity.type] || '•';
+      activityItem.innerHTML = `<div class="status-dot ${userData.discord_status}"></div><span>${emoji} ${activity.type} <strong>${activity.name}</strong></span>`;
       statusContainer.appendChild(activityItem);
     });
   }
 }
 
-// initial fetch + polling
 fetchDiscordStatus();
 setInterval(fetchDiscordStatus, 10000);
 
-// ===== White Cursor Dot Animation =====
 const cursorDot = document.getElementById('cursorDot');
 document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 });
 
-// ===== Page Navigation =====
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(id);
-  if (el) el.classList.add('active');
-
+  document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('nav-' + id);
-  if (btn) btn.classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
 }
 
-// ===== Reveal on scroll =====
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('active');
-  });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
