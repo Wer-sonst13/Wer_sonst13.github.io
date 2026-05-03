@@ -27,91 +27,6 @@ body {
   cursor: none;
 }
 
-/* ===== Progress Bar ===== */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--green));
-  width: 0%;
-  z-index: 9998;
-  animation: progress 0.3s ease;
-}
-
-@keyframes progress {
-  0% { width: 0%; }
-  50% { width: 89%; }
-  100% { width: 89%; }
-}
-
-/* ===== Top Status Bar ===== */
-.top-status {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: rgba(10, 10, 10, 0.95);
-  border-bottom: 1px solid rgba(255, 51, 51, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  z-index: 9997;
-  backdrop-filter: blur(10px);
-}
-
-.status-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  color: var(--sub);
-}
-
-.status-icon {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.status-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.status-percentage {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.language-switch {
-  display: flex;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--sub);
-}
-
-.language-switch a {
-  color: var(--sub);
-  text-decoration: none;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.language-switch a.active {
-  color: var(--accent);
-}
-
-.language-switch a:hover {
-  color: var(--text);
-}
-
 /* ===== Custom Cursor - White Dot ===== */
 .cursor-dot {
   position: fixed;
@@ -154,6 +69,102 @@ body::after {
   pointer-events: none;
 }
 
+/* ===== Top Navigation Bar ===== */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+  z-index: 9997;
+  backdrop-filter: blur(10px);
+}
+
+.progress-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  width: 89%;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 32px;
+  font-size: 12px;
+  color: var(--sub);
+  gap: 12px;
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.status-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-line {
+  width: 1000px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-percentage {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.language-switch {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--sub);
+}
+
+.language-switch a {
+  color: var(--sub);
+  text-decoration: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.language-switch a.active {
+  color: var(--accent);
+}
+
+.language-switch a:hover {
+  color: var(--text);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+}
+
 /* ===== Layout ===== */
 .wrap {
   max-width:900px;
@@ -161,7 +172,7 @@ body::after {
   padding:40px 32px 120px;
   position:relative;
   z-index:1;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 nav {
@@ -699,6 +710,10 @@ footer {
   .nav-links button {
     font-size: 12px;
   }
+  
+  .progress-line {
+    width: 300px;
+  }
 }
 
 </style>
@@ -706,43 +721,51 @@ footer {
 
 <body>
 
-<!-- Progress Bar -->
-<div class="progress-bar"></div>
-
-<!-- Top Status Bar -->
-<div class="top-status">
-  <div class="status-left">
-    <div class="status-icon"></div>
-    <span>Site in Entwicklung</span>
-    <div style="width: 800px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 0 16px;"></div>
-  </div>
-  <div class="status-right">
-    <div class="status-percentage">89%</div>
-    <div class="language-switch">
-      <a class="active" href="#de">DE</a>
-      <span>/</span>
-      <a href="#en">EN</a>
-    </div>
-  </div>
-</div>
-
 <!-- White Custom Cursor Dot -->
 <div class="cursor-dot" id="cursorDot"></div>
 
+<!-- Fixed Top Navigation Bar -->
+<div class="top-nav">
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+  
+  <!-- Status Header -->
+  <div class="status-header">
+    <div class="status-left">
+      <div class="status-icon"></div>
+      <div class="status-text">
+        <span>Site in Entwicklung</span>
+        <div class="progress-line"></div>
+      </div>
+    </div>
+    <div class="status-right">
+      <div class="status-percentage">89%</div>
+      <div class="language-switch">
+        <a class="active" href="#de">DE</a>
+        <span>/</span>
+        <a href="#en">EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Content -->
+  <div class="nav-content">
+    <nav>
+      <div class="logo" onclick="show('home')">
+        <div class="logo-text">Wer_sonst13</div>
+      </div>
+
+      <div class="nav-links">
+        <button id="nav-home" class="active" onclick="show('home')">Home</button>
+        <button id="nav-about" onclick="show('about')">About</button>
+        <button id="nav-projects" onclick="show('projects')">Projects</button>
+        <button id="nav-contact" onclick="show('contact')">Contact</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
 <div class="wrap">
-
-<nav>
-  <div class="logo" onclick="show('home')">
-    <div class="logo-text">Wer_sonst13</div>
-  </div>
-
-  <div class="nav-links">
-    <button id="nav-home" class="active" onclick="show('home')">Home</button>
-    <button id="nav-about" onclick="show('about')">About</button>
-    <button id="nav-projects" onclick="show('projects')">Projects</button>
-    <button id="nav-contact" onclick="show('contact')">Contact</button>
-  </div>
-</nav>
 
 <!-- HOME -->
 <section id="home" class="active">
