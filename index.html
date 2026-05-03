@@ -8,6 +8,117 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+  /* ===== ABOUT SECTION ===== */
+
+.about-title {
+  font-size: 42px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleFade 0.8s ease forwards;
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+}
+
+@keyframes titleFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 51, 51, 0.15);
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  animation: cardReveal 0.8s ease forwards;
+}
+
+.about-card:nth-child(1) { animation-delay: 0.1s; }
+.about-card:nth-child(2) { animation-delay: 0.2s; }
+.about-card:nth-child(3) { animation-delay: 0.3s; }
+.about-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.about-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 40px rgba(255, 51, 51, 0.25);
+  border-color: rgba(255, 51, 51, 0.4);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Shimmer Effekt */
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 51, 51, 0.15),
+    transparent
+  );
+  opacity: 0;
+}
+
+.about-card:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s linear;
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.about-card h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.about-card p {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.anime-tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(0,255,0,0.1);
+  color: var(--green);
+  border: 1px solid rgba(0,255,0,0.3);
+  transition: 0.3s;
+}
+
+.about-card:hover .anime-tag {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,255,0,0.4);
+}
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
@@ -596,7 +707,7 @@ footer {
     <div class="status-left">
       <div class="status-icon"></div>
       <div class="status-text">
-        <span>Site in Entwicklung</span>
+        <span>Seite in Entwicklung</span>
         <div class="progress-line"></div>
       </div>
     </div>
@@ -679,7 +790,7 @@ footer {
     </div>
     <div class="code-line">
       <span class="code-number">3</span>
-      <span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Stack Dev"</span>,</span>
+      <span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Time Dev"</span>,</span>
     </div>
     <div class="code-line">
       <span class="code-number">4</span>
@@ -714,20 +825,33 @@ footer {
   </div>
 </section>
 
+<!-- ===== ABOUT SECTION (NEU) ===== -->
 <section id="about">
-  <p class="tag reveal">Über mich</p>
-  <h2 class="reveal delay-1">Ich bin Justin</h2>
-  <div class="intro reveal delay-2">
-    <p>Auch bekannt als Wer_sonst13. Seit über einem Jahr beschäftige ich mich intensiv mit dem Programmieren und habe mich dabei besonders auf Minecraft-Server spezialisiert. Mein Fokus liegt auf Plugin-Entwicklung sowie auf Server-Konfigurationen und kompletten Setups.</p>
-    <p>Egal ob du Unterstützung bei der Einrichtung deines Servers brauchst, Hilfe bei Configs suchst oder ein individuelles Plugin entwickeln möchtest — ich stehe dir gerne zur Seite und helfe dir weiter.</p>
-    <p>Schreib mir einfach!</p>
-  </div>
-  <div class="chips reveal delay-3">
-    <span class="chip">Java</span>
-    <span class="chip">Spigot</span>
-    <span class="chip">Paper</span>
-    <span class="chip">Plugins</span>
-    <span class="chip">Configs</span>
+  <h2 class="about-title">About Me & Services</h2>
+
+  <div class="about-grid">
+
+    <div class="about-card">
+      <h3>👤 Who am I?</h3>
+      <p>I’m a 15-year-old developer from Frankfurt am Main, Germany.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>💻 What I do</h3>
+      <p>I build own Plugins,Minecraft Setups and Plugins configs for Server.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>🎯 Vision</h3>
+      <p>Creating New cool, modern Minecraft Server.</p>
+    </div>
+
+    <div class="about-card">
+      <h3>🍿 Hobbies</h3>
+      <p>When I’m not coding or designing,I´m with my friends.</p>
+      <span class="anime-tag">Fav place:By my Girlfriend</span>
+    </div>
+
   </div>
 </section>
 
