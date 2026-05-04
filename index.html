@@ -940,10 +940,10 @@ footer {
           <p id="discordTag">@wer_sonst13</p>
         </div>
       </div>
-      <div class="discord-status" id="wer_sonst13">
+      <div class="discord-status" id="1315242846340513833">
         <div class="status-item">
           <div class="status-dot dnd"></div>
-          <span>🔴 Do Not Disturb</span>
+          <span>Loading..</span>
         </div>
       </div>
     </div>
@@ -1173,7 +1173,7 @@ const DISCORD_USER_ID = '1315242846340513833';
 
 async function fetchDiscordStatus() {
   try {
-    const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
+    const response = await fetch(`https://api.lanyard.rest/v1/users/${1315242846340513833}`);
     const data = await response.json();
     if (data.success) updateDiscordCard(data.data);
   } catch (error) {
