@@ -1192,7 +1192,7 @@ function updateDiscordCard(userData) {
   const statusBadge = document.getElementById('statusBadge');
   statusBadge.className = `status-badge ${userData.discord_status}`;
   
-  const statusContainer = document.getElementById('discordStatus');
+  <div class="discord-status" id="discordStatus">;
   statusContainer.innerHTML = '';
   
   const statusText = { 'online': '🟢 Online', 'idle': '🟡 Idle', 'dnd': '🔴 Do Not Disturb', 'offline': '⚪ Offline' };
