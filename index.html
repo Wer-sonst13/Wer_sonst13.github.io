@@ -1149,6 +1149,22 @@ footer {
 </div>
 
 <script>
+  const cursor = document.getElementById("cursorDot");
+
+let mouseX = 0, mouseY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
 // Segmented Progress Bar aufbauen
 (function() {
   const total = 24;
@@ -1238,6 +1254,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
+  
 </body>
 </html>
