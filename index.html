@@ -26,7 +26,7 @@
 /* ===== MODERN PROJECT CARD ===== */
 .project-card {
   position: relative;
-  padding: 60px 45px;
+  padding: 60px 45px 45px;
   min-height: 380px;
 
   border-radius: 26px;
@@ -39,9 +39,19 @@
   overflow: hidden;
   transition: all 0.35s ease;
 
+  display: flex;
+  flex-direction: column;
+
   opacity: 0;
   transform: translateY(40px);
   animation: projectFade 0.8s ease forwards;
+}
+
+@keyframes projectFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Glow Background Effekt */
@@ -102,9 +112,17 @@
   font-size: 15px;
   max-width: 520px;
   margin-bottom: 22px;
+  flex: 1;
 }
 
 /* Tags moderner */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
 .project-tag {
   font-size: 12px;
   padding: 7px 12px;
@@ -121,6 +139,49 @@
   border-color: var(--accent);
   color: #fff;
 }
+
+/* ===== DISCORD BUTTON IN CARD ===== */
+.project-dc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  background: rgba(255, 51, 51, 0.08);
+  border: 1px solid rgba(255, 51, 51, 0.3);
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.project-dc-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.project-dc-btn:hover {
+  background: rgba(255, 51, 51, 0.18);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 51, 51, 0.25);
+}
+
+.project-dc-btn:hover svg {
+  transform: scale(1.15);
+}
+
   
   /* ===== ABOUT SECTION ===== */
 
@@ -947,7 +1008,7 @@ footer {
 
     <div class="about-card">
       <h3>👤 Who am I?</h3>
-      <p>I’m Justin (Wer_sonst13) a 15-year-old developer from Frankfurt am Main, Germany.</p>
+      <p>I'm Justin (Wer_sonst13) a 15-year-old developer from Frankfurt am Main, Germany.</p>
     </div>
 
     <div class="about-card">
@@ -962,7 +1023,7 @@ footer {
 
     <div class="about-card">
       <h3>🍿 Hobbies</h3>
-      <p>When I’m not coding or designing,I´m with my friends.</p>
+      <p>When I'm not coding or designing,I´m with my friends.</p>
       <span class="anime-tag">Fav place:By my Girlfriend</span>
     </div>
 
@@ -986,10 +1047,15 @@ footer {
       </p>
       <div class="project-tags">
         <span class="project-tag">Manager</span>
-        <span class="project-tag">Minecraft</span>
         <span class="project-tag">Java u. Bedrock</span>
         <span class="project-tag">SMP</span>
       </div>
+      <a class="project-dc-btn" href="https://discord.com/users/Wer_sonst13" target="_blank">
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
+          <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        Discord kontaktieren
+      </a>
     </div>
 
     <!-- CARD 2 -->
@@ -1005,6 +1071,12 @@ footer {
         <span class="project-tag">SMP</span>
         <span class="project-tag">Need Player</span>
       </div>
+      <a class="project-dc-btn" href="https://discord.com/users/Wer_sonst13" target="_blank">
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
+          <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        Discord kontaktieren
+      </a>
     </div>
 
     <!-- CARD 3 -->
@@ -1019,20 +1091,33 @@ footer {
         <span class="project-tag">.</span>
         <span class="project-tag">.</span>
       </div>
+      <a class="project-dc-btn" href="https://discord.com/users/Wer_sonst13" target="_blank">
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
+          <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        Discord kontaktieren
+      </a>
     </div>
+
     <!-- CARD 4 -->
-  <div class="project-card reveal delay-3">
-   <div class="project-badge">SOON</div>
-   <h3 class="project-title">Coming SOON</h3>
-   <p class="project-desc">
-    Beschereibung soon...
-   </p>
-   <div class="project-tags">
-    <span class="project-tag">.</span>
-    <span class="project-tag">.</span>
-    <span class="project-tag">.</span>
-   </div>
- </div>
+    <div class="project-card reveal delay-3">
+      <div class="project-badge">SOON</div>
+      <h3 class="project-title">Coming SOON</h3>
+      <p class="project-desc">
+       Beschereibung soon...
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">.</span>
+        <span class="project-tag">.</span>
+        <span class="project-tag">.</span>
+      </div>
+      <a class="project-dc-btn" href="https://discord.com/users/Wer_sonst13" target="_blank">
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
+          <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        Discord kontaktieren
+      </a>
+    </div>
 
   </div>
 </section>
