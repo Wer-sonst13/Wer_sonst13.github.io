@@ -8,10 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-html {
-  background: #0f0f14;
-}
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -19,51 +17,27 @@ html {
   font-family: Inter, sans-serif;
 }
 
-body {
-  background: radial-gradient(circle at top, #1a1a2a, #0f0f14 60%);
+/* 🌌 SPACE BACKGROUND FIX */
+html, body {
+  background: #05050a;
   color: white;
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
+  position: relative;
 }
 
-/* 🌟 GLOW BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(124,92,255,0.25), transparent 70%);
-  top: -200px;
-  left: -200px;
-  filter: blur(80px);
-  z-index: 0;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(77,208,225,0.2), transparent 70%);
-  bottom: -200px;
-  right: -200px;
-  filter: blur(90px);
-  z-index: 0;
-}
-
-/* CANVAS */
+/* ⭐ CANVAS */
 canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background: #0f0f14;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
 }
 
-/* NAV GLASS */
+/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -86,12 +60,11 @@ nav button {
   margin-left: 15px;
   cursor: pointer;
   opacity: 0.7;
-  transition: 0.3s;
 }
 
 nav button:hover {
   opacity: 1;
-  color: #7c5cff;
+  color: #a78bfa;
 }
 
 /* PAGES */
@@ -110,10 +83,8 @@ nav button:hover {
   opacity: 0;
   transform: translateX(40px);
   pointer-events: none;
-  transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-  z-index: 2;
-
-  background: #0f0f14;
+  transition: 0.6s ease;
+  padding: 40px;
 }
 
 .page.active {
@@ -122,7 +93,22 @@ nav button:hover {
   pointer-events: all;
 }
 
-/* 🧊 GLASS 2.0 */
+/* GRID */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* GLASS */
 .card,
 .work-card {
   background: rgba(255,255,255,0.06);
@@ -132,123 +118,77 @@ nav button:hover {
   border-radius: 16px;
   padding: 25px;
 
-  box-shadow:
-    0 8px 30px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 
-  transition: 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
 }
 
-/* ✨ HOVER GLOW */
-.card:hover,
-.work-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 0 25px rgba(124,92,255,0.35),
-    0 0 60px rgba(77,208,225,0.15),
-    0 15px 40px rgba(0,0,0,0.6);
+/* ✨ HOVER GLOW + LIFT */
+.work-card:hover,
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 45px rgba(124, 92, 255, 0.25),
+              0 0 25px rgba(124, 92, 255, 0.2);
+  border: 1px solid rgba(124, 92, 255, 0.4);
 }
 
-/* HERO */
-.typing {
-  font-size: 3rem;
-  font-weight: 700;
-  border-right: 3px solid #7c5cff;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* PROJECTS */
-.work-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  padding: 20px;
-}
-
-.work-header {
-  text-align: center;
-}
-
-.work-grid {
-  width: 100%;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-}
-
-@media (max-width: 800px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
+/* HOME */
+.hero {
+  font-size: 2.5rem;
 }
 
 /* TAGS */
 .tags span {
   display: inline-block;
-  margin: 5px;
+  margin: 4px;
   padding: 4px 10px;
   border-radius: 8px;
   background: rgba(124,92,255,0.2);
   font-size: 12px;
 }
 
-/* 💎 BUTTON GLOW */
-.discord-btn {
+/* BUTTON */
+.btn {
   display: inline-block;
   margin-top: 10px;
-  color: white;
-  text-decoration: none;
   padding: 10px 15px;
   border-radius: 8px;
-  background: linear-gradient(135deg,#7c5cff,#4dd0e1);
-
-  box-shadow: 0 0 15px rgba(124,92,255,0.25);
-  transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg,#7c5cff,#4f46e5);
 }
 
-.discord-btn:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 20px rgba(124,92,255,0.5),
-    0 0 40px rgba(77,208,225,0.3);
-}
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
+<canvas id="bg"></canvas>
 
+<!-- NAV -->
 <nav>
   <div><strong>DevPortfolio</strong></div>
   <div>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('about')">About</button>
-    <button onclick="showPage('skills')">Skills</button>
-    <button onclick="showPage('projects')">Projects</button>
-    <button onclick="showPage('contact')">Contact</button>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('about')">About</button>
+    <button onclick="show('skills')">Skills</button>
+    <button onclick="show('projects')">Projects</button>
+    <button onclick="show('contact')">Contact</button>
   </div>
 </nav>
 
-<!-- HOME -->
+<!-- PAGES -->
 <div id="home" class="page active">
-  <h1 class="typing" id="typing"></h1>
-  <p>Modern Web Developer</p>
+  <h1 class="hero">Hi, I'm a Developer</h1>
 </div>
 
-<!-- ABOUT -->
 <div id="about" class="page">
   <div class="card">
     <h2>About Me</h2>
-    <p>Ich baue moderne Web Apps mit Fokus auf UI & Performance.</p>
+    <p>Modern Web Developer mit Fokus auf UI & Performance.</p>
   </div>
 </div>
 
-<!-- SKILLS -->
 <div id="skills" class="page">
   <div class="card">
     <h2>Skills</h2>
@@ -256,49 +196,40 @@ nav button:hover {
   </div>
 </div>
 
-<!-- PROJECTS -->
 <div id="projects" class="page">
-  <div class="work-section">
+  <div class="work-grid">
 
-    <div class="work-header">
-      <h1>My Work</h1>
+    <div class="work-card">
+      <h2>Zeno SMP</h2>
+      <p>Survival Multiplayer Server mit Economy.</p>
+      <div class="tags"><span>SMP</span><span>Java</span></div>
+      <a class="btn">Discord</a>
     </div>
 
-    <div class="work-grid">
-
-      <div class="work-card">
-        <h2>Zeno SMP</h2>
-        <p>Survival Multiplayer Server mit PvP & Economy.</p>
-        <div class="tags"><span>SMP</span><span>Java</span></div>
-        <a class="discord-btn" href="#">Discord</a>
-      </div>
-
-      <div class="work-card">
-        <h2>Dev Dashboard</h2>
-        <p>Admin Dashboard mit Live API Stats.</p>
-        <div class="tags"><span>React</span><span>API</span></div>
-        <a class="discord-btn" href="#">Discord</a>
-      </div>
-
-      <div class="work-card">
-        <h2>Discord Bot</h2>
-        <p>Moderation, Musik & Ticket System.</p>
-        <div class="tags"><span>Node.js</span></div>
-        <a class="discord-btn" href="#">Discord</a>
-      </div>
-
-      <div class="work-card">
-        <h2>Game UI</h2>
-        <p>UI Design für Indie Game.</p>
-        <div class="tags"><span>UI</span><span>Design</span></div>
-        <a class="discord-btn" href="#">Discord</a>
-      </div>
-
+    <div class="work-card">
+      <h2>Dev Dashboard</h2>
+      <p>Admin Panel mit API.</p>
+      <div class="tags"><span>React</span></div>
+      <a class="btn">Discord</a>
     </div>
+
+    <div class="work-card">
+      <h2>Discord Bot</h2>
+      <p>Moderation + Music Bot.</p>
+      <div class="tags"><span>Node.js</span></div>
+      <a class="btn">Discord</a>
+    </div>
+
+    <div class="work-card">
+      <h2>Game UI</h2>
+      <p>UI Design für Game.</p>
+      <div class="tags"><span>UI</span></div>
+      <a class="btn">Discord</a>
+    </div>
+
   </div>
 </div>
 
-<!-- CONTACT -->
 <div id="contact" class="page">
   <div class="card">
     <h2>Contact</h2>
@@ -307,86 +238,138 @@ nav button:hover {
 </div>
 
 <script>
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+/* NAV */
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-
-  if (id === "home") {
-    document.getElementById("typing").innerHTML = "";
-    i = 0;
-    type();
-  }
 }
 
-/* typing */
-const text = "Hi, I'm a Developer";
-let i = 0;
-
-function type() {
-  if (i < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 100);
-  }
-}
-type();
-
-/* particles */
-const canvas = document.getElementById("particles");
+/* 🌌 CANVAS */
+const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-let particlesArray = [];
+let stars = [];
+let shooting = [];
+let nebula = [];
 
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 2;
-    this.speedX = Math.random() * 0.5 - 0.25;
-    this.speedY = Math.random() * 0.5 - 0.25;
+/* STAR */
+class Star {
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*1.5;
+    this.opacity = Math.random();
   }
-
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-  }
-
-  draw() {
-    ctx.fillStyle = "rgba(124,92,255,0.7)";
+  draw(){
+    ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
     ctx.fill();
   }
 }
 
-function init() {
-  for (let i = 0; i < 80; i++) {
-    particlesArray.push(new Particle());
+/* SHOOTING */
+class Shooting {
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height/2;
+    this.len = 80;
+    this.speed = 10;
+    this.opacity = 1;
+  }
+  update(){
+    this.x += this.speed;
+    this.y += this.speed;
+    this.opacity -= 0.02;
+
+    if(this.opacity<=0){
+      this.x = Math.random()*canvas.width;
+      this.y = Math.random()*canvas.height/2;
+      this.opacity = 1;
+    }
+  }
+  draw(){
+    ctx.beginPath();
+    ctx.moveTo(this.x,this.y);
+    ctx.lineTo(this.x-this.len,this.y-this.len);
+    ctx.strokeStyle = `rgba(255,255,255,${this.opacity})`;
+    ctx.stroke();
   }
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach(p => {
-    p.update();
-    p.draw();
-  });
+/* NEBULA */
+class Nebula {
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.radius = 200 + Math.random()*300;
+    this.dx = (Math.random()-0.5)*0.3;
+    this.dy = (Math.random()-0.5)*0.3;
+
+    const colors = [
+      "rgba(80,120,255,0.04)",
+      "rgba(120,80,255,0.03)",
+      "rgba(0,255,200,0.02)"
+    ];
+    this.color = colors[Math.floor(Math.random()*colors.length)];
+  }
+
+  update(){
+    this.x += this.dx;
+    this.y += this.dy;
+
+    if(this.x < -200) this.x = canvas.width + 200;
+    if(this.x > canvas.width + 200) this.x = -200;
+    if(this.y < -200) this.y = canvas.height + 200;
+    if(this.y > canvas.height + 200) this.y = -200;
+  }
+
+  draw(){
+    const gradient = ctx.createRadialGradient(
+      this.x, this.y, 0,
+      this.x, this.y, this.radius
+    );
+
+    gradient.addColorStop(0, this.color);
+    gradient.addColorStop(1, "transparent");
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+/* INIT */
+for(let i=0;i<200;i++) stars.push(new Star());
+for(let i=0;i<3;i++) shooting.push(new Shooting());
+for(let i=0;i<6;i++) nebula.push(new Nebula());
+
+/* ANIMATE */
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  nebula.forEach(n=>{ n.update(); n.draw(); });
+  shooting.forEach(s=>{ s.update(); s.draw(); });
+  stars.forEach(s=>s.draw());
+
   requestAnimationFrame(animate);
 }
 
-init();
 animate();
 
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener("resize", ()=>{
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+  ctx.fillStyle = "#05050a";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 });
+
 </script>
 
 </body>
