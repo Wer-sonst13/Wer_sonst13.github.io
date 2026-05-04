@@ -8,6 +8,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+  
+  const cursor = document.getElementById("cursorDot");
+
+// Cursor bewegen
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+// Elemente die Hover haben sollen
+const hoverTargets = document.querySelectorAll(
+  "a, button, .project-card, .discord-card"
+);
+
+hoverTargets.forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover");
+  });
+
+  el.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover");
+  });
+});
+  
   /* ===== MODERN PROJECT GRID ===== */
 .projects-grid {
   margin-top: 50px;
@@ -323,6 +347,15 @@ body {
   z-index: 10000;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+}
+
+/* Hover-Zustand */
+.cursor-dot.hover {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 20px rgba(255, 51, 51, 0.6);
+}
 }
 
 body::before {
