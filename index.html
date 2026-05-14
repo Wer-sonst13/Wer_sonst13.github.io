@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wer_sonst13 — Justin</title>
-
+ 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
-
+ 
 <style>
   /* ===== MODERN PROJECT GRID ===== */
 .projects-grid {
@@ -15,45 +15,45 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 35px;
 }
-
+ 
 /* Mobile */
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
-
+ 
 /* ===== MODERN PROJECT CARD ===== */
 .project-card {
   position: relative;
   padding: 60px 45px 45px;
   min-height: 380px;
-
+ 
   border-radius: 26px;
-
+ 
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255, 51, 51, 0.18);
-
+ 
+  border: 1px solid rgba(157, 78, 221, 0.18);
+ 
   overflow: hidden;
   transition: all 0.35s ease;
-
+ 
   display: flex;
   flex-direction: column;
-
+ 
   opacity: 0;
   transform: translateY(40px);
   animation: projectFade 0.8s ease forwards;
 }
-
+ 
 @keyframes projectFade {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
+ 
 /* Glow Background Effekt */
 .project-card::before {
   content: "";
@@ -61,41 +61,41 @@
   inset: -2px;
   background: radial-gradient(
     circle at top right,
-    rgba(255, 51, 51, 0.25),
+    rgba(157, 78, 221, 0.25),
     transparent 60%
   );
   opacity: 0;
   transition: 0.4s ease;
 }
-
+ 
 /* Hover Glow */
 .project-card:hover::before {
   opacity: 1;
 }
-
+ 
 .project-card:hover {
   transform: translateY(-10px) scale(1.02);
-  border-color: rgba(255, 51, 51, 0.5);
-  box-shadow: 0 25px 70px rgba(255, 51, 51, 0.25);
+  border-color: rgba(157, 78, 221, 0.5);
+  box-shadow: 0 25px 70px rgba(157, 78, 221, 0.25);
 }
-
+ 
 /* Badge moderner */
 .project-badge {
   position: absolute;
   top: 22px;
   right: 22px;
-
+ 
   font-size: 11px;
   padding: 8px 14px;
   border-radius: 999px;
-
-  background: rgba(255, 51, 51, 0.15);
-  border: 1px solid rgba(255, 51, 51, 0.4);
+ 
+  background: rgba(157, 78, 221, 0.15);
+  border: 1px solid rgba(157, 78, 221, 0.4);
   color: #fff;
-
+ 
   backdrop-filter: blur(10px);
 }
-
+ 
 /* Titel größer + cleaner */
 .project-title {
   font-size: 34px;
@@ -104,7 +104,7 @@
   font-weight: 700;
   letter-spacing: -0.5px;
 }
-
+ 
 /* Beschreibung */
 .project-desc {
   color: var(--sub);
@@ -114,7 +114,7 @@
   margin-bottom: 22px;
   flex: 1;
 }
-
+ 
 /* Tags moderner */
 .project-tags {
   display: flex;
@@ -122,188 +122,271 @@
   gap: 8px;
   margin-bottom: 24px;
 }
-
+ 
 .project-tag {
   font-size: 12px;
   padding: 7px 12px;
   border-radius: 999px;
-
+ 
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-
+ 
   transition: 0.3s;
 }
-
+ 
 .project-tag:hover {
-  background: rgba(255, 51, 51, 0.12);
+  background: rgba(157, 78, 221, 0.12);
   border-color: var(--accent);
   color: #fff;
 }
-
+ 
 /* ===== DISCORD BUTTON IN CARD ===== */
 .project-dc-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   align-self: flex-start;
-
+ 
   padding: 10px 18px;
   border-radius: 10px;
-
-  background: rgba(255, 51, 51, 0.08);
-  border: 1px solid rgba(255, 51, 51, 0.3);
+ 
+  background: rgba(157, 78, 221, 0.08);
+  border: 1px solid rgba(157, 78, 221, 0.3);
   color: var(--text);
-
+ 
   font-size: 13px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   text-decoration: none;
   cursor: pointer;
-
+ 
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
 }
-
+ 
 .project-dc-btn svg {
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
-
+ 
 .project-dc-btn:hover {
-  background: rgba(255, 51, 51, 0.18);
+  background: rgba(157, 78, 221, 0.18);
   border-color: var(--accent);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 51, 51, 0.25);
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.25);
 }
-
+ 
 .project-dc-btn:hover svg {
   transform: scale(1.15);
 }
-
+ 
   
   /* ===== ABOUT SECTION ===== */
-
+ 
 .about-title {
   font-size: 42px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   font-weight: 700;
   opacity: 0;
   transform: translateY(30px);
   animation: titleFade 0.8s ease forwards;
-  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+  text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
-
+ 
 @keyframes titleFade {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-.about-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+ 
+.about-intro {
+  color: var(--sub);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.2s;
 }
-
+ 
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 60px;
+}
+ 
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+ 
 .about-card {
   position: relative;
   overflow: hidden;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255, 51, 51, 0.15);
-  border-radius: 14px;
-  padding: 20px;
-  transition: 0.3s;
+  background: rgba(157, 78, 221, 0.02);
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  border-radius: 18px;
+  padding: 32px;
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-
+ 
   opacity: 0;
-  transform: translateY(40px) scale(0.98);
+  transform: translateY(40px) scale(0.95);
   animation: cardReveal 0.8s ease forwards;
 }
-
-.about-card:nth-child(1) { animation-delay: 0.1s; }
-.about-card:nth-child(2) { animation-delay: 0.2s; }
-.about-card:nth-child(3) { animation-delay: 0.3s; }
-.about-card:nth-child(4) { animation-delay: 0.4s; }
-
+ 
+.about-card:nth-child(1) { animation-delay: 0.2s; }
+.about-card:nth-child(2) { animation-delay: 0.3s; }
+.about-card:nth-child(3) { animation-delay: 0.4s; }
+.about-card:nth-child(4) { animation-delay: 0.5s; }
+ 
 @keyframes cardReveal {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
-
+ 
 .about-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 10px 40px rgba(255, 51, 51, 0.25);
-  border-color: rgba(255, 51, 51, 0.4);
-  background: rgba(255,255,255,0.05);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 50px rgba(157, 78, 221, 0.2);
+  border-color: rgba(157, 78, 221, 0.4);
+  background: rgba(157, 78, 221, 0.05);
 }
-
+ 
 /* Shimmer Effekt */
 .about-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 14px;
+  border-radius: 18px;
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255, 51, 51, 0.15),
+    rgba(157, 78, 221, 0.2),
     transparent
   );
   opacity: 0;
+  transition: opacity 0.3s;
 }
-
+ 
 .about-card:hover::before {
   opacity: 1;
   animation: shimmer 1.5s linear;
 }
-
+ 
 @keyframes shimmer {
   from { transform: translateX(-100%); }
   to { transform: translateX(100%); }
 }
-
+ 
+.about-card-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+ 
+.about-card:hover .about-card-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+ 
 .about-card h3 {
   color: var(--accent);
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
-
+ 
 .about-card p {
   color: var(--sub);
   font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
 }
-
+ 
 .anime-tag {
   display: inline-block;
-  margin-top: 10px;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: rgba(0,255,0,0.1);
+  margin-top: 14px;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(0, 255, 0, 0.1);
   color: var(--green);
-  border: 1px solid rgba(0,255,0,0.3);
-  transition: 0.3s;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
 }
-
+ 
 .about-card:hover .anime-tag {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(0,255,0,0.4);
+  transform: scale(1.08);
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+}
+ 
+.about-skills {
+  background: rgba(157, 78, 221, 0.03);
+  border: 1px solid rgba(157, 78, 221, 0.15);
+  border-radius: 18px;
+  padding: 40px;
+  margin-top: 40px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: cardReveal 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+ 
+.about-skills h3 {
+  color: var(--accent);
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+}
+ 
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+ 
+.skill-tag {
+  background: rgba(157, 78, 221, 0.1);
+  border: 1px solid rgba(157, 78, 221, 0.3);
+  color: var(--text);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+ 
+.skill-tag:hover {
+  background: rgba(157, 78, 221, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(157, 78, 221, 0.2);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-
+ 
 :root {
   --bg:#0a0a0a;
   --text:#ffffff;
   --sub:#b0b0b0;
-  --accent:#ff3333;
+  --accent:#9d4edd;
   --green:#00ff00;
 }
-
+ 
 body {
   font-family:'Inter',sans-serif;
   background:var(--bg);
@@ -312,7 +395,7 @@ body {
   overflow-x:hidden;
   cursor: none;
 }
-
+ 
 .cursor-dot {
   position: fixed;
   width: 6px;
@@ -324,18 +407,18 @@ body {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
-
+ 
 body::before {
   content:"";
   position:fixed;
   inset:0;
   z-index:0;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 51, 51, 0.15), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(157, 78, 221, 0.15), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.05), transparent 50%),
     linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
 }
-
+ 
 body::after {
   content:"";
   position:fixed;
@@ -351,7 +434,7 @@ body::after {
     );
   pointer-events: none;
 }
-
+ 
 .top-nav {
   position: fixed;
   top: 0;
@@ -359,11 +442,11 @@ body::after {
   right: 0;
   height: auto;
   background: rgba(10, 10, 10, 0.95);
-  border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+  border-bottom: 1px solid rgba(157, 78, 221, 0.1);
   z-index: 9997;
   backdrop-filter: blur(10px);
 }
-
+ 
 /* ===== Segmented Progress Bar ===== */
 .progress-bar-wrap {
   display: flex;
@@ -372,7 +455,7 @@ body::after {
   height: 4px;
   padding: 0;
 }
-
+ 
 .progress-seg {
   flex: 1;
   height: 100%;
@@ -380,22 +463,22 @@ body::after {
   background: #1e1e1e;
   transition: background 0.3s;
 }
-
+ 
 .progress-seg.filled {
   background: var(--accent);
 }
-
+ 
 .progress-seg.active {
   background: var(--accent);
   opacity: 0.55;
   animation: seg-blink 1.2s ease-in-out infinite;
 }
-
+ 
 @keyframes seg-blink {
   0%, 100% { opacity: 0.55; }
   50% { opacity: 1; }
 }
-
+ 
 .status-header {
   display: flex;
   align-items: center;
@@ -405,75 +488,75 @@ body::after {
   color: var(--sub);
   gap: 12px;
 }
-
+ 
 .status-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
+ 
 .status-icon {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
 }
-
+ 
 .status-text {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
+ 
 .progress-line {
   width: 1000px;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
 }
-
+ 
 .status-right {
   display: flex;
   align-items: center;
   gap: 16px;
 }
-
+ 
 .status-percentage {
   font-size: 12px;
   color: var(--accent);
   font-weight: 600;
   letter-spacing: 1px;
 }
-
+ 
 .language-switch {
   display: flex;
   gap: 8px;
   font-size: 11px;
   color: var(--sub);
 }
-
+ 
 .language-switch a {
   color: var(--sub);
   text-decoration: none;
   cursor: pointer;
   transition: .2s;
 }
-
+ 
 .language-switch a.active { color: var(--accent); }
 .language-switch a:hover { color: var(--text); }
-
+ 
 .nav-content {
   display: flex;
   align-items: center;
   padding: 16px 32px;
 }
-
+ 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-
+ 
 .logo {
   display:flex;
   gap:10px;
@@ -485,19 +568,19 @@ nav {
   color: var(--text);
   flex-shrink: 0;
 }
-
+ 
 .logo-text {
   font-family: 'Pacifico', cursive;
   font-size:24px;
 }
-
+ 
 .nav-links {
   display:flex;
   gap:32px;
   align-items: center;
   margin-left: auto;
 }
-
+ 
 .nav-links button {
   background:transparent;
   border:none;
@@ -509,15 +592,15 @@ nav {
   font-weight: 400;
   letter-spacing: 0.3px;
 }
-
+ 
 .nav-links button:hover { color:var(--text); }
-
+ 
 .nav-links button.active {
   color:var(--text);
   border: none;
   background: none;
 }
-
+ 
 .wrap {
   max-width:900px;
   margin:auto;
@@ -526,10 +609,10 @@ nav {
   z-index:1;
   margin-top: 80px;
 }
-
+ 
 section { display:none; }
 section.active { display:block; }
-
+ 
 .tag {
   font-size:12px;
   color:var(--green);
@@ -541,7 +624,7 @@ section.active { display:block; }
   padding: 6px 14px;
   display: inline-block;
 }
-
+ 
 h1 {
   font-size:clamp(56px,7vw,84px);
   line-height:1.1;
@@ -549,9 +632,9 @@ h1 {
   font-weight:700;
   letter-spacing: -2px;
   color: var(--accent);
-  text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+  text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
-
+ 
 h2 {
   font-size:clamp(32px,4vw,48px);
   margin-bottom:20px;
@@ -559,7 +642,7 @@ h2 {
   letter-spacing: -0.5px;
   color: var(--accent);
 }
-
+ 
 .intro {
   color:var(--sub);
   max-width:65ch;
@@ -567,7 +650,7 @@ h2 {
   font-size: 16px;
   line-height: 1.8;
 }
-
+ 
 .subtitle {
   font-size: 20px;
   color: var(--accent);
@@ -575,73 +658,90 @@ h2 {
   font-weight: 500;
   letter-spacing: 0.5px;
 }
-
+ 
 .btn-primary {
   background:var(--accent);
-  color:#000;
-  padding:13px 32px;
-  border-radius:8px;
+  color:#fff;
+  padding:14px 36px;
+  border-radius:10px;
   border:none;
   cursor:pointer;
   font-weight:600;
-  transition:.3s;
+  transition:.3s ease;
   font-size: 14px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
 }
-
+ 
 .btn-primary:hover { 
-  transform:translateY(-2px);
-  opacity:.85;
-  box-shadow: 0 8px 24px rgba(255, 51, 51, 0.3);
+  transform:translateY(-3px);
+  box-shadow: 0 8px 30px rgba(157, 78, 221, 0.4);
 }
-
+ 
 .btn-line {
-  background:transparent;
-  border:1px solid rgba(255, 51, 51, 0.3);
+  background:rgba(157, 78, 221, 0.08);
+  border:1px solid rgba(157, 78, 221, 0.3);
   color:var(--text);
-  padding:13px 32px;
-  border-radius:8px;
-  margin-left:12px;
+  padding:14px 36px;
+  border-radius:10px;
   cursor:pointer;
-  transition:.3s;
+  transition:.3s ease;
   font-weight: 600;
   font-size: 14px;
+  letter-spacing: 0.5px;
 }
-
+ 
 .btn-line:hover {
   border-color:var(--accent);
-  background:rgba(255, 51, 51, 0.05);
+  background:rgba(157, 78, 221, 0.15);
+  transform: translateY(-3px);
 }
-
+ 
 .hero-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 60px;
   align-items: center;
   margin-top: 80px;
 }
-
+ 
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+ 
+.hero-text {
+  max-width: 600px;
+  line-height: 1.8;
+  color: var(--sub);
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+ 
 .discord-card {
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255, 51, 51, 0.2);
+  border: 1px solid rgba(157, 78, 221, 0.2);
   border-radius: 16px;
   padding: 24px;
   transition: .3s ease;
 }
-
+ 
 .discord-card:hover {
   background: rgba(255,255,255,0.08);
-  border-color: rgba(255, 51, 51, 0.4);
-  box-shadow: 0 12px 40px rgba(255, 51, 51, 0.1);
+  border-color: rgba(157, 78, 221, 0.4);
+  box-shadow: 0 12px 40px rgba(157, 78, 221, 0.1);
   transform: translateY(-4px);
 }
-
+ 
 .discord-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
 }
-
+ 
 .discord-avatar {
   width: 48px;
   height: 48px;
@@ -654,9 +754,9 @@ h2 {
   overflow: hidden;
   position: relative;
 }
-
+ 
 .discord-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
+ 
 .status-badge {
   position: absolute;
   bottom: -2px;
@@ -667,23 +767,23 @@ h2 {
   background: #43B581;
   border: 2px solid #1a1a1a;
 }
-
+ 
 .status-badge.idle { background: #FAA61A; }
 .status-badge.dnd { background: #F04747; }
 .status-badge.offline { background: #747F8D; }
-
+ 
 .discord-info h3 { font-size: 14px; color: var(--text); margin-bottom: 2px; }
 .discord-info p { font-size: 12px; color: var(--sub); }
-
+ 
 .discord-status {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 51, 51, 0.1);
+  border-top: 1px solid rgba(157, 78, 221, 0.1);
 }
-
+ 
 .status-item {
   display: flex;
   align-items: center;
@@ -691,7 +791,7 @@ h2 {
   font-size: 13px;
   color: var(--sub);
 }
-
+ 
 .status-dot {
   width: 8px;
   height: 8px;
@@ -699,19 +799,19 @@ h2 {
   background: var(--accent);
   animation: pulse 2s infinite;
 }
-
+ 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
-
+ 
 .status-dot.online { background: #43B581; }
 .status-dot.idle { background: #FAA61A; }
 .status-dot.dnd { background: #F04747; }
-
+ 
 .code-block {
   background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255, 51, 51, 0.2);
+  border: 1px solid rgba(157, 78, 221, 0.2);
   border-radius: 12px;
   padding: 20px;
   font-family: 'JetBrains Mono', monospace;
@@ -719,147 +819,200 @@ h2 {
   line-height: 1.6;
   overflow-x: auto;
 }
-
+ 
 .code-header { display: flex; gap: 8px; margin-bottom: 16px; }
-
+ 
 .code-dot { width: 12px; height: 12px; border-radius: 50%; }
 .code-dot:nth-child(1) { background: #ff5f56; }
 .code-dot:nth-child(2) { background: #ffbd2e; }
 .code-dot:nth-child(3) { background: #27c93f; }
-
+ 
 .code-line { display: flex; gap: 16px; }
-.code-number { color: rgba(255, 51, 51, 0.3); min-width: 30px; text-align: right; }
+.code-number { color: rgba(157, 78, 221, 0.3); min-width: 30px; text-align: right; }
 .code-text { color: #a8cc8c; }
-.code-text.keyword { color: #ff6b6b; }
+.code-text.keyword { color: #b77ddb; }
 .code-text.string { color: #a8cc8c; }
-.code-text.comment { color: rgba(255, 51, 51, 0.4); font-style: italic; }
-
+.code-text.comment { color: rgba(157, 78, 221, 0.4); font-style: italic; }
+ 
 .stats {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:16px;
   margin-top:60px;
 }
-
+ 
 .stat {
   padding:20px;
   text-align:center;
   transition:.3s;
-  border: 1px solid rgba(255, 51, 51, 0.1);
+  border: 1px solid rgba(157, 78, 221, 0.1);
   border-radius: 12px;
-  background: rgba(255, 51, 51, 0.02);
+  background: rgba(157, 78, 221, 0.02);
 }
-
+ 
 .stat:hover {
   transform:translateY(-4px);
-  border-color:rgba(255, 51, 51, 0.2);
-  background:rgba(255, 51, 51, 0.05);
+  border-color:rgba(157, 78, 221, 0.2);
+  background:rgba(157, 78, 221, 0.05);
 }
-
+ 
 .stat-n { font-size:24px; font-weight:700; margin-bottom: 8px; color: var(--accent); }
 .stat-l { font-size:12px; color:var(--sub); letter-spacing: 0.5px; text-transform: uppercase; }
-
+ 
 .chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
-
+ 
 .chip {
   font-size:13px;
   padding:8px 14px;
   border-radius:6px;
-  border:1px solid rgba(255, 51, 51, 0.2);
+  border:1px solid rgba(157, 78, 221, 0.2);
   color:var(--sub);
-  background:rgba(255, 51, 51, 0.03);
+  background:rgba(157, 78, 221, 0.03);
   transition: .3s;
   font-weight: 500;
 }
-
+ 
 .chip:hover {
-  border-color:rgba(255, 51, 51, 0.4);
-  background:rgba(255, 51, 51, 0.08);
+  border-color:rgba(157, 78, 221, 0.4);
+  background:rgba(157, 78, 221, 0.08);
   color: var(--text);
 }
-
+ 
 .dc-block {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:24px;
-  border-radius:12px;
-  margin-top:32px;
+  padding:32px;
+  border-radius:16px;
+  margin-top:40px;
   transition:.3s ease;
-  background: rgba(255, 51, 51, 0.05);
-  border: 1px solid rgba(255, 51, 51, 0.2);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.08) 0%, rgba(157, 78, 221, 0.02) 100%);
+  border: 1px solid rgba(157, 78, 221, 0.2);
   position: relative;
   overflow: hidden;
 }
-
-.dc-block:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 51, 51, 0.4);
-  background: rgba(255, 51, 51, 0.08);
-  box-shadow: 0 12px 40px rgba(255, 51, 51, 0.15);
+ 
+.dc-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(157, 78, 221, 0.15),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
-
-.dc-left { display:flex; align-items:center; gap:16px; flex: 1; position: relative; z-index: 1; }
-
+ 
+.dc-block:hover::before {
+  opacity: 1;
+}
+ 
+.dc-block:hover {
+  transform: translateY(-8px);
+  border-color: rgba(157, 78, 221, 0.4);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.12) 0%, rgba(157, 78, 221, 0.05) 100%);
+  box-shadow: 0 16px 50px rgba(157, 78, 221, 0.2);
+}
+ 
+.dc-left { 
+  display:flex; 
+  align-items:center; 
+  gap:20px; 
+  flex: 1; 
+  position: relative; 
+  z-index: 1; 
+}
+ 
 .dc-icon {
-  width:52px;
-  height:52px;
-  border-radius:10px;
-  background: rgba(255, 51, 51, 0.1);
+  width:64px;
+  height:64px;
+  border-radius:14px;
+  background: rgba(157, 78, 221, 0.12);
   display:flex;
   align-items:center;
   justify-content:center;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 51, 51, 0.2);
+  border: 2px solid rgba(157, 78, 221, 0.3);
   transition: all 0.3s ease;
 }
-
+ 
 .dc-block:hover .dc-icon {
-  background: rgba(255, 51, 51, 0.15);
-  border-color: rgba(255, 51, 51, 0.3);
-  transform: scale(1.08);
+  background: rgba(157, 78, 221, 0.2);
+  border-color: rgba(157, 78, 221, 0.4);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 24px rgba(157, 78, 221, 0.2);
 }
-
-.dc-title { font-weight:700; font-size:16px; color: var(--text); }
-.dc-sub { font-size:13px; color:var(--sub); margin-top: 4px; }
-
+ 
+.dc-title { 
+  font-weight:700; 
+  font-size:20px; 
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+ 
+.dc-sub { 
+  font-size:14px; 
+  color:var(--sub); 
+  margin-top: 6px;
+  line-height: 1.5;
+}
+ 
 .dc-cta {
   background: var(--accent);
-  padding:11px 24px;
-  border-radius:8px;
-  color:#000;
+  padding:14px 32px;
+  border-radius:10px;
+  color:#fff;
   text-decoration:none;
-  font-size:13px;
+  font-size:14px;
   font-weight:700;
-  transition:.3s ease;
+  transition:all .3s ease;
   border: none;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(255, 51, 51, 0.2);
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.3);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.3px;
 }
-
+ 
 .dc-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(255, 51, 51, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(157, 78, 221, 0.4);
 }
-
+ 
+@media (max-width: 768px) {
+  .dc-block {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+  
+  .dc-cta {
+    width: 100%;
+    text-align: center;
+  }
+}
+ 
 footer {
   margin-top:100px;
   padding-top:32px;
   padding-bottom: 32px;
-  border-top:1px solid rgba(255, 51, 51, 0.1);
+  border-top:1px solid rgba(157, 78, 221, 0.1);
   display:flex;
   justify-content:space-between;
   color:var(--sub);
   font-size:12px;
 }
-
+ 
 .reveal { opacity:0; transform:translateY(30px); transition:all .8s ease; }
 .reveal.active { opacity:1; transform:translateY(0); }
 .delay-1 { transition-delay:.1s; }
 .delay-2 { transition-delay:.2s; }
 .delay-3 { transition-delay:.3s; }
-
+ 
 @media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; gap: 40px; }
   .nav-links { gap: 16px; }
@@ -868,16 +1021,13 @@ footer {
 }
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <div class="cursor-dot" id="cursorDot"></div>
-
+ 
 <div class="top-nav">
-
-  <!-- Segmented Progress Bar -->
-  <div class="progress-bar-wrap" id="progressBar"></div>
-
+ 
   <div class="status-header">
     <div class="status-left">
       <div class="status-icon"></div>
@@ -895,13 +1045,13 @@ footer {
       </div>
     </div>
   </div>
-
+ 
   <div class="nav-content">
     <nav>
       <div class="logo" onclick="show('home')">
         <div class="logo-text">Wer_sonst13</div>
       </div>
-
+ 
       <div class="nav-links">
         <button id="nav-home" class="active" onclick="show('home')">Home</button>
         <button id="nav-about" onclick="show('about')">About</button>
@@ -911,44 +1061,31 @@ footer {
     </nav>
   </div>
 </div>
-
+ 
 <div class="wrap">
-
+ 
 <section id="home" class="active">
   <div class="reveal">
     <p class="tag">Available Minecraft Server</p>
   </div>
-
+ 
   <h1 class="reveal delay-1">Wer_sonst13 Developer</h1>
-
+ 
   <p class="subtitle reveal delay-2">Make own Configs and Setups</p>
-
+ 
+  <p class="hero-text reveal delay-2">
+    Ich bin ein leidenschaftlicher Minecraft-Developer aus Frankfurt am Main. Mit über 1+ Jahr Erfahrung 
+    entwickle ich custom Plugins, Setups und Konfigurationen für moderne Minecraft Server. 
+    Mein Fokus liegt auf Performance, Design und User Experience.
+  </p>
+ 
   <div class="hero-content reveal delay-3">
-    <div>
+    <div class="hero-buttons">
       <button class="btn-primary" onclick="show('contact')">Kontakt aufnehmen</button>
-      <button class="btn-line" onclick="show('about')">Mehr →</button>
-    </div>
-
-    <div class="discord-card">
-      <div class="discord-header">
-        <div class="discord-avatar">
-          <img id="discordAvatar" src="" alt="Avatar">
-          <div class="status-badge" id="statusBadge"></div>
-        </div>
-        <div class="discord-info">
-          <h3 id="discordUsername">wer_sonst13</h3>
-          <p id="discordTag">@wer_sonst13</p>
-        </div>
-      </div>
-      <div class="discord-status" id="1315242846340513833">
-        <div class="status-item">
-          <div class="status-dot dnd"></div>
-          <span>Loading..</span>
-        </div>
-      </div>
+      <button class="btn-line" onclick="show('projects')">Projekte ansehen →</button>
     </div>
   </div>
-
+ 
   <div class="code-block reveal delay-2">
     <div class="code-header">
       <div class="code-dot"></div>
@@ -992,50 +1129,74 @@ footer {
       <span><span class="code-text keyword">init</span>(developer);</span>
     </div>
   </div>
-
+ 
   <div class="stats reveal delay-3">
     <div class="stat"><div class="stat-n">1+</div><div class="stat-l">Jahr Coding</div></div>
     <div class="stat"><div class="stat-n">MC</div><div class="stat-l">Spezialisiert</div></div>
     <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Erreichbar</div></div>
   </div>
 </section>
-
+ 
 <!-- ===== ABOUT SECTION (NEU) ===== -->
 <section id="about">
-  <h2 class="about-title">About Me & Services</h2>
-
+  <h2 class="about-title">Über mich</h2>
+ 
+  <p class="about-intro">
+    Mein Name ist Justin, bekannt als Wer_sonst13. Ich bin ein 15-jähriger Entwickler aus Frankfurt am Main, Deutschland, 
+    der sich auf Minecraft-Server-Entwicklung spezialisiert hat. Mit Leidenschaft für Code und Design schaffe ich moderne, 
+    funktionale und benutzerfreundliche Minecraft-Erlebnisse.
+  </p>
+ 
   <div class="about-grid">
-
+ 
     <div class="about-card">
-      <h3>👤 Who am I?</h3>
-      <p>I'm Justin (Wer_sonst13) a 15-year-old developer from Frankfurt am Main, Germany.</p>
+      <span class="about-card-icon">👤</span>
+      <h3>Wer bin ich?</h3>
+      <p>Justin, 15 Jahre alt aus Frankfurt am Main. Leidenschaftlicher Developer mit Fokus auf Minecraft Server und Plugins.</p>
     </div>
-
+ 
     <div class="about-card">
-      <h3>💻 What I do</h3>
-      <p>I make my own Plugin´s,Setups and configs for Minecraft Server´s.</p>
+      <span class="about-card-icon">💻</span>
+      <h3>Was ich mache</h3>
+      <p>Ich entwickle Custom Plugins, Server-Setups und Konfigurationen für professionelle Minecraft Server.</p>
     </div>
-
+ 
     <div class="about-card">
-      <h3>🎯 Vision</h3>
-      <p>Creating New cool and modern Minecraft Servers.</p>
+      <span class="about-card-icon">🎯</span>
+      <h3>Meine Vision</h3>
+      <p>Moderne, innovative und spielerfreundliche Minecraft Server schaffen, die echten Mehrwert bieten.</p>
     </div>
-
+ 
     <div class="about-card">
-      <h3>🍿 Hobbies</h3>
-      <p>When I'm not coding or designing,I´m with my friends.</p>
-      <span class="anime-tag">Fav place:By my Girlfriend</span>
+      <span class="about-card-icon">🎮</span>
+      <h3>In meiner Freizeit</h3>
+      <p>Wenn ich nicht code, dann bin ich mit Freunden unterwegs oder verbringe Zeit mit meiner Freundin.</p>
+      <span class="anime-tag">Lieblingort: Bei meiner Freundin</span>
     </div>
-
+ 
+  </div>
+ 
+  <div class="about-skills">
+    <h3>💡 Meine Fähigkeiten</h3>
+    <div class="skills-list">
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">Minecraft Plugins</span>
+      <span class="skill-tag">Server Setup</span>
+      <span class="skill-tag">Configuration</span>
+      <span class="skill-tag">Performance Optimization</span>
+      <span class="skill-tag">PvP Systems</span>
+      <span class="skill-tag">SMP Development</span>
+      <span class="skill-tag">Problem Solving</span>
+    </div>
   </div>
 </section>
-
+ 
 <section id="projects">
   <p class="tag reveal">Meine Arbeiten</p>
   <h2 class="reveal delay-1">My Work</h2>
-
+ 
   <div class="projects-grid">
-
+ 
     <!-- CARD 1 -->
     <div class="project-card reveal delay-2">
       <div class="project-badge">PROJEKT IDEE (2026)</div>
@@ -1057,7 +1218,7 @@ footer {
         Discord kontaktieren
       </a>
     </div>
-
+ 
     <!-- CARD 2 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">IN ARBEIT</div>
@@ -1078,7 +1239,7 @@ footer {
         Discord kontaktieren
       </a>
     </div>
-
+ 
     <!-- CARD 3 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">COMING SOON</div>
@@ -1098,7 +1259,7 @@ footer {
         Discord kontaktieren
       </a>
     </div>
-
+ 
     <!-- CARD 4 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">SOON</div>
@@ -1118,112 +1279,50 @@ footer {
         Discord kontaktieren
       </a>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <section id="contact">
   <p class="tag reveal">Kontakt</p>
-  <h2 class="reveal delay-1">Schreib mir auf Discord</h2>
-  <div class="dc-block reveal delay-2">
+  <h2 class="reveal delay-1">Lass uns arbeiten</h2>
+  
+  <p class="intro reveal delay-2">
+    Du hast ein Minecraft-Server-Projekt? Brauchst Hilfe bei der Konfiguration oder möchtest einen Custom Plugin? 
+    Kontaktiere mich auf Discord – ich antworte schnell und helfe dir gerne weiter.
+  </p>
+ 
+  <div class="dc-block reveal delay-3">
     <div class="dc-left">
       <div class="dc-icon">
-        <svg width="24" height="18" viewBox="0 0 24 18" fill="#ff3333">
+        <svg width="32" height="24" viewBox="0 0 24 18" fill="#9d4edd">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a19.946 19.946 0 0 0-8.864 0 19.823 19.823 0 0 0-4.885 1.481 19.902 19.902 0 0 0-3.696 3.12A19.88 19.88 0 0 0 .63 9.056a20.016 20.016 0 0 0-.57 2.064 19.876 19.876 0 0 0-.05 2.15 19.974 19.974 0 0 0 1.328 6.066 19.928 19.928 0 0 0 3.723 5.5 19.901 19.901 0 0 0 5.5 3.723 19.874 19.874 0 0 0 6.066 1.328c.714 0 1.427-.02 2.138-.057a19.902 19.902 0 0 0 2.06-.57 19.88 19.88 0 0 0 1.97-1.089 19.94 19.94 0 0 0 1.828-1.527 19.991 19.991 0 0 0 1.595-1.901 20.053 20.053 0 0 0 1.293-2.23 20.1 20.1 0 0 0 .832-2.518 20.034 20.034 0 0 0 .306-2.765c0-.714.02-1.427.057-2.138.038-.713.095-1.424.17-2.133a19.944 19.944 0 0 0 .348-2.098 19.84 19.84 0 0 0 .602-1.985 19.852 19.852 0 0 0 .91-1.81 19.901 19.901 0 0 0 1.194-1.587 19.943 19.943 0 0 0 1.459-1.317 20.002 20.002 0 0 0 1.7-.99z"/>
         </svg>
       </div>
       <div>
         <div class="dc-title">Wer_sonst13</div>
-        <div class="dc-sub">Discord • DM für Hilfe / Projekte</div>
+        <div class="dc-sub">Erreichbar auf Discord • Schnelle Antworten garantiert</div>
       </div>
     </div>
-    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Schreib mir</a>
+    <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Nachricht senden</a>
   </div>
 </section>
-
+ 
 <footer>
   <span></span>
   <span>© 2026 Wer_sonst13</span>
 </footer>
-
+ 
 </div>
-
+ 
 <script>
-// Segmented Progress Bar aufbauen
-(function() {
-  const total = 24;
-  const pct = 0.89;
-  const filled = Math.round(total * pct);
-  const bar = document.getElementById('progressBar');
-  for (let i = 0; i < total; i++) {
-    const seg = document.createElement('div');
-    if (i < filled - 1) {
-      seg.className = 'progress-seg filled';
-    } else if (i === filled - 1) {
-      seg.className = 'progress-seg active';
-    } else {
-      seg.className = 'progress-seg';
-    }
-    bar.appendChild(seg);
-  }
-})();
-
-// Discord
-const DISCORD_USER_ID = '1315242846340513833';
-
-async function fetchDiscordStatus() {
-  try {
-    const response = await fetch(`https://api.lanyard.rest/v1/users/${1315242846340513833}`);
-    const data = await response.json();
-    if (data.success) updateDiscordCard(data.data);
-  } catch (error) {
-    console.error('Discord API Error:', error);
-  }
-}
-
-function updateDiscordCard(userData) {
-  const avatar = document.getElementById('discordAvatar');
-  if (userData.discord_user.avatar) {
-    avatar.src = `https://cdn.discordapp.com/avatars/${userData.discord_user.id}/${userData.discord_user.avatar}.png`;
-  }
-  document.getElementById('discordUsername').textContent = userData.discord_user.username;
-  document.getElementById('discordTag').textContent = `#${userData.discord_user.discriminator}`;
-  
-  const statusBadge = document.getElementById('statusBadge');
-  statusBadge.className = `status-badge ${userData.discord_status}`;
-  
-  const statusContainer = document.getElementById('discordStatus');
-  statusContainer.innerHTML = '';
-  
-  const statusText = { 'online': '🟢 Online', 'idle': '🟡 Idle', 'dnd': '🔴 Do Not Disturb', 'offline': '⚪ Offline' };
-  
-  const statusItem = document.createElement('div');
-  statusItem.className = 'status-item';
-  statusItem.innerHTML = `<div class="status-dot ${userData.discord_status}"></div><span>${statusText[userData.discord_status]}</span>`;
-  statusContainer.appendChild(statusItem);
-  
-  if (userData.activities && userData.activities.length > 0) {
-    userData.activities.forEach(activity => {
-      const activityItem = document.createElement('div');
-      activityItem.className = 'status-item';
-      const typeName = { 'Playing': '🎮', 'Streaming': '📺', 'Listening': '🎵', 'Watching': '👀' };
-      const emoji = typeName[activity.type] || '•';
-      activityItem.innerHTML = `<div class="status-dot ${userData.discord_status}"></div><span>${emoji} ${activity.type} <strong>${activity.name}</strong></span>`;
-      statusContainer.appendChild(activityItem);
-    });
-  }
-}
-
-fetchDiscordStatus();
-setInterval(fetchDiscordStatus, 10000);
-
 // Cursor
 const cursorDot = document.getElementById('cursorDot');
 document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 });
-
+ 
 // Navigation
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
@@ -1231,14 +1330,14 @@ function show(id) {
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   document.getElementById('nav-' + id).classList.add('active');
 }
-
+ 
 // Reveal on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.15 });
-
+ 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
+ 
 </body>
 </html>
