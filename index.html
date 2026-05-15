@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
  
 <style>
-  /* ===== MODERN PROJECT GRID ===== */
+  
 .projects-grid {
   margin-top: 50px;
   display: grid;
@@ -16,14 +16,14 @@
   gap: 35px;
 }
  
-/* Mobile */
+
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
  
-/* ===== MODERN PROJECT CARD ===== */
+
 .project-card {
   position: relative;
   padding: 60px 45px 45px;
@@ -54,7 +54,7 @@
   }
 }
  
-/* Glow Background Effekt */
+
 .project-card::before {
   content: "";
   position: absolute;
@@ -68,7 +68,7 @@
   transition: 0.4s ease;
 }
  
-/* Hover Glow */
+
 .project-card:hover::before {
   opacity: 1;
 }
@@ -79,7 +79,7 @@
   box-shadow: 0 25px 70px rgba(157, 78, 221, 0.25);
 }
  
-/* Badge moderner */
+
 .project-badge {
   position: absolute;
   top: 22px;
@@ -96,7 +96,7 @@
   backdrop-filter: blur(10px);
 }
  
-/* Titel größer + cleaner */
+
 .project-title {
   font-size: 34px;
   margin-top: 90px;
@@ -105,7 +105,7 @@
   letter-spacing: -0.5px;
 }
  
-/* Beschreibung */
+
 .project-desc {
   color: var(--sub);
   line-height: 1.7;
@@ -115,7 +115,7 @@
   flex: 1;
 }
  
-/* Tags moderner */
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -140,7 +140,7 @@
   color: #fff;
 }
  
-/* ===== DISCORD BUTTON IN CARD ===== */
+
 .project-dc-btn {
   display: inline-flex;
   align-items: center;
@@ -183,7 +183,7 @@
 }
  
   
-  /* ===== ABOUT SECTION ===== */
+  
  
 .about-title {
   font-size: 42px;
@@ -261,7 +261,7 @@
   background: rgba(157, 78, 221, 0.05);
 }
  
-/* Shimmer Effekt */
+
 .about-card::before {
   content: "";
   position: absolute;
@@ -441,113 +441,21 @@ body::after {
   left: 0;
   right: 0;
   height: auto;
-  background: rgba(10, 10, 10, 0.95);
-  border-bottom: 1px solid rgba(157, 78, 221, 0.1);
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom: 1px solid rgba(157, 78, 221, 0.08);
   z-index: 9997;
-  backdrop-filter: blur(10px);
-}
- 
-/* ===== Segmented Progress Bar ===== */
-.progress-bar-wrap {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  height: 4px;
+  backdrop-filter: blur(12px);
   padding: 0;
 }
  
-.progress-seg {
-  flex: 1;
-  height: 100%;
-  border-radius: 2px;
-  background: #1e1e1e;
-  transition: background 0.3s;
-}
- 
-.progress-seg.filled {
-  background: var(--accent);
-}
- 
-.progress-seg.active {
-  background: var(--accent);
-  opacity: 0.55;
-  animation: seg-blink 1.2s ease-in-out infinite;
-}
- 
-@keyframes seg-blink {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
-}
- 
 .status-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 32px;
-  font-size: 12px;
-  color: var(--sub);
-  gap: 12px;
+  display: none;
 }
- 
-.status-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
- 
-.status-icon {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-}
- 
-.status-text {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
- 
-.progress-line {
-  width: 1000px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
- 
-.status-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
- 
-.status-percentage {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
- 
-.language-switch {
-  display: flex;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--sub);
-}
- 
-.language-switch a {
-  color: var(--sub);
-  text-decoration: none;
-  cursor: pointer;
-  transition: .2s;
-}
- 
-.language-switch a.active { color: var(--accent); }
-.language-switch a:hover { color: var(--text); }
  
 .nav-content {
   display: flex;
   align-items: center;
-  padding: 16px 32px;
+  padding: 20px 40px;
 }
  
 nav {
@@ -555,6 +463,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 40px;
 }
  
 .logo {
@@ -562,43 +471,89 @@ nav {
   gap:10px;
   align-items:center;
   cursor:pointer;
-  font-weight:700;
-  font-size:24px;
+  font-weight:800;
+  font-size:26px;
   font-family: 'Pacifico', cursive;
-  color: var(--text);
+  color: #d090ff;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 20px rgba(208, 144, 255, 0.3);
+}
+ 
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 30px rgba(208, 144, 255, 0.5);
 }
  
 .logo-text {
   font-family: 'Pacifico', cursive;
-  font-size:24px;
+  font-size:26px;
 }
  
 .nav-links {
   display:flex;
-  gap:32px;
+  gap:12px;
   align-items: center;
   margin-left: auto;
 }
  
 .nav-links button {
-  background:transparent;
-  border:none;
+  background: transparent;
+  border: 1px solid transparent;
   color:var(--sub);
-  padding:0;
+  padding: 10px 20px;
   cursor:pointer;
-  transition:.3s;
+  transition: all .3s ease;
   font-size:14px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.3px;
+  border-radius: 8px;
+  position: relative;
 }
  
-.nav-links button:hover { color:var(--text); }
+.nav-links button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(157, 78, 221, 0.08);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+ 
+.nav-links button:hover {
+  color: var(--text);
+  border-color: rgba(157, 78, 221, 0.3);
+}
+ 
+.nav-links button:hover::before {
+  opacity: 1;
+}
  
 .nav-links button.active {
-  color:var(--text);
-  border: none;
-  background: none;
+  color: #d090ff;
+  border-color: rgba(208, 144, 255, 0.5);
+  background: rgba(208, 144, 255, 0.12);
+}
+ 
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 16px 24px;
+  }
+  
+  nav {
+    gap: 20px;
+  }
+  
+  .nav-links {
+    gap: 8px;
+  }
+  
+  .nav-links button {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
 }
  
 .wrap {
@@ -614,33 +569,49 @@ section { display:none; }
 section.active { display:block; }
  
 .tag {
-  font-size:12px;
+  font-size:11px;
   color:var(--green);
-  margin-bottom:20px;
-  letter-spacing: 1px;
+  margin-bottom:40px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  border: 1px solid rgba(0, 255, 0, 0.3);
-  border-radius: 20px;
-  padding: 6px 14px;
-  display: inline-block;
+  border: 2px solid rgba(0, 255, 0, 0.5);
+  border-radius: 6px;
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  background: rgba(0, 255, 0, 0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+}
+ 
+.tag:hover {
+  border-color: rgba(0, 255, 0, 0.8);
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+  transform: translateY(-3px);
 }
  
 h1 {
-  font-size:clamp(56px,7vw,84px);
+  font-size:clamp(56px,8vw,96px);
   line-height:1.1;
-  margin-bottom:24px;
-  font-weight:700;
-  letter-spacing: -2px;
-  color: var(--accent);
-  text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+  margin-bottom:28px;
+  font-weight:900;
+  letter-spacing: -1.5px;
+  color: #d090ff;
+  text-shadow: 0 0 40px rgba(208, 144, 255, 0.5), 0 20px 50px rgba(157, 78, 221, 0.3);
+  filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.4));
+  position: relative;
 }
  
 h2 {
   font-size:clamp(32px,4vw,48px);
-  margin-bottom:20px;
+  margin-bottom:24px;
   font-weight:700;
   letter-spacing: -0.5px;
   color: var(--accent);
+  text-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
  
 .intro {
@@ -653,10 +624,11 @@ h2 {
  
 .subtitle {
   font-size: 20px;
-  color: var(--accent);
-  margin-bottom: 60px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  color: rgba(208, 144, 255, 0.7);
+  margin-bottom: 80px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
 }
  
 .btn-primary {
@@ -712,12 +684,75 @@ h2 {
   margin-bottom: 40px;
 }
  
-.hero-text {
-  max-width: 600px;
-  line-height: 1.8;
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+ 
+.feature-card {
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.08) 0%, rgba(157, 78, 221, 0.04) 100%);
+  border: 1.5px solid rgba(208, 144, 255, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(208, 144, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+ 
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(208, 144, 255, 0.4);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.12) 0%, rgba(157, 78, 221, 0.08) 100%);
+  box-shadow: 0 12px 40px rgba(208, 144, 255, 0.15);
+}
+ 
+.feature-card:hover::before {
+  opacity: 1;
+}
+ 
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+ 
+.feature-card:hover .feature-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+ 
+.feature-card h3 {
+  color: #d090ff;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+ 
+.feature-card p {
   color: var(--sub);
-  font-size: 16px;
-  margin-bottom: 50px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+ 
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 }
  
 .discord-card {
@@ -810,54 +845,159 @@ h2 {
 .status-dot.dnd { background: #F04747; }
  
 .code-block {
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(157, 78, 221, 0.2);
-  border-radius: 12px;
-  padding: 20px;
+  background: linear-gradient(135deg, rgba(20, 10, 40, 0.8) 0%, rgba(30, 15, 50, 0.6) 100%);
+  border: 1px solid rgba(208, 144, 255, 0.2);
+  border-radius: 18px;
+  padding: 36px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 2.2;
   overflow-x: auto;
+  box-shadow: 0 12px 60px rgba(208, 144, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
 }
  
-.code-header { display: flex; gap: 8px; margin-bottom: 16px; }
+.code-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(45deg, transparent 0%, rgba(208, 144, 255, 0.05) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
  
-.code-dot { width: 12px; height: 12px; border-radius: 50%; }
+.code-block:hover {
+  border-color: rgba(208, 144, 255, 0.4);
+  box-shadow: 0 20px 80px rgba(208, 144, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-6px);
+}
+ 
+.code-block:hover::before {
+  opacity: 1;
+}
+ 
+.code-header { 
+  display: flex; 
+  gap: 12px; 
+  margin-bottom: 28px;
+  align-items: center;
+}
+ 
+.code-dot { 
+  width: 14px; 
+  height: 14px; 
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
 .code-dot:nth-child(1) { background: #ff5f56; }
 .code-dot:nth-child(2) { background: #ffbd2e; }
 .code-dot:nth-child(3) { background: #27c93f; }
  
-.code-line { display: flex; gap: 16px; }
-.code-number { color: rgba(157, 78, 221, 0.3); min-width: 30px; text-align: right; }
-.code-text { color: #a8cc8c; }
-.code-text.keyword { color: #b77ddb; }
-.code-text.string { color: #a8cc8c; }
-.code-text.comment { color: rgba(157, 78, 221, 0.4); font-style: italic; }
+.code-line { 
+  display: flex; 
+  gap: 28px;
+  transition: all 0.2s ease;
+  padding: 6px 14px;
+  border-radius: 6px;
+  position: relative;
+}
+ 
+.code-line:hover {
+  background: rgba(208, 144, 255, 0.12);
+  padding-left: 18px;
+}
+ 
+.code-number { 
+  color: rgba(208, 144, 255, 0.35);
+  min-width: 28px;
+  text-align: right;
+  user-select: none;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+ 
+.code-text { 
+  color: #e8e8e8;
+  font-weight: 400;
+}
+ 
+.code-text.keyword { 
+  color: #d090ff;
+  font-weight: 700;
+}
+ 
+.code-text.string { 
+  color: #6fff6f;
+  font-weight: 500;
+}
+ 
+.code-text.comment { 
+  color: rgba(208, 144, 255, 0.5);
+  font-style: italic;
+  font-weight: 400;
+}
  
 .stats {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-top:60px;
+  gap:28px;
+  margin-top:120px;
 }
  
 .stat {
-  padding:20px;
+  padding:32px 24px;
   text-align:center;
-  transition:.3s;
-  border: 1px solid rgba(157, 78, 221, 0.1);
-  border-radius: 12px;
-  background: rgba(157, 78, 221, 0.02);
+  transition: all .3s ease;
+  border: 2px solid rgba(157, 78, 221, 0.2);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.08) 0%, rgba(100, 50, 180, 0.03) 100%);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+ 
+.stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(157, 78, 221, 0.15) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
  
 .stat:hover {
-  transform:translateY(-4px);
-  border-color:rgba(157, 78, 221, 0.2);
-  background:rgba(157, 78, 221, 0.05);
+  transform:translateY(-12px) scale(1.02);
+  border-color:rgba(157, 78, 221, 0.4);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.12) 0%, rgba(100, 50, 180, 0.08) 100%);
+  box-shadow: 0 16px 48px rgba(157, 78, 221, 0.2);
 }
  
-.stat-n { font-size:24px; font-weight:700; margin-bottom: 8px; color: var(--accent); }
-.stat-l { font-size:12px; color:var(--sub); letter-spacing: 0.5px; text-transform: uppercase; }
+.stat:hover::before {
+  opacity: 1;
+}
+ 
+.stat-n { 
+  font-size:40px; 
+  font-weight:900; 
+  margin-bottom: 14px; 
+  color: #d090ff;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 20px rgba(208, 144, 255, 0.4);
+}
+ 
+.stat-l { 
+  font-size:12px; 
+  color:var(--sub); 
+  letter-spacing: 1px; 
+  text-transform: uppercase;
+  font-weight: 700;
+}
  
 .chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
  
@@ -1028,24 +1168,6 @@ footer {
  
 <div class="top-nav">
  
-  <div class="status-header">
-    <div class="status-left">
-      <div class="status-icon"></div>
-      <div class="status-text">
-        <span></span>
-        <div class="progress-line"></div>
-      </div>
-    </div>
-    <div class="status-right">
-      <div class="status-percentage">89%</div>
-      <div class="language-switch">
-        <a class="active" href="#de">DE</a>
-        <span>/</span>
-        <a href="#en">EN</a>
-      </div>
-    </div>
-  </div>
- 
   <div class="nav-content">
     <nav>
       <div class="logo" onclick="show('home')">
@@ -1071,10 +1193,10 @@ footer {
  
   <h1 class="reveal delay-1">Wer_sonst13 Developer</h1>
  
-  <p class="subtitle reveal delay-2">Es wird noch VIEL an Der Website geändert!</p>
+  <p class="subtitle reveal delay-2">Make own Configs and Setups</p>
  
   <p class="hero-text reveal delay-2">
-    Ich bin ein leidenschaftlicher Minecraft-Developer aus Frankfurt am Main. Mit über 1+ Jahr Erfahrung 
+    Ich bin Justin ein 15 Jähriger leidenschaftlicher Minecraft-Developer aus Frankfurt am Main. Mit über 1+ Jahr Erfahrung 
     entwickle ich custom Plugins, Setups und Konfigurationen für moderne Minecraft Server. 
     Mein Fokus liegt auf Performance, Design und User Experience.
   </p>
@@ -1086,47 +1208,29 @@ footer {
     </div>
   </div>
  
-  <div class="code-block reveal delay-2">
-    <div class="code-header">
-      <div class="code-dot"></div>
-      <div class="code-dot"></div>
-      <div class="code-dot"></div>
+  <div class="features-grid reveal delay-2">
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <h3>Custom Plugins</h3>
+      <p>Entwickle benutzerdefinierte Plugins für deine spezifischen Anforderungen</p>
     </div>
-    <div class="code-line">
-      <span class="code-number">1</span>
-      <span><span class="code-text keyword">const</span> <span class="code-text">developer</span> = {</span>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>Performance</h3>
+      <p>Optimiert für maximale Geschwindigkeit und Stabilität</p>
     </div>
-    <div class="code-line">
-      <span class="code-number">2</span>
-      <span>&nbsp;&nbsp;<span class="code-text">name:</span> <span class="code-text string">"Wer_sonst13"</span>,</span>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Design</h3>
+      <p>Moderne und benutzerfreundliche Benutzeroberflächen</p>
     </div>
-    <div class="code-line">
-      <span class="code-number">3</span>
-      <span>&nbsp;&nbsp;<span class="code-text">role:</span> <span class="code-text string">"Full Time Dev"</span>,</span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">4</span>
-      <span>&nbsp;&nbsp;<span class="code-text">socials:</span> [</span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">5</span>
-      <span>&nbsp;&nbsp;&nbsp;&nbsp;🐙</span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">6</span>
-      <span>&nbsp;&nbsp;]</span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">7</span>
-      <span>};</span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">8</span>
-      <span><span class="code-text comment">// let's build something amazing</span></span>
-    </div>
-    <div class="code-line">
-      <span class="code-number">9</span>
-      <span><span class="code-text keyword">init</span>(developer);</span>
+    
+    <div class="feature-card">
+      <div class="feature-icon">💻</div>
+      <h3>Full Stack</h3>
+      <p>Backend, Frontend und Database Solutions</p>
     </div>
   </div>
  
@@ -1137,12 +1241,11 @@ footer {
   </div>
 </section>
  
-<!-- ===== ABOUT SECTION (NEU) ===== -->
 <section id="about">
   <h2 class="about-title">Über mich</h2>
  
   <p class="about-intro">
-    Mein Name ist Justin, bekannt als Wer_stoned13. Ich bin ein 15-jähriger Entwickler aus Frankfurt am Main, Deutschland, 
+    Mein Name ist Justin, bekannt als Wer_sonst13. Ich bin ein 15-jähriger Entwickler aus Frankfurt am Main, Deutschland, 
     der sich auf Minecraft-Server-Entwicklung spezialisiert hat. Mit Leidenschaft für Code und Design schaffe ich moderne, 
     funktionale und benutzerfreundliche Minecraft-Erlebnisse.
   </p>
@@ -1197,21 +1300,21 @@ footer {
  
   <div class="projects-grid">
  
-    <!-- CARD 1 -->
+    card 1
     <div class="project-card reveal delay-2">
       <div class="project-badge">PROJEKT IDEE (2026)</div>
-      <h3 class="project-title">MineSMP</h3>
+      <h3 class="project-title">Zeno SMP</h3>
       <p class="project-desc">
-        MineSMP.de bietet abwechslungsreiche Modi wie SMP,
-        RageMode und vieles mehr. Eine aktive Community,
-        regelmäßige Updates und jede Menge Spielspaß warten auf dich.
+        ZenoSMP ist ein Survival-Multiplayer-Server mit Fokus auf PvP und Basebuilding. Du sammelst Ressourcen,
+        baust deine eigene Basis auf und kämpfst gegen andere Spieler um die Vorherrschaft.
+        Nur die stärksten und cleversten Spieler setzen sich durch.
       </p>
       <div class="project-tags">
-        <span class="project-tag">CO-OWNER</span>
-        <span class="project-tag">HauptProject</span>
-        <span class="project-tag">Network</span>
+        <span class="project-tag">Manager</span>
+        <span class="project-tag">Java u. Bedrock</span>
+        <span class="project-tag">SMP</span>
       </div>
-      <a class="project-dc-btn" href="https://discord.gg/BrNBbecXDy" target="_blank">
+      <a class="project-dc-btn" href="https://discord.gg/bU3QDAqRz4" target="_blank">
         <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
@@ -1219,7 +1322,7 @@ footer {
       </a>
     </div>
  
-    <!-- CARD 2 -->
+   card2
     <div class="project-card reveal delay-3">
       <div class="project-badge">IN ARBEIT</div>
       <h3 class="project-title">Load SMP</h3>
@@ -1240,7 +1343,7 @@ footer {
       </a>
     </div>
  
-    <!-- CARD 3 -->
+    card3
     <div class="project-card reveal delay-3">
       <div class="project-badge">COMING SOON</div>
       <h3 class="project-title">Soon</h3>
@@ -1260,7 +1363,7 @@ footer {
       </a>
     </div>
  
-    <!-- CARD 4 -->
+    card4
     <div class="project-card reveal delay-3">
       <div class="project-badge">SOON</div>
       <h3 class="project-title">Coming SOON</h3>
@@ -1301,7 +1404,7 @@ footer {
       </div>
       <div>
         <div class="dc-title">Wer_sonst13</div>
-        <div class="dc-sub">Erreichbar auf Discord • Ich Antworte so schnell wie es geht</div>
+        <div class="dc-sub">Erreichbar auf Discord • Schnelle Antworten garantiert</div>
       </div>
     </div>
     <a class="dc-cta" href="https://discord.com/users/Wer_sonst13" target="_blank">Nachricht senden</a>
@@ -1310,20 +1413,20 @@ footer {
  
 <footer>
   <span></span>
-  <span>© 2026 Wer_sonst13 CopyRight</span>
+  <span>© 2026 Wer_sonst13 Copyright </span>
 </footer>
  
 </div>
  
 <script>
-// Cursor
+
 const cursorDot = document.getElementById('cursorDot');
 document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 });
  
-// Navigation
+
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -1331,7 +1434,7 @@ function show(id) {
   document.getElementById('nav-' + id).classList.add('active');
 }
  
-// Reveal on scroll
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.15 });
