@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Pacifico&display=swap" rel="stylesheet">
  
 <style>
-  
+  /* ===== MODERN PROJECT GRID ===== */
 .projects-grid {
   margin-top: 50px;
   display: grid;
@@ -16,28 +16,28 @@
   gap: 35px;
 }
  
-
+/* Mobile */
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
  
-
+/* ===== MODERN PROJECT CARD ===== */
 .project-card {
   position: relative;
-  padding: 60px 45px 45px;
-  min-height: 380px;
+  padding: 44px;
+  min-height: 440px;
  
-  border-radius: 26px;
+  border-radius: 16px;
  
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(14px);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.1) 0%, rgba(157, 78, 221, 0.05) 100%);
+  backdrop-filter: blur(16px);
  
-  border: 1px solid rgba(157, 78, 221, 0.18);
+  border: 2px solid rgba(208, 144, 255, 0.3);
  
   overflow: hidden;
-  transition: all 0.35s ease;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
  
   display: flex;
   flex-direction: column;
@@ -45,6 +45,7 @@
   opacity: 0;
   transform: translateY(40px);
   animation: projectFade 0.8s ease forwards;
+  box-shadow: 0 8px 32px rgba(208, 144, 255, 0.1);
 }
  
 @keyframes projectFade {
@@ -54,136 +55,156 @@
   }
 }
  
-
+/* Glow Background Effekt */
 .project-card::before {
   content: "";
   position: absolute;
   inset: -2px;
   background: radial-gradient(
     circle at top right,
-    rgba(157, 78, 221, 0.25),
-    transparent 60%
+    rgba(208, 144, 255, 0.12),
+    transparent 65%
   );
   opacity: 0;
-  transition: 0.4s ease;
+  transition: 0.5s ease;
+  z-index: 0;
 }
  
-
+/* Hover Glow */
 .project-card:hover::before {
   opacity: 1;
 }
  
 .project-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(157, 78, 221, 0.5);
-  box-shadow: 0 25px 70px rgba(157, 78, 221, 0.25);
+  transform: translateY(-16px) scale(1.03);
+  border-color: rgba(208, 144, 255, 0.6);
+  box-shadow: 0 40px 100px rgba(208, 144, 255, 0.35), 0 0 40px rgba(208, 144, 255, 0.2);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.15) 0%, rgba(157, 78, 221, 0.1) 100%);
 }
  
-
+/* Badge moderner */
 .project-badge {
   position: absolute;
-  top: 22px;
-  right: 22px;
+  top: 26px;
+  right: 26px;
  
-  font-size: 11px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  font-size: 10px;
+  padding: 11px 18px;
+  border-radius: 8px;
  
-  background: rgba(157, 78, 221, 0.15);
-  border: 1px solid rgba(157, 78, 221, 0.4);
-  color: #fff;
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.25) 0%, rgba(208, 144, 255, 0.15) 100%);
+  border: 1.5px solid rgba(208, 144, 255, 0.5);
+  color: #d090ff;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
  
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(208, 144, 255, 0.15);
+  z-index: 1;
 }
  
-
+/* Titel größer + cleaner */
 .project-title {
-  font-size: 34px;
-  margin-top: 90px;
-  margin-bottom: 12px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: 36px;
+  margin-top: 50px;
+  margin-bottom: 18px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  color: #d090ff;
+  text-shadow: 0 2px 8px rgba(208, 144, 255, 0.2);
+  z-index: 1;
 }
  
-
+/* Beschreibung */
 .project-desc {
-  color: var(--sub);
-  line-height: 1.7;
+  color: rgba(200, 200, 200, 0.9);
+  line-height: 1.85;
   font-size: 15px;
-  max-width: 520px;
-  margin-bottom: 22px;
+  max-width: 100%;
+  margin-bottom: 28px;
   flex: 1;
+  z-index: 1;
 }
  
-
+/* Tags moderner */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 32px;
+  z-index: 1;
 }
  
 .project-tag {
-  font-size: 12px;
-  padding: 7px 12px;
-  border-radius: 999px;
+  font-size: 11px;
+  padding: 9px 16px;
+  border-radius: 8px;
  
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(208, 144, 255, 0.12);
+  border: 1.5px solid rgba(208, 144, 255, 0.35);
+  color: #d090ff;
  
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: default;
 }
  
 .project-tag:hover {
-  background: rgba(157, 78, 221, 0.12);
-  border-color: var(--accent);
+  background: rgba(208, 144, 255, 0.25);
+  border-color: rgba(208, 144, 255, 0.6);
   color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(208, 144, 255, 0.2);
 }
  
-
+/* ===== DISCORD BUTTON IN CARD ===== */
 .project-dc-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 11px;
   align-self: flex-start;
  
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 13px 28px;
+  border-radius: 8px;
  
-  background: rgba(157, 78, 221, 0.08);
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  color: var(--text);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.18) 0%, rgba(208, 144, 255, 0.1) 100%);
+  border: 1.5px solid rgba(208, 144, 255, 0.4);
+  color: #d090ff;
  
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Inter', sans-serif;
   text-decoration: none;
   cursor: pointer;
+  letter-spacing: 0.3px;
  
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
   position: relative;
   z-index: 1;
+  box-shadow: 0 4px 12px rgba(208, 144, 255, 0.15);
 }
  
 .project-dc-btn svg {
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 }
  
 .project-dc-btn:hover {
-  background: rgba(157, 78, 221, 0.18);
-  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.28) 0%, rgba(208, 144, 255, 0.18) 100%);
+  border-color: rgba(208, 144, 255, 0.65);
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(208, 144, 255, 0.4);
 }
  
 .project-dc-btn:hover svg {
-  transform: scale(1.15);
+  transform: scale(1.25) rotate(12deg);
 }
  
   
-  
+  /* ===== ABOUT SECTION ===== */
  
 .about-title {
   font-size: 42px;
@@ -232,7 +253,7 @@
   overflow: hidden;
   background: rgba(157, 78, 221, 0.02);
   border: 1px solid rgba(157, 78, 221, 0.15);
-  border-radius: 18px;
+  border-radius: 14px;
   padding: 32px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -261,7 +282,7 @@
   background: rgba(157, 78, 221, 0.05);
 }
  
-
+/* Shimmer Effekt */
 .about-card::before {
   content: "";
   position: absolute;
@@ -270,7 +291,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(157, 78, 221, 0.2),
+    rgba(157, 78, 221, 0.1),
     transparent
   );
   opacity: 0;
@@ -337,7 +358,7 @@
 .about-skills {
   background: rgba(157, 78, 221, 0.03);
   border: 1px solid rgba(157, 78, 221, 0.15);
-  border-radius: 18px;
+  border-radius: 14px;
   padding: 40px;
   margin-top: 40px;
   opacity: 0;
@@ -507,7 +528,7 @@ nav {
   font-size:14px;
   font-weight: 500;
   letter-spacing: 0.3px;
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
 }
  
@@ -600,8 +621,8 @@ h1 {
   font-weight:900;
   letter-spacing: -1.5px;
   color: #d090ff;
-  text-shadow: 0 0 40px rgba(208, 144, 255, 0.5), 0 20px 50px rgba(157, 78, 221, 0.3);
-  filter: drop-shadow(0 0 20px rgba(157, 78, 221, 0.4));
+  text-shadow: 0 0 20px rgba(208, 144, 255, 0.25), 0 10px 30px rgba(157, 78, 221, 0.15);
+  filter: drop-shadow(0 0 10px rgba(157, 78, 221, 0.2));
   position: relative;
 }
  
@@ -635,7 +656,7 @@ h2 {
   background:var(--accent);
   color:#fff;
   padding:14px 36px;
-  border-radius:10px;
+  border-radius:8px;
   border:none;
   cursor:pointer;
   font-weight:600;
@@ -655,7 +676,7 @@ h2 {
   border:1px solid rgba(157, 78, 221, 0.3);
   color:var(--text);
   padding:14px 36px;
-  border-radius:10px;
+  border-radius:8px;
   cursor:pointer;
   transition:.3s ease;
   font-weight: 600;
@@ -695,7 +716,7 @@ h2 {
 .feature-card {
   background: linear-gradient(135deg, rgba(208, 144, 255, 0.08) 0%, rgba(157, 78, 221, 0.04) 100%);
   border: 1.5px solid rgba(208, 144, 255, 0.2);
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 32px;
   transition: all 0.3s ease;
   position: relative;
@@ -706,7 +727,7 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(208, 144, 255, 0.1), transparent 70%);
+  background: radial-gradient(circle at top right, rgba(208, 144, 255, 0.08), transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -954,7 +975,7 @@ h2 {
   text-align:center;
   transition: all .3s ease;
   border: 2px solid rgba(157, 78, 221, 0.2);
-  border-radius: 14px;
+  border-radius: 12px;
   background: linear-gradient(135deg, rgba(157, 78, 221, 0.08) 0%, rgba(100, 50, 180, 0.03) 100%);
   position: relative;
   overflow: hidden;
@@ -965,7 +986,7 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(157, 78, 221, 0.15) 50%, transparent 100%);
+  background: linear-gradient(45deg, transparent 0%, rgba(157, 78, 221, 0.08) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -1023,7 +1044,7 @@ h2 {
   justify-content:space-between;
   align-items:center;
   padding:32px;
-  border-radius:16px;
+  border-radius:14px;
   margin-top:40px;
   transition:.3s ease;
   background: linear-gradient(135deg, rgba(157, 78, 221, 0.08) 0%, rgba(157, 78, 221, 0.02) 100%);
@@ -1038,7 +1059,7 @@ h2 {
   inset: 0;
   background: radial-gradient(
     circle at top right,
-    rgba(157, 78, 221, 0.15),
+    rgba(157, 78, 221, 0.08),
     transparent 70%
   );
   opacity: 0;
@@ -1136,6 +1157,58 @@ h2 {
   }
 }
  
+.impressum-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+ 
+.impressum-section {
+  margin-bottom: 40px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.05) 0%, rgba(157, 78, 221, 0.02) 100%);
+  border: 1px solid rgba(208, 144, 255, 0.15);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+ 
+.impressum-section:hover {
+  border-color: rgba(208, 144, 255, 0.3);
+  background: linear-gradient(135deg, rgba(208, 144, 255, 0.08) 0%, rgba(157, 78, 221, 0.04) 100%);
+}
+ 
+.impressum-section h3 {
+  color: #d090ff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+ 
+.impressum-section p {
+  color: var(--sub);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+ 
+.impressum-section a {
+  color: #d090ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+ 
+.impressum-section a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+ 
+@media (max-width: 768px) {
+  .impressum-section {
+    padding: 18px;
+    margin-bottom: 24px;
+  }
+}
+ 
 footer {
   margin-top:100px;
   padding-top:32px;
@@ -1179,6 +1252,7 @@ footer {
         <button id="nav-about" onclick="show('about')">About</button>
         <button id="nav-projects" onclick="show('projects')">Projects</button>
         <button id="nav-contact" onclick="show('contact')">Contact</button>
+        <button id="nav-impressum" onclick="show('impressum')">Impressum</button>
       </div>
     </nav>
   </div>
@@ -1193,10 +1267,10 @@ footer {
  
   <h1 class="reveal delay-1">Wer_sonst13 Developer</h1>
  
-  <p class="subtitle reveal delay-2">Es Wird noch VIEL an der Seite Verändert!</p>
+  <p class="subtitle reveal delay-2">Make own Configs and Setups</p>
  
   <p class="hero-text reveal delay-2">
-    Ich bin Justin ein 15 Jähriger leidenschaftlicher Minecraft-Developer aus Frankfurt am Main. Mit über 1+ Jahr Erfahrung 
+    Ich bin ein leidenschaftlicher Minecraft-Developer aus Frankfurt am Main. Mit über 1+ Jahr Erfahrung 
     entwickle ich custom Plugins, Setups und Konfigurationen für moderne Minecraft Server. 
     Mein Fokus liegt auf Performance, Design und User Experience.
   </p>
@@ -1241,6 +1315,7 @@ footer {
   </div>
 </section>
  
+<!-- ===== ABOUT SECTION (NEU) ===== -->
 <section id="about">
   <h2 class="about-title">Über mich</h2>
  
@@ -1300,29 +1375,29 @@ footer {
  
   <div class="projects-grid">
  
-    
+    <!-- CARD 1 -->
     <div class="project-card reveal delay-2">
-      <div class="project-badge">BIG PROJEKT (2026)</div>
-      <h3 class="project-title">MineSMP</h3>
+      <div class="project-badge">PROJEKT IDEE (2026)</div>
+      <h3 class="project-title">Zeno SMP</h3>
       <p class="project-desc">
-        MineSMP.de bietet abwechslungsreiche Modi wie SMP,
-        RageMode und vieles mehr. Eine aktive Community,
-        regelmäßige Updates und jede Menge Spielspaß warten auf dich.
+        ZenoSMP ist ein Survival-Multiplayer-Server mit Fokus auf PvP und Basebuilding. Du sammelst Ressourcen,
+        baust deine eigene Basis auf und kämpfst gegen andere Spieler um die Vorherrschaft.
+        Nur die stärksten und cleversten Spieler setzen sich durch.
       </p>
       <div class="project-tags">
-        <span class="project-tag">CO-OWNER</span>
-        <span class="project-tag">Season 1</span>
-        <span class="project-tag">New</span>
+        <span class="project-tag">Manager</span>
+        <span class="project-tag">Java u. Bedrock</span>
+        <span class="project-tag">SMP</span>
       </div>
-      <a class="project-dc-btn" href="https://discord.gg/rgE5tsdpfV" target="_blank">
+      <a class="project-dc-btn" href="https://discord.gg/bU3QDAqRz4" target="_blank">
         <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
-        Join dem Discord
+        Discord kontaktieren
       </a>
     </div>
  
-   
+    <!-- CARD 2 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">IN ARBEIT</div>
       <h3 class="project-title">Load SMP</h3>
@@ -1339,11 +1414,11 @@ footer {
         <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
-        Join dem Discord
+        Discord kontaktieren
       </a>
     </div>
  
-    
+    <!-- CARD 3 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">COMING SOON</div>
       <h3 class="project-title">Soon</h3>
@@ -1359,11 +1434,11 @@ footer {
         <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
-        Join dem Discord
+        Discord kontaktieren
       </a>
     </div>
  
-    
+    <!-- CARD 4 -->
     <div class="project-card reveal delay-3">
       <div class="project-badge">SOON</div>
       <h3 class="project-title">Coming SOON</h3>
@@ -1379,7 +1454,7 @@ footer {
         <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
           <path d="M20.317 1.492A19.824 19.824 0 0 0 15.432.01a.074.074 0 0 0-.079.037c-.34.612-.719 1.41-.983 2.037a18.344 18.344 0 0 0-5.487 0 12.64 12.64 0 0 0-.997-2.037.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 1.49a.07.07 0 0 0-.032.027C.533 6.093-.32 10.555.099 14.961a.08.08 0 0 0 .031.055 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 12.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
-        Join dem Discord
+        Discord kontaktieren
       </a>
     </div>
  
@@ -1411,22 +1486,109 @@ footer {
   </div>
 </section>
  
+<section id="impressum">
+  <h2 class="reveal">Impressum</h2>
+  
+  <div class="impressum-content reveal delay-1">
+    <div class="impressum-section">
+      <h3>Angaben gemäß § 5 TMG</h3>
+      <p>
+        <strong>Verantwortlich für den Inhalt:</strong><br>
+        Justin<br>
+        Wer_sonst13<br>
+        Frankfurt am Main, Hessen<br>
+        Deutschland
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <h3>Kontaktinformationen</h3>
+      <p>
+        <strong>Discord:</strong> <a href="https://discord.com/users/Wer_sonst13" target="_blank">Wer_sonst13</a><br>
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <h3>Haftung für Links</h3>
+      <p>
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. 
+        Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten 
+        ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum 
+        Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der 
+        Verlinkung nicht erkennbar.
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <h3>Urheberrecht</h3>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. 
+        Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes 
+        bedürfen der schriftlichen Zustimmung des Autors oder Erstellers. Downloads und Kopien dieser Seite sind nur für 
+        den privaten, nicht kommerziellen Gebrauch gestattet.
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <h3>Datenschutz & Services</h3>
+      <p>
+        Diese Website erhebt und verarbeitet keine persönlichen Daten von Besuchern automatisch. Es werden keine Cookies 
+        oder Tracking-Technologien verwendet.<br><br>
+        
+        <strong>Kontaktaufnahmen & Projektanfragen:</strong> Bei Kontaktaufnahmen über Discord oder andere Kanäle werden 
+        die übermittelten Daten ausschließlich zur Beantwortung der Anfrage und zur Abwicklung von Entwicklungsprojekten 
+        verwendet. Die Daten werden nicht an Dritte weitergegeben und gemäß DSGVO behandelt.<br><br>
+        
+        <strong>Service-Level-Agreement:</strong> Für angenommene Entwicklungsprojekte werden individuelle Absprachen 
+        getroffen. Reaktionszeiten und Verfügbarkeit können je nach Projektumfang und Auftragslage variieren. Der Entwickler 
+        bemüht sich, zeitnahe Responses zu geben, kann dies aber nicht garantieren.
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <h3>Disclaimer für Entwicklungsservices</h3>
+      <p>
+        Die Inhalte dieser Website werden ohne jegliche Gewähr zur Verfügung gestellt. Der Entwickler übernimmt keine Haftung 
+        für Schäden, die sich aus der Nutzung dieser Website oder angebotener Services ergeben.<br><br>
+        
+        <strong>Keine Garantie für:</strong>
+      </p>
+      <ul style="margin-top: 10px; margin-left: 20px; color: var(--sub);">
+        <li>Fehlerfreie oder unterbrechungsfreie Funktionalität von Plugins oder Skripten</li>
+        <li>Kompatibilität mit zukünftigen Versionen von Minecraft oder anderen Systemen</li>
+        <li>Kontinuierlichen Support oder Updates nach Projektabschluss</li>
+        <li>Performance oder Skalierbarkeit von Servern oder Services</li>
+        <li>Datensicherheit oder Backup-Funktionalität (Eigenverantwortung des Kunden)</li>
+      </ul>
+      <p style="margin-top: 10px;">
+        Der Kunde trägt die volle Verantwortung für die Nutzung bereitgestellter Services und für die Datensicherheit seiner Server und Projekte.
+      </p>
+    </div>
+ 
+    <div class="impressum-section">
+      <p style="margin-top: 40px; color: var(--sub); font-size: 13px;">
+        <em>Zuletzt aktualisiert: Mai 2026</em>
+      </p>
+    </div>
+  </div>
+</section>
+ 
 <footer>
   <span></span>
-  <span>© 2026 Wer_sonst13 Copyright </span>
+  <span>© 2026 Wer_sonst13</span>
 </footer>
  
 </div>
  
 <script>
-
+// Cursor
 const cursorDot = document.getElementById('cursorDot');
 document.addEventListener('mousemove', (e) => {
   cursorDot.style.left = e.clientX + 'px';
   cursorDot.style.top = e.clientY + 'px';
 });
  
-
+// Navigation
 function show(id) {
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -1434,7 +1596,7 @@ function show(id) {
   document.getElementById('nav-' + id).classList.add('active');
 }
  
-
+// Reveal on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
 }, { threshold: 0.15 });
